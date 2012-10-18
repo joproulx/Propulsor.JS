@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head title="Samples">
+    <meta charset="utf-8">
+    
+</head>
+<body>
+    <script src="Scripts/libs/jquery/jquery.js"></script>
+    <script src="Scripts/libs/Underscore/Underscore.js"></script>
+    <script src="Scripts/libs/Sylvester/Sylvester.src.js"></script>
+    <script src="Scripts/libs/require/require.js"></script>
+    <div id="test">0</div>
+    <script>
+        require(['scripts/helpers/SampleCanvas',
+                 'scripts/element/shape/PolySegmentShape'],
+                 function (SampleCanvasModule, PolySegmentShapeModule) {
+
+                     var sampleCanvas = new SampleCanvasModule.SampleCanvas("test1");
+
+                     var polyLine = new PolySegmentShapeModule.PolySegmentShape(0, {
+                        IsClosedPath: false,
+                        Origin: { X: 100, Y: 100 },
+                        Items: [
+                            { X: 0, Y: 0 },
+                            { SegmentType: "line" },
+                            { X: 100, Y: 0 },
+                            { SegmentType: "line" },
+                            { X: 100, Y: 100 }]
+                    });
+
+                    polyLine.StrokeDashOffset.set(0, 0);
+                    polyLine.StrokeDashOffset.set(10000, 1000);
+
+                    polyLine.StrokeRatio.Start.set(0, 0);
+                    polyLine.StrokeRatio.Start.set(10000, 0.25);
+                    polyLine.StrokeRatio.End.set(0, 1);
+                    polyLine.StrokeRatio.End.set(10000, 0.75);
+                    polyLine.StrokeColor.set(0, { R: 120, G: 120, B: 120 });
+                    polyLine.StrokeDashPattern.set(0, [30, 10, 10, 10]);
+                    sampleCanvas.addToScene([polyLine]);
+                    
+                });
+    </script>
+</body>
+</html>
