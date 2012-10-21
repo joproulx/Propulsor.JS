@@ -1,4 +1,5 @@
-declare var $M: any;
+import sylvester = module("libs/sylvester/sylvesterLib");
+var $M: any = sylvester;
 
 export function getRotationMatrix(rad: number) {
     var costheta = Math.cos(rad);

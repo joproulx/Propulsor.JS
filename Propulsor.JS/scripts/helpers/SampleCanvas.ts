@@ -1,6 +1,7 @@
 import SceneManager = module("SceneManager");
 import IRenderable = module("element/shape/IRenderable");
-declare var $: any;
+import jQuery = module("libs/jquery/jqueryLib");
+var $: any = jQuery;
 
 export class SampleCanvas {
     Context = null;

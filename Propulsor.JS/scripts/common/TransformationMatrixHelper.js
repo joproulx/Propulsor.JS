@@ -1,4 +1,7 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports", "libs/sylvester/sylvesterLib"], function(require, exports, __sylvester__) {
+    var sylvester = __sylvester__;
+
+    var $M = sylvester;
     function getRotationMatrix(rad) {
         var costheta = Math.cos(rad);
         var sintheta = Math.sin(rad);

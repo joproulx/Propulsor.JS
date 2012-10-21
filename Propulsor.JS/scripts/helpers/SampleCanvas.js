@@ -1,7 +1,10 @@
-define(["require", "exports", "SceneManager"], function(require, exports, __SceneManager__) {
+define(["require", "exports", "SceneManager", "libs/jquery/jqueryLib"], function(require, exports, __SceneManager__, __jQuery__) {
     var SceneManager = __SceneManager__;
 
     
+    var jQuery = __jQuery__;
+
+    var $ = jQuery;
     var SampleCanvas = (function () {
         function SampleCanvas(name) {
             this.Context = null;

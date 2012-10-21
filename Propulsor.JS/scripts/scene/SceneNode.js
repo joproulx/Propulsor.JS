@@ -1,4 +1,4 @@
-define(["require", "exports", "common/timedValue/TimedValue", "common/TransformationMatrixHelper", "common/timedValue/LinearTimedValue", "common/Point", "transition/PointLinearTransition", "transition/FollowPathTransition", "transition/FollowDirectionTransition"], function(require, exports, __TimedValue__, __TransformationMatrixHelper__, __LinearTimedValue__, __Point__, __PointLinearTransition__, __FollowPathTransition__, __FollowDirectionTransition__) {
+define(["require", "exports", "common/timedValue/TimedValue", "common/TransformationMatrixHelper", "common/timedValue/LinearTimedValue", "common/Point", "transition/PointLinearTransition", "transition/FollowPathTransition", "transition/FollowDirectionTransition", "libs/sylvester/sylvesterLib"], function(require, exports, __TimedValue__, __TransformationMatrixHelper__, __LinearTimedValue__, __Point__, __PointLinearTransition__, __FollowPathTransition__, __FollowDirectionTransition__, __sylvester__) {
     var TimedValue = __TimedValue__;
 
     var TransformationMatrixHelper = __TransformationMatrixHelper__;
@@ -14,6 +14,9 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/Transforma
     var FollowDirectionTransition = __FollowDirectionTransition__;
 
     
+    var sylvester = __sylvester__;
+
+    var $M = sylvester;
     var SceneNode = (function () {
         function SceneNode(parentNode) {
             this._relativePosition = undefined;

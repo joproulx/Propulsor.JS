@@ -152,6 +152,10 @@
       <DependentUpon>SampleCanvas.ts</DependentUpon>
     </Content>
     <Content Include="scripts\libs\jquery\jquery.js" />
+    <TypeScriptCompile Include="scripts\libs\jquery\jqueryLib.ts" />
+    <Content Include="scripts\libs\jquery\jqueryLib.js">
+      <DependentUpon>jqueryLib.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\libs\log4javascript\license.txt" />
     <Content Include="scripts\libs\log4javascript\log4javascript.js" />
     <Content Include="scripts\libs\require\require.js" />
@@ -159,6 +163,10 @@
     <TypeScriptCompile Include="scripts\Scene.ts" />
     <Content Include="scripts\libs\sylvester\sylvester.js" />
     <Content Include="scripts\libs\sylvester\sylvester.src.js" />
+    <TypeScriptCompile Include="scripts\libs\sylvester\sylvesterLib.ts" />
+    <Content Include="scripts\libs\sylvester\sylvesterLib.js">
+      <DependentUpon>sylvesterLib.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\libs\underscore\underscore.js" />
     <TypeScriptCompile Include="scripts\libs\underscore\underscoreLib.ts" />
     <Content Include="scripts\libs\underscore\underscoreLib.js">

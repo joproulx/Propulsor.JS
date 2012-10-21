@@ -6,8 +6,9 @@ import PointLinearTransition = module("transition/PointLinearTransition");
 import FollowPathTransition = module("transition/FollowPathTransition");
 import FollowDirectionTransition = module("transition/FollowDirectionTransition");
 import Path = module("element/Path");
+import sylvester = module("libs/sylvester/sylvesterLib");
+var $M: any = sylvester;
 
-declare var $M: any;
 
 export class SceneNode {
     _relativePosition = undefined;
