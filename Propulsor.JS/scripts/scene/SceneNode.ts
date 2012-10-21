@@ -1,11 +1,11 @@
-import TimedValue = module("scripts/common/timedValue/TimedValue");
-import TransformationMatrixHelper = module("scripts/common/TransformationMatrixHelper");
-import LinearTimedValue = module("scripts/common/timedValue/LinearTimedValue");
-import Point = module("scripts/common/Point");
-import PointLinearTransition = module("scripts/transition/PointLinearTransition");
-import FollowPathTransition = module("scripts/transition/FollowPathTransition");
-import FollowDirectionTransition = module("scripts/transition/FollowDirectionTransition");
-import Path = module("scripts/element/Path");
+import TimedValue = module("common/timedValue/TimedValue");
+import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
+import LinearTimedValue = module("common/timedValue/LinearTimedValue");
+import Point = module("common/Point");
+import PointLinearTransition = module("transition/PointLinearTransition");
+import FollowPathTransition = module("transition/FollowPathTransition");
+import FollowDirectionTransition = module("transition/FollowDirectionTransition");
+import Path = module("element/Path");
 
 declare var $M: any;
 

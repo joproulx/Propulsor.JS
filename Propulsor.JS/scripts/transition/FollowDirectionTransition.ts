@@ -1,6 +1,6 @@
-import Transition = module("scripts/transition/Transition");
-import SceneNode = module("scripts/scene/SceneNode");
-import Path = module("scripts/element/Path");
+import Transition = module("transition/Transition");
+import SceneNode = module("scene/SceneNode");
+import Path = module("element/Path");
 
 export class FollowDirectionTransition extends Transition.Transition {
     SceneNode: SceneNode.SceneNode;

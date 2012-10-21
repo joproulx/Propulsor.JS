@@ -1,13 +1,13 @@
-import Shape = module("scripts/element/shape/Shape");
-import SceneNode = module("scripts/scene/SceneNode");
-import Joint = module("scripts/element/joint/Joint");
-import EndPoint = module("scripts/element/joint/EndPoint");
-import Segment = module("scripts/element/segment/Segment");
-import LineSegment = module("scripts/element/segment/LineSegment");
-import Path = module("scripts/element/Path");
-import BezierSegment = module("scripts/element/segment/BezierSegment");
-
-declare var _: any;
+import Shape = module("element/shape/Shape");
+import SceneNode = module("scene/SceneNode");
+import Joint = module("element/joint/Joint");
+import EndPoint = module("element/joint/EndPoint");
+import Segment = module("element/segment/Segment");
+import LineSegment = module("element/segment/LineSegment");
+import Path = module("element/Path");
+import BezierSegment = module("element/segment/BezierSegment");
+import underscore = module("libs/underscore/underscoreLib");
+var _:any = underscore;
 
 export class PolySegmentShape extends Shape.Shape{
     Segments: Segment.Segment[];

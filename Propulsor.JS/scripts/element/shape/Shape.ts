@@ -1,8 +1,8 @@
-import GuidGenerator = module("scripts/common/GuidGenerator");
-import IRenderable = module("scripts/element/shape/IRenderable");
-import LinearTimedValue = module("scripts/common/timedValue/LinearTimedValue");
-import TimedValue = module("scripts/common/timedValue/TimedValue");
-import ShapeRenderer = module("scripts/element/renderer/ShapeRenderer");
+import GuidGenerator = module("common/GuidGenerator");
+import IRenderable = module("element/shape/IRenderable");
+import LinearTimedValue = module("common/timedValue/LinearTimedValue");
+import TimedValue = module("common/timedValue/TimedValue");
+import ShapeRenderer = module("element/renderer/ShapeRenderer");
 
 export class JSonPath
 { 

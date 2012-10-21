@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/common/timedValue/TimedValue", "scripts/common/TransformationMatrixHelper", "scripts/common/timedValue/LinearTimedValue", "scripts/common/Point", "scripts/transition/PointLinearTransition", "scripts/transition/FollowPathTransition", "scripts/transition/FollowDirectionTransition"], function(require, exports, __TimedValue__, __TransformationMatrixHelper__, __LinearTimedValue__, __Point__, __PointLinearTransition__, __FollowPathTransition__, __FollowDirectionTransition__) {
+define(["require", "exports", "common/timedValue/TimedValue", "common/TransformationMatrixHelper", "common/timedValue/LinearTimedValue", "common/Point", "transition/PointLinearTransition", "transition/FollowPathTransition", "transition/FollowDirectionTransition"], function(require, exports, __TimedValue__, __TransformationMatrixHelper__, __LinearTimedValue__, __Point__, __PointLinearTransition__, __FollowPathTransition__, __FollowDirectionTransition__) {
     var TimedValue = __TimedValue__;
 
     var TransformationMatrixHelper = __TransformationMatrixHelper__;

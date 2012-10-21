@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/element/shape/Shape", "scripts/scene/SceneNode", "scripts/element/joint/Joint", "scripts/element/joint/EndPoint", "scripts/element/segment/LineSegment", "scripts/element/Path", "scripts/element/segment/BezierSegment"], function(require, exports, __Shape__, __SceneNode__, __Joint__, __EndPoint__, __LineSegment__, __Path__, __BezierSegment__) {
+define(["require", "exports", "element/shape/Shape", "scene/SceneNode", "element/joint/Joint", "element/joint/EndPoint", "element/segment/LineSegment", "element/Path", "element/segment/BezierSegment", "libs/underscore/underscoreLib"], function(require, exports, __Shape__, __SceneNode__, __Joint__, __EndPoint__, __LineSegment__, __Path__, __BezierSegment__, __underscore__) {
     var Shape = __Shape__;
 
     var SceneNode = __SceneNode__;
@@ -19,6 +19,9 @@ define(["require", "exports", "scripts/element/shape/Shape", "scripts/scene/Scen
 
     var BezierSegment = __BezierSegment__;
 
+    var underscore = __underscore__;
+
+    var _ = underscore;
     var PolySegmentShape = (function (_super) {
         __extends(PolySegmentShape, _super);
         function PolySegmentShape(t, pathJson) {

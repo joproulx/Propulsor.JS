@@ -1,5 +1,5 @@
-import Joint = module("scripts/element/joint/Joint");
-import SceneNode = module("scripts/scene/SceneNode");
+import Joint = module("element/joint/Joint");
+import SceneNode = module("scene/SceneNode");
 
 export class EndPoint extends Joint.Joint {
     constructor (sceneNode: SceneNode.SceneNode) {

@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/element/shape/Shape", "scripts/element/shape/PolySegmentShape"], function(require, exports, __Shape__, __PolySegmentShape__) {
+define(["require", "exports", "element/shape/Shape", "element/shape/PolySegmentShape"], function(require, exports, __Shape__, __PolySegmentShape__) {
     var Shape = __Shape__;
 
     var PolySegmentShape = __PolySegmentShape__;

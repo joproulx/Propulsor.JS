@@ -20,10 +20,10 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
     <Content Include="default.htm" />
     <TypeScriptCompile Include="scripts\common\Event.ts" />
     <Content Include="Samples.html" />
+    <Content Include="scripts\app.js" />
     <Content Include="scripts\common\Event.js">
       <DependentUpon>Event.ts</DependentUpon>
     </Content>
@@ -160,6 +160,10 @@
     <Content Include="scripts\libs\sylvester\sylvester.js" />
     <Content Include="scripts\libs\sylvester\sylvester.src.js" />
     <Content Include="scripts\libs\underscore\underscore.js" />
+    <TypeScriptCompile Include="scripts\libs\underscore\underscoreLib.ts" />
+    <Content Include="scripts\libs\underscore\underscoreLib.js">
+      <DependentUpon>underscoreLib.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\Scene.js">
       <DependentUpon>Scene.ts</DependentUpon>
     </Content>

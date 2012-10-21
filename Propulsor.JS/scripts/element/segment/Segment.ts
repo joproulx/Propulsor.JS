@@ -1,5 +1,5 @@
-import LinearTimedValue = module("scripts/common/timedValue/LinearTimedValue");
-import Joint = module("scripts/element/joint/Joint");
+import LinearTimedValue = module("common/timedValue/LinearTimedValue");
+import Joint = module("element/joint/Joint");
 
 export class Segment {
     Joint1: Joint.Joint;

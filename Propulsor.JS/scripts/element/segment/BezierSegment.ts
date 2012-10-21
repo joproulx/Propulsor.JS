@@ -1,8 +1,8 @@
-import Point = module("scripts/common/Point");
-import SceneNode = module("scripts/scene/SceneNode");
-import BezierSegmentRenderer = module("scripts/element/renderer/BezierSegmentRenderer");
-import Segment = module("scripts/element/segment/Segment");
-import Joint = module("scripts/element/joint/Joint");
+import Point = module("common/Point");
+import SceneNode = module("scene/SceneNode");
+import BezierSegmentRenderer = module("element/renderer/BezierSegmentRenderer");
+import Segment = module("element/segment/Segment");
+import Joint = module("element/joint/Joint");
 
 class LengthCache {
     Length: number;

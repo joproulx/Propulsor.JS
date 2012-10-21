@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/common/timedValue/TimedValue", "scripts/transition/LinearTransition"], function(require, exports, __TimedValue__, __LinearTransition__) {
+define(["require", "exports", "common/timedValue/TimedValue", "transition/LinearTransition"], function(require, exports, __TimedValue__, __LinearTransition__) {
     var TimedValue = __TimedValue__;
 
     var LinearTransition = __LinearTransition__;

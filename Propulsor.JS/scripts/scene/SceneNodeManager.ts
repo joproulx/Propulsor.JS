@@ -1,4 +1,4 @@
-import SceneNode = module("scripts/scene/SceneNode");
+import SceneNode = module("scene/SceneNode");
 
 export class SceneNodeManager {
     SceneNodes: SceneNode.SceneNode[];

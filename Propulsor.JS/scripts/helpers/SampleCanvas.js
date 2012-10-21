@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/SceneManager"], function(require, exports, __SceneManager__) {
+define(["require", "exports", "SceneManager"], function(require, exports, __SceneManager__) {
     var SceneManager = __SceneManager__;
 
     

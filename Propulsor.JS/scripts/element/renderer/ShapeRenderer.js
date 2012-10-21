@@ -1,6 +1,9 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports", "libs/underscore/underscoreLib"], function(require, exports, __underscore__) {
     
     
+    var underscore = __underscore__;
+
+    var _ = underscore;
     var ShapeRenderer = (function () {
         function ShapeRenderer(shape) {
             this.Shape = shape;
@@ -51,6 +54,13 @@ define(["require", "exports"], function(require, exports) {
         ShapeRenderer.prototype.getDashedSegment = function (t, dashedOffset, length) {
             var dashPattern = this.Shape.StrokeDashPattern.get(t);
             var dashPatternLength = dashPattern.length;
+            if(dashPatternLength == 1 && dashPattern[0] == -1) {
+                return {
+                    Drawn: true,
+                    Length: this.Shape.Path.length(t) - length
+                };
+            }
+            var dashPatternLength = dashPattern.length;
             if(dashPatternLength == 0) {
                 throw "DashPattern must be an array of at least one item.";
             }
@@ -71,7 +81,7 @@ define(["require", "exports"], function(require, exports) {
                 if(dashPattern[i] == -1) {
                     return {
                         Drawn: true,
-                        Length: this.Shape.Path.length(t)
+                        Length: this.Shape.Path.length(t) - length
                     };
                 }
                 if(length < value) {
@@ -102,13 +112,9 @@ define(["require", "exports"], function(require, exports) {
                     var endLength = dashedSegment.Length;
                     var newCurrentTotalLength = (currentTotalLength + endLength);
                     var newTotalSegmentLength = (totalSegmentLength + segmentLength);
-                    if(newCurrentTotalLength >= newTotalSegmentLength || newCurrentTotalLength >= length) {
-                        endPath = newCurrentTotalLength <= newTotalSegmentLength || newCurrentTotalLength >= length;
-                        if(newCurrentTotalLength >= length) {
-                            endLength = length - currentTotalLength;
-                        } else {
-                            endLength = newTotalSegmentLength - currentTotalLength;
-                        }
+                    if(newCurrentTotalLength >= newTotalSegmentLength) {
+                        endPath = newCurrentTotalLength <= newTotalSegmentLength;
+                        endLength = newTotalSegmentLength - currentTotalLength;
                         reachedEnd = true;
                     } else {
                         endPath = true;

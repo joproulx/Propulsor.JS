@@ -1,5 +1,5 @@
-import Point = module("scripts/common/Point");
-import TimedValue = module("scripts/common/timedValue/TimedValue");
+import Point = module("common/Point");
+import TimedValue = module("common/timedValue/TimedValue");
 
 export class Line {
     Point1 : TimedValue.TimedValue;

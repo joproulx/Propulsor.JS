@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/TimeLineController", "scripts/common/PolyFill", "scripts/Scene"], function(require, exports, __TimeLineController__, __PolyFill__, __Scene__) {
+define(["require", "exports", "TimeLineController", "common/PolyFill", "Scene"], function(require, exports, __TimeLineController__, __PolyFill__, __Scene__) {
     var TimeLineController = __TimeLineController__;
 
     var PolyFill = __PolyFill__;

@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/common/Point", "scripts/element/renderer/BezierSegmentRenderer", "scripts/element/segment/Segment"], function(require, exports, __Point__, __BezierSegmentRenderer__, __Segment__) {
+define(["require", "exports", "common/Point", "element/renderer/BezierSegmentRenderer", "element/segment/Segment"], function(require, exports, __Point__, __BezierSegmentRenderer__, __Segment__) {
     var Point = __Point__;
 
     

@@ -1,9 +1,9 @@
-import LineSegmentRenderer = module("scripts/element/renderer/LineSegmentRenderer");
-import Segment = module("scripts/element/segment/Segment");
-import Line = module("scripts/common/Line");
-import Joint = module("scripts/element/joint/Joint");
-import Point = module("scripts/common/Point");
-import SceneNodePointAdapter = module("scripts/scene/SceneNodePointAdapter");
+import LineSegmentRenderer = module("element/renderer/LineSegmentRenderer");
+import Segment = module("element/segment/Segment");
+import Line = module("common/Line");
+import Joint = module("element/joint/Joint");
+import Point = module("common/Point");
+import SceneNodePointAdapter = module("scene/SceneNodePointAdapter");
 
 export class LineSegment extends Segment.Segment{
     Line: Line.Line;

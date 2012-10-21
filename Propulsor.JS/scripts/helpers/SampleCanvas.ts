@@ -1,5 +1,5 @@
-import SceneManager = module("scripts/SceneManager");
-import IRenderable = module("scripts/element/shape/IRenderable");
+import SceneManager = module("SceneManager");
+import IRenderable = module("element/shape/IRenderable");
 declare var $: any;
 
 export class SampleCanvas {

@@ -1,4 +1,4 @@
-import TimeLineController = module("scripts/TimeLineController");
+import TimeLineController = module("TimeLineController");
 
 export class TimeLineControl {
     m_context: any;

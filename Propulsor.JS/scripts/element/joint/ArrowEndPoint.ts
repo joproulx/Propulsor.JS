@@ -1,6 +1,6 @@
 //import EndPoint = module("EndPoint");
-//import SceneNode = module("scripts/scene/SceneNode");
-//import ArrowSegmentRenderer = module("scripts/element/renderer/ArrowSegmentRenderer");
+//import SceneNode = module("scene/SceneNode");
+//import ArrowSegmentRenderer = module("element/renderer/ArrowSegmentRenderer");
 
 //export class ArrowEndPoint extends EndPoint.EndPoint {
 //    ArrowLength: number;

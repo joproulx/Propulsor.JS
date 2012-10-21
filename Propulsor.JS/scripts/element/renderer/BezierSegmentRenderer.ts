@@ -1,5 +1,5 @@
-import BezierSegment = module("scripts/element/segment/BezierSegment");
-import SegmentRenderer = module("scripts/element/renderer/SegmentRenderer");
+import BezierSegment = module("element/segment/BezierSegment");
+import SegmentRenderer = module("element/renderer/SegmentRenderer");
 
 export class BezierSegmentRenderer extends SegmentRenderer.SegmentRenderer {
     Segment: BezierSegment.BezierSegment;

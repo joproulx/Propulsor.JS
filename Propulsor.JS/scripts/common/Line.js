@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/common/Point"], function(require, exports, __Point__) {
+define(["require", "exports", "common/Point"], function(require, exports, __Point__) {
     var Point = __Point__;
 
     

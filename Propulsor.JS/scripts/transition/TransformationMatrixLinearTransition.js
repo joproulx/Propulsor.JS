@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/transition/Transition", "scripts/common/TransformationMatrixHelper"], function(require, exports, __Transition__, __TransformationMatrixHelper__) {
+define(["require", "exports", "transition/Transition", "common/TransformationMatrixHelper"], function(require, exports, __Transition__, __TransformationMatrixHelper__) {
     var Transition = __Transition__;
 
     

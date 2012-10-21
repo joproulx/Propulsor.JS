@@ -1,7 +1,8 @@
-declare var _: any;
+import Transition = module("transition/Transition");
+import CachedTimedValue = module("common/timedValue/CachedTimedValue");
+import underscore = module("libs/underscore/underscoreLib");
+var _:any = underscore;
 
-import Transition = module("scripts/transition/Transition");
-import CachedTimedValue = module("scripts/common/timedValue/CachedTimedValue");
 
 export class TimedValue {
     private _defaultTransitionFactory: () => Transition.Transition;

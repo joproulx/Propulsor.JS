@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/element/renderer/SegmentRenderer"], function(require, exports, __SegmentRenderer__) {
+define(["require", "exports", "element/renderer/SegmentRenderer"], function(require, exports, __SegmentRenderer__) {
     
     var SegmentRenderer = __SegmentRenderer__;
 

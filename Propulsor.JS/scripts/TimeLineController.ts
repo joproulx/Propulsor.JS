@@ -1,5 +1,5 @@
-import Event = module("scripts/common/Event");
-import Timer = module("scripts/common/Timer");
+import Event = module("common/Event");
+import Timer = module("common/Timer");
 
 export class TimeLineController {
 

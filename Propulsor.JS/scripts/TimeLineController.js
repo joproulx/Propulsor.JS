@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/common/Event", "scripts/common/Timer"], function(require, exports, __Event__, __Timer__) {
+define(["require", "exports", "common/Event", "common/Timer"], function(require, exports, __Event__, __Timer__) {
     var Event = __Event__;
 
     var Timer = __Timer__;

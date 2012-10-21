@@ -1,5 +1,5 @@
-//import SegmentRenderer = module("scripts/element/renderer/SegmentRenderer");
-//import EndPoint = module("scripts/element/joint/EndPoint");
+//import SegmentRenderer = module("element/renderer/SegmentRenderer");
+//import EndPoint = module("element/joint/EndPoint");
 
 //export class ArrowSegmentRenderer extends SegmentRenderer.SegmentRenderer {
 

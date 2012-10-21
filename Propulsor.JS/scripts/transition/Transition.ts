@@ -1,5 +1,5 @@
 
-import ITransition = module("scripts/transition/ITransition");
+import ITransition = module("transition/ITransition");
 
 export class Transition implements ITransition.ITransition {
     StartTimestamp;

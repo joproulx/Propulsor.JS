@@ -1,4 +1,4 @@
-import Transition = module("scripts/transition/Transition")
+import Transition = module("transition/Transition")
 
 export class CachedTimedValue {
     Start : number;

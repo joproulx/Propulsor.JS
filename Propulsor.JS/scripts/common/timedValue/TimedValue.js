@@ -1,8 +1,10 @@
-define(["require", "exports", "scripts/common/timedValue/CachedTimedValue"], function(require, exports, __CachedTimedValue__) {
+define(["require", "exports", "common/timedValue/CachedTimedValue", "libs/underscore/underscoreLib"], function(require, exports, __CachedTimedValue__, __underscore__) {
     
     var CachedTimedValue = __CachedTimedValue__;
 
-    
+    var underscore = __underscore__;
+
+    var _ = underscore;
     var TimedValue = (function () {
         function TimedValue(defaultTransitionFactory) {
             this.Values = [];

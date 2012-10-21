@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/element/renderer/LineSegmentRenderer", "scripts/element/segment/Segment", "scripts/common/Line", "scripts/common/Point", "scripts/scene/SceneNodePointAdapter"], function(require, exports, __LineSegmentRenderer__, __Segment__, __Line__, __Point__, __SceneNodePointAdapter__) {
+define(["require", "exports", "element/renderer/LineSegmentRenderer", "element/segment/Segment", "common/Line", "common/Point", "scene/SceneNodePointAdapter"], function(require, exports, __LineSegmentRenderer__, __Segment__, __Line__, __Point__, __SceneNodePointAdapter__) {
     var LineSegmentRenderer = __LineSegmentRenderer__;
 
     var Segment = __Segment__;

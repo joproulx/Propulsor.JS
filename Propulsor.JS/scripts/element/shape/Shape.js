@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/common/GuidGenerator", "scripts/element/shape/IRenderable", "scripts/common/timedValue/LinearTimedValue", "scripts/common/timedValue/TimedValue", "scripts/element/renderer/ShapeRenderer"], function(require, exports, __GuidGenerator__, __IRenderable__, __LinearTimedValue__, __TimedValue__, __ShapeRenderer__) {
+define(["require", "exports", "common/GuidGenerator", "element/shape/IRenderable", "common/timedValue/LinearTimedValue", "common/timedValue/TimedValue", "element/renderer/ShapeRenderer"], function(require, exports, __GuidGenerator__, __IRenderable__, __LinearTimedValue__, __TimedValue__, __ShapeRenderer__) {
     var GuidGenerator = __GuidGenerator__;
 
     var IRenderable = __IRenderable__;

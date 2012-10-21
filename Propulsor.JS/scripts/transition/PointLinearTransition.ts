@@ -1,5 +1,5 @@
-import Transition = module("scripts/transition/Transition");
-import Point = module("scripts/common/Point");
+import Transition = module("transition/Transition");
+import Point = module("common/Point");
 
 export class PointLinearTransition extends Transition.Transition {
     constructor () {

@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/transition/ITransition"], function(require, exports, __ITransition__) {
+define(["require", "exports", "transition/ITransition"], function(require, exports, __ITransition__) {
     var ITransition = __ITransition__;
 
     var Transition = (function () {

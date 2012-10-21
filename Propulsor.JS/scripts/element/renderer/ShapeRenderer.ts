@@ -1,9 +1,10 @@
-declare var _: any;
 
 
-import SegmentRenderer = module("scripts/element/renderer/SegmentRenderer");
-import Segment = module("scripts/element/segment/Segment");
-//import Shape = module("scripts/element/shape/Shape");
+import SegmentRenderer = module("element/renderer/SegmentRenderer");
+import Segment = module("element/segment/Segment");
+//import Shape = module("element/shape/Shape");
+import underscore = module("libs/underscore/underscoreLib");
+var _:any = underscore;
 
 
 export class ShapeRenderer {
@@ -76,7 +77,7 @@ export class ShapeRenderer {
         var dashPatternLength = dashPattern.length;
 
         if (dashPatternLength == 1 && dashPattern[0] == -1) {
-            return { Drawn: true, Length: this.Shape.Path.length(t) };
+            return { Drawn: true, Length: this.Shape.Path.length(t) - length };
         }
         
         var dashPatternLength = dashPattern.length;
@@ -99,7 +100,7 @@ export class ShapeRenderer {
             value = value + dashPattern[i];
 
             if (dashPattern[i] == -1) {
-                return { Drawn: true, Length: this.Shape.Path.length(t) };
+                return { Drawn: true, Length: this.Shape.Path.length(t) - length };
             }
 
             if (length < value) {
@@ -140,19 +141,14 @@ export class ShapeRenderer {
                 var newCurrentTotalLength = (currentTotalLength + endLength);
                 var newTotalSegmentLength = (totalSegmentLength + segmentLength);
 
-                if (newCurrentTotalLength >= newTotalSegmentLength || newCurrentTotalLength >= length) {
+                if (newCurrentTotalLength >= newTotalSegmentLength) {
 
                     // Only do a endRender() if we are not at a joint and there is still a segment to draw OR
                     // if we are at the complete end of the path
-                    endPath = newCurrentTotalLength <= newTotalSegmentLength ||
-                              newCurrentTotalLength >= length;
-
-                    if (newCurrentTotalLength >= length) {
-                        endLength = length - currentTotalLength;
-                    }
-                    else {
-                        endLength = newTotalSegmentLength - currentTotalLength;
-                    }
+                    endPath = newCurrentTotalLength <= newTotalSegmentLength;
+                                      
+                    endLength = newTotalSegmentLength - currentTotalLength;
+                    
                     reachedEnd = true;
                 }
                 else {

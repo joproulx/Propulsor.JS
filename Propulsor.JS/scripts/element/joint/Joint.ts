@@ -1,5 +1,5 @@
-import SceneNode = module("scripts/scene/SceneNode");
-import Segment = module("scripts/element/segment/Segment");
+import SceneNode = module("scene/SceneNode");
+import Segment = module("element/segment/Segment");
 
 export class Joint {
     SceneNode: SceneNode.SceneNode;

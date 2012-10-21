@@ -1,4 +1,4 @@
-define(["require", "exports", "scripts/common/timedValue/LinearTimedValue"], function(require, exports, __LinearTimedValue__) {
+define(["require", "exports", "common/timedValue/LinearTimedValue"], function(require, exports, __LinearTimedValue__) {
     var LinearTimedValue = __LinearTimedValue__;
 
     

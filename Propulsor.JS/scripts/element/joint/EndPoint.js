@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/element/joint/Joint"], function(require, exports, __Joint__) {
+define(["require", "exports", "element/joint/Joint"], function(require, exports, __Joint__) {
     var Joint = __Joint__;
 
     

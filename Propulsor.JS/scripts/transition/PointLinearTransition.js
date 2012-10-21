@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-define(["require", "exports", "scripts/transition/Transition", "scripts/common/Point"], function(require, exports, __Transition__, __Point__) {
+define(["require", "exports", "transition/Transition", "common/Point"], function(require, exports, __Transition__, __Point__) {
     var Transition = __Transition__;
 
     var Point = __Point__;

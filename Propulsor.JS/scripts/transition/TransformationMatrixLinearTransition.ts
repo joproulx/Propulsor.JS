@@ -1,6 +1,6 @@
-import Transition = module("scripts/transition/Transition");
-import Point = module("scripts/common/Point");
-import TransformationMatrixHelper = module("scripts/common/TransformationMatrixHelper");
+import Transition = module("transition/Transition");
+import Point = module("common/Point");
+import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
 
 export class TransformationMatrixLinearTransition extends Transition.Transition{
     constructor () {

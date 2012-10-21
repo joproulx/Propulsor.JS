@@ -1,4 +1,4 @@
-import Segment = module("scripts/element/segment/Segment");
+import Segment = module("element/segment/Segment");
 
 export class Path {
     Segments: Segment.Segment[];

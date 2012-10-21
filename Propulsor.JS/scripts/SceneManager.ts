@@ -1,6 +1,6 @@
-import TimeLineController = module("scripts/TimeLineController");
-import PolyFill = module("scripts/common/PolyFill");
-import Scene = module("scripts/Scene");
+import TimeLineController = module("TimeLineController");
+import PolyFill = module("common/PolyFill");
+import Scene = module("Scene");
 
 export class SceneManager {
     DefaultScene = "_DefaultScene_";

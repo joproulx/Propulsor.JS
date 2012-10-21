@@ -1,8 +1,8 @@
-import Transition = module("scripts/transition/Transition");
-import SceneNode = module("scripts/scene/SceneNode");
-import Path = module("scripts/element/Path");
-import Point = module("scripts/common/Point");
-import TransformationMatrixHelper = module("scripts/common/TransformationMatrixHelper");
+import Transition = module("transition/Transition");
+import SceneNode = module("scene/SceneNode");
+import Path = module("element/Path");
+import Point = module("common/Point");
+import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
 
 export class FollowPathTransition extends Transition.Transition {
     SceneNode: SceneNode.SceneNode;

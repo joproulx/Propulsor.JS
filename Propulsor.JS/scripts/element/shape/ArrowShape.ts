@@ -1,5 +1,5 @@
-import Shape = module("scripts/element/shape/Shape");
-import PolySegmentShape = module("scripts/element/shape/PolySegmentShape");
+import Shape = module("element/shape/Shape");
+import PolySegmentShape = module("element/shape/PolySegmentShape");
 
 export class ArrowShape extends PolySegmentShape.PolySegmentShape{
     constructor (t: number) {
