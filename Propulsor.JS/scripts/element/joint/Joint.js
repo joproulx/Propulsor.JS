@@ -1,9 +1,17 @@
-define(["require", "exports"], function(require, exports) {
+var __extends = this.__extends || function (d, b) {
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+define(["require", "exports", "element/Movable"], function(require, exports, __Movable__) {
     
     
-    var Joint = (function () {
+    var Movable = __Movable__;
+
+    var Joint = (function (_super) {
+        __extends(Joint, _super);
         function Joint(sceneNode) {
-            this.SceneNode = sceneNode;
+                _super.call(this, sceneNode);
         }
         Joint.prototype.setSegments = function (segment1, segment2) {
             this.Segment1 = segment1;
@@ -15,11 +23,7 @@ define(["require", "exports"], function(require, exports) {
         Joint.prototype.createSegmentRenderer = function () {
             return null;
         };
-        Joint.prototype.getPosition = function (t) {
-            return this.SceneNode.getPosition(t);
-        };
         return Joint;
-    })();
+    })(Movable.Movable);
     exports.Joint = Joint;    
 })
-

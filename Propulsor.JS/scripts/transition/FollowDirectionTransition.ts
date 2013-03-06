@@ -1,6 +1,8 @@
-import Transition = module("transition/Transition");
-import SceneNode = module("scene/SceneNode");
-import Path = module("element/Path");
+export import Transition = module("transition/Transition");
+export import SceneNode = module("scene/SceneNode");
+export import Path = module("element/path/Path");
+export import Tween = module("transition/Tween");
+export import EaseInTween = module("transition/EaseInTween");
 
 export class FollowDirectionTransition extends Transition.Transition {
     SceneNode: SceneNode.SceneNode;
@@ -20,7 +22,8 @@ export class FollowDirectionTransition extends Transition.Transition {
             throw "FollowPathTransition.getValue: Invalid t";
         }
 
-        var ratio = (t - this.StartTimestamp) / (this.EndTimestamp - this.StartTimestamp);
+        var ratio = this.Tween.getRatio(t, this.StartTimestamp, this.EndTimestamp);
+
         var isZeroRatio = (ratio === 0);
         ratio = ((this.EndRatio - this.StartRatio) * ratio + this.StartRatio) % 1;
 

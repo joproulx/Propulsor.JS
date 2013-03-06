@@ -1,5 +1,5 @@
-import LinearTimedValue = module("common/timedValue/LinearTimedValue");
-import Joint = module("element/joint/Joint");
+export import LinearTimedValue = module("common/timedValue/LinearTimedValue");
+export import Joint = module("element/joint/Joint");
 
 export class Segment {
     Joint1: Joint.Joint;
@@ -28,5 +28,8 @@ export class Segment {
     }
     tangentAngleFromRatio(t: number, ratio: number) {
         return 0;
+    }
+    createSegmentRenderer() { 
+        return null;
     }
 }

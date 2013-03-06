@@ -51,4 +51,3 @@ define(["require", "exports", "TimeLineController", "common/PolyFill", "Scene"],
     })();
     exports.SceneManager = SceneManager;    
 })
-

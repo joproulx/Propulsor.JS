@@ -1,10 +1,10 @@
-import Point = module("common/Point");
-import SceneNode = module("scene/SceneNode");
-import BezierSegmentRenderer = module("element/renderer/BezierSegmentRenderer");
-import Segment = module("element/segment/Segment");
-import Joint = module("element/joint/Joint");
+export import Point = module("common/Point");
+export import SceneNode = module("scene/SceneNode");
+export import BezierSegmentRenderer = module("element/renderer/BezierSegmentRenderer");
+export import Segment = module("element/segment/Segment");
+export import Joint = module("element/joint/Joint");
 
-class LengthCache {
+export class LengthCache {
     Length: number;
     Joint1: Joint.Joint;
     Joint2: Joint.Joint;
@@ -19,14 +19,12 @@ class LengthCache {
     }
 }
 
-
-
 export class BezierSegment extends Segment.Segment{
     LengthCache: LengthCache;
     ControlPoint1: SceneNode.SceneNode;
     ControlPoint2: SceneNode.SceneNode;
     constructor () {
-        this.LengthCache = new LengthCache;
+        this.LengthCache = new LengthCache();
         super();
     }
     setControlPoints(sceneNode1: SceneNode.SceneNode, sceneNode2: SceneNode.SceneNode) {
@@ -243,5 +241,5 @@ export class BezierSegment extends Segment.Segment{
     //        points2 = [new Point(x1, y1), new Point(x1234, y1234)];
     //        var bezier2 = new PolySegmentShape(0, points2, false, false);
     //
-    //        point1 = new TimedValue(function(){ return new PointLinearTransition();
+    //        point1 = new TimedValue(function(){ return new PointTransition();
 }

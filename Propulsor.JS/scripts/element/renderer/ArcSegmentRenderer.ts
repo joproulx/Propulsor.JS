@@ -1,5 +1,5 @@
-//import ArcSegment = module("element/segment/ArcSegment");
-//import SegmentRenderer = module("element/renderer/SegmentRenderer");
+//export import ArcSegment = module("element/segment/ArcSegment");
+//export import SegmentRenderer = module("element/renderer/SegmentRenderer");
 
 //declare var Vector: any;
 

@@ -2,10 +2,12 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "transition/Transition"], function(require, exports, __Transition__) {
     var Transition = __Transition__;
 
+    
+    
     
     
     var FollowDirectionTransition = (function (_super) {
@@ -21,7 +23,7 @@ define(["require", "exports", "transition/Transition"], function(require, export
             if(t < this.StartTimestamp || t > this.EndTimestamp) {
                 throw "FollowPathTransition.getValue: Invalid t";
             }
-            var ratio = (t - this.StartTimestamp) / (this.EndTimestamp - this.StartTimestamp);
+            var ratio = this.Tween.getRatio(t, this.StartTimestamp, this.EndTimestamp);
             var isZeroRatio = (ratio === 0);
             ratio = ((this.EndRatio - this.StartRatio) * ratio + this.StartRatio) % 1;
             if(ratio === 0 && !isZeroRatio) {
@@ -34,4 +36,3 @@ define(["require", "exports", "transition/Transition"], function(require, export
     })(Transition.Transition);
     exports.FollowDirectionTransition = FollowDirectionTransition;    
 })
-

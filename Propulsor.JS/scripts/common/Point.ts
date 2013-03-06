@@ -22,6 +22,9 @@ export class Point {
         return new Point(this.X - otherPoint.X, this.Y - otherPoint.Y);
     }
     equals(other: Point) {
+        if (other == null) { 
+            return false;
+        }
         return other.X == this.X && other.Y == this.Y;
     }
     toString() {

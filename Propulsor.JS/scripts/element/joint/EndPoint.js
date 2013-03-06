@@ -2,7 +2,7 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "element/joint/Joint"], function(require, exports, __Joint__) {
     var Joint = __Joint__;
 
@@ -25,4 +25,3 @@ define(["require", "exports", "element/joint/Joint"], function(require, exports,
     })(Joint.Joint);
     exports.EndPoint = EndPoint;    
 })
-

@@ -1,8 +1,8 @@
-import Transition = module("transition/Transition");
-import Point = module("common/Point");
-import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
+export import Transition = module("transition/Transition");
+export import Point = module("common/Point");
+export import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
 
-export class TransformationMatrixLinearTransition extends Transition.Transition{
+export class TransformationMatrixTransition extends Transition.Transition{
     constructor () {
         super();
     }

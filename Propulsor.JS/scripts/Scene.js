@@ -16,4 +16,3 @@ define(["require", "exports"], function(require, exports) {
     })();
     exports.Scene = Scene;    
 })
-

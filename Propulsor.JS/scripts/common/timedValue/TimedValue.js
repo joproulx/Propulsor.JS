@@ -11,6 +11,10 @@ define(["require", "exports", "common/timedValue/CachedTimedValue", "libs/unders
             this.Cached = new CachedTimedValue.CachedTimedValue();
             this._defaultTransitionFactory = defaultTransitionFactory;
         }
+        TimedValue.prototype.reset = function () {
+            this.Values = [];
+            this.Cached = new CachedTimedValue.CachedTimedValue();
+        };
         TimedValue.prototype.get = function (t) {
             var value = this.Cached.get(t);
             if(value !== undefined) {
@@ -101,4 +105,3 @@ define(["require", "exports", "common/timedValue/CachedTimedValue", "libs/unders
     })();
     exports.TimedValue = TimedValue;    
 })
-

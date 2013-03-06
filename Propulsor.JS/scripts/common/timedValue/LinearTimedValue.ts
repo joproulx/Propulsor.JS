@@ -1,11 +1,11 @@
-import TimedValue = module("common/timedValue/TimedValue");
-import LinearTransition = module("transition/LinearTransition");
+export import TimedValue = module("common/timedValue/TimedValue");
+export import NumberTransition = module("transition/NumberTransition");
 
 export class LinearTimedValue extends TimedValue.TimedValue {
     constructor (defaultValue) {
         super(function () => 
               {
-                 return new LinearTransition.LinearTransition()
+                 return new NumberTransition.NumberTransition()
               });
 
         if (arguments.length === 1) {

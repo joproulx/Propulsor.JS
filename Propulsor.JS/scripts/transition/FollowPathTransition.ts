@@ -1,8 +1,10 @@
-import Transition = module("transition/Transition");
-import SceneNode = module("scene/SceneNode");
-import Path = module("element/Path");
-import Point = module("common/Point");
-import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
+export import Transition = module("transition/Transition");
+export import Tween = module("transition/Tween");
+export import EaseInTween = module("transition/EaseInTween");
+export import SceneNode = module("scene/SceneNode");
+export import Path = module("element/path/Path");
+export import Point = module("common/Point");
+export import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
 
 export class FollowPathTransition extends Transition.Transition {
     SceneNode: SceneNode.SceneNode;
@@ -10,7 +12,7 @@ export class FollowPathTransition extends Transition.Transition {
     StartRatio: number;
     EndRatio: number;
     
-    constructor (path: Path.Path, startRatio: number, endRatio: number, sceneNode: SceneNode.SceneNode) {
+    constructor (path: Path.Path, startRatio: number, endRatio: number, sceneNode: SceneNode.SceneNode, tween?: Tween.Tween) {
         this.SceneNode = sceneNode;
         this.Path = path;
         this.StartRatio = startRatio;
@@ -22,7 +24,8 @@ export class FollowPathTransition extends Transition.Transition {
             throw "FollowPathTransition.getValue: Invalid t";
         }
 
-        var ratio = (t - this.StartTimestamp) / (this.EndTimestamp - this.StartTimestamp);
+        var ratio = this.Tween.getRatio(t, this.StartTimestamp, this.EndTimestamp);
+
         var isZeroRatio = (ratio === 0);
         ratio = ((this.EndRatio - this.StartRatio) * ratio + this.StartRatio) % 1;
 

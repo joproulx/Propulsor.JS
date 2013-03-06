@@ -20,6 +20,9 @@ define(["require", "exports"], function(require, exports) {
             return new Point(this.X - otherPoint.X, this.Y - otherPoint.Y);
         };
         Point.prototype.equals = function (other) {
+            if(other == null) {
+                return false;
+            }
             return other.X == this.X && other.Y == this.Y;
         };
         Point.prototype.toString = function () {
@@ -38,4 +41,3 @@ define(["require", "exports"], function(require, exports) {
     })();
     exports.Point = Point;    
 })
-

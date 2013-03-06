@@ -1,19 +1,44 @@
-import TimeLineController = module("TimeLineController");
+export import TimeLineController = module("TimeLineController");
+export import GuidGenerator = module("common/GuidGenerator");
+export import jQuery = module("libs/jquery/jqueryLib");
+var $: any = jQuery;
 
 export class TimeLineControl {
     m_context: any;
-    m_canvas: any;
+    Canvas: any;
+    BackgroundCanvas: any;
+    BackgroundContext: any;
     m_timeLineController: TimeLineController.TimeLineController;
 
-    constructor (timeLineController: TimeLineController.TimeLineController, canvas: any) {
-        this.m_context = canvas.getContext('2d');
-        this.m_canvas = canvas;
+    constructor (timeLineController: TimeLineController.TimeLineController, canvas: any, div) {
+        var name = "jo";//GuidGenerator.generateGuid();
+        
+        var getId = function (id) {
+            return name + "_" + id;
+        }
+        div.innerHTML = '<div id="' + getId('') + '" style="position:relative; width:800px; height:50px">\
+                                <canvas id="layer1" style="z-index:1;position:absolute;left:0;top:0;" height="50px" width="800">\
+                                    HTML5 not supported in your browser.\
+                                </canvas>\
+                                <canvas id="layer2" style="z-index: 2;position:absolute;left:0;top:0;" height="50px" width="800">\
+                                    HTML5 not supported in your browser.\
+                                </canvas>\
+                                <canvas id="layer3" style="z-index: 3;position:absolute;left:0;top:0;" height="50px" width="800">\
+                                    HTML5 not supported in your browser.\
+                                </canvas>\
+                            </div>';
 
+       
+        this.BackgroundCanvas = $('div#' + getId('') + ' canvas#layer1').get(0);
+        this.BackgroundContext = this.BackgroundCanvas.getContext('2d');
+        this.Canvas = $('div#' + getId('') + ' canvas#layer2').get(0);
+        this.m_context = this.Canvas.getContext('2d');
+                
         var thisObj = this;
-        this.m_canvas.addEventListener('mouseup', function (ev) {
-            if (ev.clientX >= 0 && ev.clientX <= thisObj.m_canvas.width &&
-                ev.clientY >= thisObj.m_canvas.height - 14 && ev.clientY < thisObj.m_canvas.height) {
-                var percent = ev.clientX / thisObj.m_canvas.width;
+        this.Canvas.addEventListener('mouseup', function (ev) {
+            if (ev.clientX >= 0 && ev.clientX <= thisObj.Canvas.width &&
+                ev.clientY >= thisObj.Canvas.height - 14 && ev.clientY < thisObj.Canvas.height) {
+                var percent = ev.clientX / thisObj.Canvas.width;
                 var t = percent * (thisObj.m_timeLineController.EndTimestamp - thisObj.m_timeLineController.StartTimestamp) + thisObj.m_timeLineController.StartTimestamp;
                 timeLineController.seek(t);
             }
@@ -21,28 +46,32 @@ export class TimeLineControl {
 
         this.m_timeLineController = timeLineController;
         this.m_timeLineController.RenderEvent.subscribe(this.onRender, this);
+
+        this.BackgroundContext.save();
+        this.BackgroundContext.beginPath();
+        this.BackgroundContext.strokeStyle = '#000000';
+        this.BackgroundContext.lineWidth = 2;
+        this.BackgroundContext.moveTo(0, this.Canvas.height - 10);
+        this.BackgroundContext.lineTo(this.Canvas.width, this.Canvas.height - 10);
+        this.BackgroundContext.stroke();
+        this.BackgroundContext.restore();
     }
     onRender(thisObj: any, t: number) {
+
+
         var ratio = (t - thisObj.m_timeLineController.StartTimestamp) / (thisObj.m_timeLineController.EndTimestamp - thisObj.m_timeLineController.StartTimestamp);
 
-        var posX = (ratio * thisObj.m_canvas.width);
+        var posX = (ratio * thisObj.Canvas.width);
 
-        thisObj.m_canvas = document.getElementsByTagName('canvas')[0];
-        thisObj.m_context.save();
-        thisObj.m_context.beginPath();
-        thisObj.m_context.strokeStyle = '#000000';
-        thisObj.m_context.lineWidth = 2;
-        thisObj.m_context.moveTo(0, thisObj.m_canvas.height - 10);
-        thisObj.m_context.lineTo(thisObj.m_canvas.width, thisObj.m_canvas.height - 10);
-        thisObj.m_context.stroke();
-        thisObj.m_context.restore();
+        thisObj.m_context.clearRect(0, 0, thisObj.Canvas.width, thisObj.Canvas.height);
 
+        
         thisObj.m_context.save();
         thisObj.m_context.beginPath();
         thisObj.m_context.strokeStyle = '#000000';
         thisObj.m_context.lineWidth = 4;
-        thisObj.m_context.moveTo(posX, thisObj.m_canvas.height - 14);
-        thisObj.m_context.lineTo(posX, thisObj.m_canvas.height - 6);
+        thisObj.m_context.moveTo(posX, thisObj.Canvas.height - 14);
+        thisObj.m_context.lineTo(posX, thisObj.Canvas.height - 6);
         thisObj.m_context.stroke();
         thisObj.m_context.restore();
     }

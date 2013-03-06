@@ -41,4 +41,3 @@ define(["require", "exports", "common/Event", "common/Timer"], function(require,
     })();
     exports.TimeLineController = TimeLineController;    
 })
-

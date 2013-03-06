@@ -1,9 +1,23 @@
-define(["require", "exports"], function(require, exports) {
+var __extends = this.__extends || function (d, b) {
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+define(["require", "exports", "element/Movable", "scene/SceneNode"], function(require, exports, __Movable__, __SceneNode__) {
     
-    var Path = (function () {
-        function Path(segments, isClosedPath) {
+    
+    var Movable = __Movable__;
+
+    var SceneNode = __SceneNode__;
+
+    
+    var Path = (function (_super) {
+        __extends(Path, _super);
+        function Path(sceneNode, segments, joints, isClosedPath) {
             this.Segments = segments;
-            this.isClosedPath = isClosedPath;
+            this.Joints = joints;
+            this.IsClosedPath = isClosedPath;
+                _super.call(this, sceneNode);
         }
         Path.prototype.length = function (t) {
             var length = 0;
@@ -47,7 +61,6 @@ define(["require", "exports"], function(require, exports) {
             return null;
         };
         return Path;
-    })();
+    })(Movable.Movable);
     exports.Path = Path;    
 })
-

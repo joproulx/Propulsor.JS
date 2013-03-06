@@ -1,5 +1,5 @@
 D:\Dev\Propulsor.JS\Propulsor.JS\bin\Propulsor.JS.dll
 D:\Dev\Propulsor.JS\Propulsor.JS\bin\Propulsor.JS.pdb
-D:\Dev\Propulsor.JS\Propulsor.JS\obj\Release\Propulsor.JS.csprojResolveAssemblyReference.cache
 D:\Dev\Propulsor.JS\Propulsor.JS\obj\Release\Propulsor.JS.dll
 D:\Dev\Propulsor.JS\Propulsor.JS\obj\Release\Propulsor.JS.pdb
+D:\Dev\Propulsor.JS\Propulsor.JS\obj\Release\Propulsor.JS.csprojResolveAssemblyReference.cache

@@ -1,6 +1,6 @@
-import Transition = module("transition/Transition");
+export import Transition = module("transition/Transition");
 
-export class ColorLinearTransition extends Transition.Transition {
+export class ColorTransition extends Transition.Transition {
     constructor () {
         super();
     }

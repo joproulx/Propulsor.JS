@@ -1,4 +1,4 @@
-//import Shape = module("Shape");
+//export import Shape = module("Shape");
 
 //export class RectangleShape extends Shape.Shape{
 //    X: number;

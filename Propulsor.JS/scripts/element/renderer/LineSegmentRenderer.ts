@@ -1,5 +1,5 @@
-import LineSegment = module("element/segment/LineSegment");
-import SegmentRenderer = module("element/renderer/SegmentRenderer");
+export import LineSegment = module("element/segment/LineSegment");
+export import SegmentRenderer = module("element/renderer/SegmentRenderer");
 
 export class LineSegmentRenderer extends SegmentRenderer.SegmentRenderer {
     constructor (lineSegment: LineSegment.LineSegment) {

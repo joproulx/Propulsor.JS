@@ -1,13 +1,15 @@
-import SceneNode = module("scene/SceneNode");
-import Segment = module("element/segment/Segment");
+export import SceneNode = module("scene/SceneNode");
+export import Segment = module("element/segment/Segment");
+export import Movable = module("element/Movable");
 
-export class Joint {
+
+export class Joint extends Movable.Movable {
     SceneNode: SceneNode.SceneNode;
     Segment1: Segment.Segment;
     Segment2: Segment.Segment;
 
     constructor (sceneNode: SceneNode.SceneNode) {
-        this.SceneNode = sceneNode;
+        super(sceneNode);
     }
     setSegments(segment1: Segment.Segment, segment2: Segment.Segment) {
         this.Segment1 = segment1;
@@ -18,8 +20,5 @@ export class Joint {
     }
     createSegmentRenderer() {
         return null;
-    }
-    getPosition(t: number) {
-        return this.SceneNode.getPosition(t);
     }
 }

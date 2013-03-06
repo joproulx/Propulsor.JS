@@ -2,7 +2,7 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "common/Point", "element/renderer/BezierSegmentRenderer", "element/segment/Segment"], function(require, exports, __Point__, __BezierSegmentRenderer__, __Segment__) {
     var Point = __Point__;
 
@@ -21,7 +21,8 @@ define(["require", "exports", "common/Point", "element/renderer/BezierSegmentRen
             this.ControlPoint1 = null;
         }
         return LengthCache;
-    })();    
+    })();
+    exports.LengthCache = LengthCache;    
     var BezierSegment = (function (_super) {
         __extends(BezierSegment, _super);
         function BezierSegment() {
@@ -80,9 +81,7 @@ define(["require", "exports", "common/Point", "element/renderer/BezierSegmentRen
             return null;
         };
         BezierSegment.prototype.bezsplit = function (V, Left, Right) {
-            var i;
-            var j;
-
+            var i, j;
             var Vtemp = new Array(4);
             for(var i = 0; i < 4; i++) {
                 Vtemp[i] = new Array(4);
@@ -112,7 +111,7 @@ define(["require", "exports", "common/Point", "element/renderer/BezierSegmentRen
         BezierSegment.prototype.addifclose = function (V, length, error) {
             var left = new Array(4);
             var right = new Array(4);
-            var len = 0;
+            var len = 0.0;
             var chord;
             var index;
             for(index = 0; index <= 2; index++) {
@@ -155,4 +154,3 @@ define(["require", "exports", "common/Point", "element/renderer/BezierSegmentRen
     })(Segment.Segment);
     exports.BezierSegment = BezierSegment;    
 })
-

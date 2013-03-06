@@ -1,6 +1,6 @@
-import Transition = module("transition/Transition");
-import CachedTimedValue = module("common/timedValue/CachedTimedValue");
-import underscore = module("libs/underscore/underscoreLib");
+export import Transition = module("transition/Transition");
+export import CachedTimedValue = module("common/timedValue/CachedTimedValue");
+export import underscore = module("libs/underscore/underscoreLib");
 var _:any = underscore;
 
 
@@ -13,6 +13,10 @@ export class TimedValue {
         this.Values = [];
         this.Cached = new CachedTimedValue.CachedTimedValue();
         this._defaultTransitionFactory = defaultTransitionFactory;
+    }
+    reset(){ 
+        this.Values = [];
+        this.Cached = new CachedTimedValue.CachedTimedValue();
     }
     get(t) {
         var value = this.Cached.get(t);

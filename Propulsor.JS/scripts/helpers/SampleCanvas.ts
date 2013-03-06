@@ -1,6 +1,7 @@
-import SceneManager = module("SceneManager");
-import IRenderable = module("element/shape/IRenderable");
-import jQuery = module("libs/jquery/jqueryLib");
+export import SceneManager = module("SceneManager");
+export import IRenderable = module("element/shape/IRenderable");
+export import TimeLineControl = module("TimeLineControl");
+export import jQuery = module("libs/jquery/jqueryLib");
 var $: any = jQuery;
 
 export class SampleCanvas {
@@ -8,29 +9,26 @@ export class SampleCanvas {
     Canvas = null;
     BackgroundContext = null;
     BackgroundCanvas = null;
+    m_lastTimestamp = 0;
+    m_showFps = 0;
 
     private m_drawGrid = true;
     private m_sceneManager = null;
     private m_timeLineControl = null;
+    private m_startTimestamps;
+    private m_timestampsIndex;
+    private m_sum;
+    m_timeLineControl;
 
-    constructor (name: string) {
+    constructor (name: string, div) {
+        this.m_startTimestamps = 0;
+        this.m_timestampsIndex = 0;
+        this.m_sum = 0;
+        
         var getId = function (id) {
             return name + "_" + id;
         }
-        $("body").prepend(
-            '<div id="' + getId('') + '" style="position:relative; width:800px; height:450px">\
-                        <canvas id="layer2" style="z-index: 2;position:absolute;left:0;top:0;" height="450px" width="800">\
-                            HTML5 not supported in your browser.\
-                        </canvas>\
-                    </div>\
-                    <button type="button" id="' + getId("buttonName") + '">Play</button>\
-                    <button type="button" id="' + getId("buttonGrid") + '">Grid</button>');
-
-        $("button#" + getId("buttonName")).click($.proxy(this.onClickPlay, this));
-        $("button#" + getId("buttonGrid")).click($.proxy(this.onClickDisplayGrid, this));
-
-                        $("body").prepend(
-                            '<div id="' + getId('') + '" style="position:relative; width:800px; height:450px">\
+        div.innerHTML = '<div id="' + getId('') + '" style="position:relative; width:800px; height:450px">\
                                 <canvas id="layer1" style="z-index:1;position:absolute;left:0;top:0;" height="450px" width="800">\
                                     HTML5 not supported in your browser.\
                                 </canvas>\
@@ -42,7 +40,9 @@ export class SampleCanvas {
                                 </canvas>\
                             </div>\
                             <button type="button" id="'+getId("buttonName")+ '">Play</button>\
-                            <button type="button" id="'+getId("buttonGrid")+ '">Grid</button>');
+                            <button type="button" id="'+getId("buttonGrid")+ '">Grid</button>\
+                            FPS: <span id="fps" style="#C0C0C0">0</span>\
+        <div id="'+ getId('timeLine') + '"/>';
         
                         $("button#" + getId("buttonName")).click($.proxy(this.onClickPlay, this));
                         $("button#" + getId("buttonGrid")).click($.proxy(this.onClickDisplayGrid, this));
@@ -54,7 +54,7 @@ export class SampleCanvas {
 
         this.m_sceneManager = new SceneManager.SceneManager(0, 20000, this.Context);
 
-        //this.m_timeLineControl = new TimeLineControl(this.m_sceneManager.TimeLineController, this.Canvas);
+        this.m_timeLineControl = new TimeLineControl.TimeLineControl(this.m_sceneManager.TimeLineController, this.Canvas, document.getElementById(getId('timeLine')));
 
         this.m_sceneManager.TimeLineController.BeforeRenderEvent.subscribe(this.onBeforeRendered, this);
 
@@ -113,7 +113,28 @@ export class SampleCanvas {
         }
     }
     onBeforeRendered(from: SampleCanvas, t: number, context: any) {
-        //Clear Canvas
         from.Context.clearRect(0, 0, from.Canvas.width, from.Canvas.height);
+
+        if (from.m_startTimestamps == 0) {
+            from.m_startTimestamps = t;
+            from.m_lastTimestamp = t;
+        } 
+        else { 
+            from.m_timestampsIndex += 1;
+        }
+        var diff = t - from.m_lastTimestamp;
+
+        from.m_sum += diff;
+               
+        from.m_lastTimestamp = t;
+
+        if (from.m_timestampsIndex > 0 && (t - from.m_startTimestamps > 1000)) { 
+            
+            $('span#fps').html(Math.round(1000 * from.m_timestampsIndex/ from.m_sum));
+
+            from.m_sum = 0;
+            from.m_startTimestamps = 0;
+            from.m_timestampsIndex = 0;
+        }
     }
 }

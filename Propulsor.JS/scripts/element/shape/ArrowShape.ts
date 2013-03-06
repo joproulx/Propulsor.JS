@@ -1,18 +1,26 @@
-import Shape = module("element/shape/Shape");
-import PolySegmentShape = module("element/shape/PolySegmentShape");
+export import Shape = module("element/shape/Shape");
+export import ShapeDecorator = module("element/shape/ShapeDecorator");
+export import JsonPathBuilder = module("element/path/JsonPathBuilder");
+export import Path = module("element/path/Path");
+export import Point = module("common/Point");
 
-export class ArrowShape extends PolySegmentShape.PolySegmentShape{
+export class ArrowShape extends ShapeDecorator.ShapeDecorator{
     constructor (t: number) {
-        var path = new Shape.JSonPath();
-        path.IsClosedPath= true;
-        path.Origin = { X: 0, Y: 25 };
-        path.Items = [{ X: 0, Y: -25 },
+        var pathDefinition = new JsonPathBuilder.JsonPathDefinition();
+        
+        pathDefinition.IsClosedPath= true;
+        pathDefinition.Origin = { X: 0, Y: 25 };
+        pathDefinition.Items = [{ X: 0, Y: -25 },
                 { SegmentType: "line" },
                 { X: 50, Y: 0 },
                 { SegmentType: "line" },
                 { X: 0, Y: 25 },
                 { SegmentType: "line" }];
 
-        super(t, path);
+        var builder = new JsonPathBuilder.JsonPathBuilder();
+        var path = builder.load(t, pathDefinition);
+        var shape = new Shape.Shape(path);
+        
+        super(shape);
     }
 }

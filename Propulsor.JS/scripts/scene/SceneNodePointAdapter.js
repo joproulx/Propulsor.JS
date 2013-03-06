@@ -2,7 +2,7 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "common/timedValue/TimedValue"], function(require, exports, __TimedValue__) {
     var TimedValue = __TimedValue__;
 
@@ -17,10 +17,9 @@ define(["require", "exports", "common/timedValue/TimedValue"], function(require,
             return this.SceneNode.getPosition(t);
         };
         SceneNodePointAdapter.prototype.set = function (t, value) {
-            return this.SceneNode.setPosition(t, value);
+            return this.SceneNode.setAbsolutePosition(t, value);
         };
         return SceneNodePointAdapter;
     })(TimedValue.TimedValue);
     exports.SceneNodePointAdapter = SceneNodePointAdapter;    
 })
-

@@ -1,21 +1,37 @@
-import Segment = module("element/segment/Segment");
+export import Segment = module("element/segment/Segment");
+export import Joint = module("element/joint/Joint");
+export import Movable = module("element/Movable");
+export import SceneNode = module("scene/SceneNode");
+export import Point = module("common/Point");
 
-export class Path {
+export interface IPath extends SceneNode.IMovable {
+    Segments: Segment.Segment[]; // todo: Use only getter if typescript supports it
+    Joints: Joint.Joint[]; // todo: Use only getter if typescript supports it
+    IsClosedPath: bool;
+    length(t: number): number;
+    getPointFromRatio(t: number, ratio: number): Point.Point;
+    
+}
+
+export class Path extends Movable.Movable {
     Segments: Segment.Segment[];
-    isClosedPath: bool;
+    Joints: Joint.Joint[];
+    IsClosedPath: bool;
 
-    constructor (segments: Segment.Segment[], isClosedPath: bool) {
+    constructor (sceneNode: SceneNode.SceneNode, segments: Segment.Segment[], joints: Joint.Joint[], isClosedPath: bool) {
         this.Segments = segments;
-        this.isClosedPath = isClosedPath;
+        this.Joints = joints;
+        this.IsClosedPath = isClosedPath;
+        super(sceneNode);
     }
-    length(t: number) {
+    length(t: number): number {
         var length = 0;
         for (var i = 0; i < this.Segments.length; i++) {
             length += this.Segments[i].length(t);
         }
         return length;
     }
-    getPointFromRatio(t: number, ratio: number) {
+    getPointFromRatio(t: number, ratio: number) : Point.Point{
         var segment = this.getSegmentFromRatio(t, ratio);
         if (segment != null) {
             return segment.Segment.pointFromRatio(t, segment.Ratio);
@@ -29,7 +45,7 @@ export class Path {
         }
         return null;
     }
-    getSegmentFromRatio(t: number, ratio: number) {
+    private getSegmentFromRatio(t: number, ratio: number){
         if (ratio < 0 || ratio > 1) {
             throw "Invalid parameter: ratio. Must be between 0 and 1.";
         }

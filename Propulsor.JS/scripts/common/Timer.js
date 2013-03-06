@@ -34,4 +34,3 @@ define(["require", "exports"], function(require, exports) {
     })();
     exports.Timer = Timer;    
 })
-

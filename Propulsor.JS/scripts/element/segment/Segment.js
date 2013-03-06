@@ -25,8 +25,10 @@ define(["require", "exports", "common/timedValue/LinearTimedValue"], function(re
         Segment.prototype.tangentAngleFromRatio = function (t, ratio) {
             return 0;
         };
+        Segment.prototype.createSegmentRenderer = function () {
+            return null;
+        };
         return Segment;
     })();
     exports.Segment = Segment;    
 })
-

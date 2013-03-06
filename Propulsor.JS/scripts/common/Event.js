@@ -28,4 +28,3 @@ define(["require", "exports"], function(require, exports) {
     })();
     exports.Event = Event;    
 })
-

@@ -1,8 +1,10 @@
-define(["require", "exports", "transition/ITransition"], function(require, exports, __ITransition__) {
+define(["require", "exports", "transition/ITransition", "transition/Tween"], function(require, exports, __ITransition__, __Tween__) {
     var ITransition = __ITransition__;
 
+    var Tween = __Tween__;
+
     var Transition = (function () {
-        function Transition() {
+        function Transition(tween) {
             this.StartTimestamp = null;
             ; ;
             this.EndTimestamp = null;
@@ -11,6 +13,7 @@ define(["require", "exports", "transition/ITransition"], function(require, expor
             ; ;
             this.EndValue = null;
             ; ;
+            this.Tween = tween ? tween : new Tween.EaseInTween();
         }
         Transition.prototype.getValue = function (t) {
             return null;
@@ -19,4 +22,3 @@ define(["require", "exports", "transition/ITransition"], function(require, expor
     })();
     exports.Transition = Transition;    
 })
-

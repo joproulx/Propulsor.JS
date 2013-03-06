@@ -96,4 +96,3 @@ define(["require", "exports", "libs/sylvester/sylvesterLib"], function(require, 
     }
     exports.getTranslationY = getTranslationY;
 })
-

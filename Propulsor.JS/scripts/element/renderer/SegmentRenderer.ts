@@ -1,4 +1,4 @@
-import Segment = module("element/segment/Segment");
+export import Segment = module("element/segment/Segment");
 
 export class SegmentRenderer {
     Segment: Segment.Segment;

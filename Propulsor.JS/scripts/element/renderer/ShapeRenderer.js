@@ -1,6 +1,7 @@
 define(["require", "exports", "libs/underscore/underscoreLib"], function(require, exports, __underscore__) {
     
     
+    
     var underscore = __underscore__;
 
     var _ = underscore;
@@ -14,7 +15,7 @@ define(["require", "exports", "libs/underscore/underscoreLib"], function(require
             while(1) {
                 var newSegment = segment.createSegmentRenderer();
                 newSegment.SegmentRenderer1 = segmentToJoin;
-                if(!this.Shape.Path.isClosedPath && segment == this.Shape.Path.Segments[0]) {
+                if(!this.Shape.Path.IsClosedPath && segment == this.Shape.Path.Segments[0]) {
                     var joint = segment.Joint1;
                     var segmentRenderer = joint.createSegmentRenderer();
                     if(segmentRenderer != null) {
@@ -39,7 +40,7 @@ define(["require", "exports", "libs/underscore/underscoreLib"], function(require
                     }
                 }
                 if(this.isLastSegment(segment)) {
-                    if(this.Shape.Path.isClosedPath) {
+                    if(this.Shape.Path.IsClosedPath) {
                         this.SegmentRenderers[0].SegmentRenderer1 = segmentToJoin;
                         segmentToJoin.SegmentRenderer2 = this.SegmentRenderers[0];
                     }
@@ -51,8 +52,13 @@ define(["require", "exports", "libs/underscore/underscoreLib"], function(require
         ShapeRenderer.prototype.getRatio = function (length, totalLength) {
             return length / totalLength;
         };
-        ShapeRenderer.prototype.getDashedSegment = function (t, dashedOffset, length) {
-            var dashPattern = this.Shape.StrokeDashPattern.get(t);
+        ShapeRenderer.prototype.getDashedPattern = function (t) {
+            return this.Shape.Stroke.Dash.Pattern.get(t);
+        };
+        ShapeRenderer.prototype.isDashed = function (t) {
+            return this.getDashedPattern(t) != -1;
+        };
+        ShapeRenderer.prototype.getDashedSegment = function (t, dashedOffset, length, dashPattern) {
             var dashPatternLength = dashPattern.length;
             if(dashPatternLength == 1 && dashPattern[0] == -1) {
                 return {
@@ -94,74 +100,75 @@ define(["require", "exports", "libs/underscore/underscoreLib"], function(require
             return result;
         };
         ShapeRenderer.prototype.render = function (t, context) {
-            var startRatio = this.Shape.StrokeRatio.Start.get(t);
-            var endRatio = this.Shape.StrokeRatio.End.get(t);
-            var length = this.Shape.Path.length(t);
-            var totalStartLength = length * startRatio;
-            var totalEndLength = length * endRatio;
-            length = length * endRatio;
-            var currentTotalLength = totalStartLength;
-            var totalSegmentLength = 0;
-            var beginPath = true;
-            var endPath = true;
-            for(var i = 0; i < this.SegmentRenderers.length; i++) {
-                var segmentLength = this.SegmentRenderers[i].Segment.length(t);
-                var reachedEnd = false;
-                do {
-                    var dashedSegment = this.getDashedSegment(t, this.Shape.StrokeDashOffset.get(t), currentTotalLength);
-                    var endLength = dashedSegment.Length;
-                    var newCurrentTotalLength = (currentTotalLength + endLength);
-                    var newTotalSegmentLength = (totalSegmentLength + segmentLength);
-                    if(newCurrentTotalLength >= newTotalSegmentLength) {
-                        endPath = newCurrentTotalLength <= newTotalSegmentLength;
-                        endLength = newTotalSegmentLength - currentTotalLength;
-                        reachedEnd = true;
-                    } else {
-                        endPath = true;
-                    }
-                    if(dashedSegment.Drawn) {
-                        var startRatio = this.getRatio((currentTotalLength - totalSegmentLength), segmentLength);
-                        var endRatio = this.getRatio((currentTotalLength - totalSegmentLength) + endLength, segmentLength);
-                        var point = this.SegmentRenderers[i].getPoint1(t, startRatio, endRatio);
-                        if(beginPath) {
-                            this.beginRender(t, context);
-                            context.moveTo(point.X, point.Y);
+            var needTwoPasses = this.Shape.Path.IsClosedPath && this.isDashed(t);
+            var firstPass = true;
+            do {
+                var startRatio = this.Shape.Stroke.Ratio.Start.get(t);
+                var endRatio = this.Shape.Stroke.Ratio.End.get(t);
+                var length = this.Shape.Path.length(t);
+                var totalStartLength = length * startRatio;
+                var totalEndLength = length * endRatio;
+                length = length * endRatio;
+                var currentTotalLength = totalStartLength;
+                var totalSegmentLength = 0;
+                var beginPath = true;
+                var endPath = true;
+                for(var i = 0; i < this.SegmentRenderers.length; i++) {
+                    var segmentLength = this.SegmentRenderers[i].Segment.length(t);
+                    var reachedEnd = false;
+                    do {
+                        var dashPattern = (needTwoPasses && firstPass) ? [
+                            -1
+                        ] : this.Shape.Stroke.Dash.Pattern.get(t);
+                        var dashedSegment = this.getDashedSegment(t, this.Shape.Stroke.Dash.Offset.get(t), currentTotalLength, dashPattern);
+                        var endLength = dashedSegment.Length;
+                        var newCurrentTotalLength = (currentTotalLength + endLength);
+                        var newTotalSegmentLength = (totalSegmentLength + segmentLength);
+                        if(newCurrentTotalLength >= newTotalSegmentLength) {
+                            endPath = newCurrentTotalLength <= newTotalSegmentLength;
+                            endLength = newTotalSegmentLength - currentTotalLength;
+                            reachedEnd = true;
+                        } else {
+                            endPath = true;
                         }
-                        this.SegmentRenderers[i].render(t, context, startRatio, endRatio);
-                        if(endPath) {
-                            this.endRender(context);
+                        endPath = endPath && !(needTwoPasses && firstPass && !reachedEnd);
+                        if(dashedSegment.Drawn) {
+                            var startRatio = this.getRatio((currentTotalLength - totalSegmentLength), segmentLength);
+                            var endRatio = this.getRatio((currentTotalLength - totalSegmentLength) + endLength, segmentLength);
+                            var point = this.SegmentRenderers[i].getPoint1(t, startRatio, endRatio);
+                            if(beginPath) {
+                                this.beginRender(t, context, !(needTwoPasses && firstPass), firstPass);
+                                context.moveTo(point.X, point.Y);
+                            }
+                            this.SegmentRenderers[i].render(t, context, startRatio, endRatio);
+                            if(endPath && !(needTwoPasses && firstPass && !reachedEnd)) {
+                                this.endRender(context, reachedEnd, firstPass);
+                            }
                         }
-                    }
-                    beginPath = endPath;
-                    currentTotalLength += endLength;
-                }while(!reachedEnd)
-                totalSegmentLength += segmentLength;
-            }
+                        beginPath = endPath;
+                        currentTotalLength += endLength;
+                    }while(!reachedEnd)
+                    totalSegmentLength += segmentLength;
+                }
+                firstPass = !firstPass;
+            }while(needTwoPasses && !firstPass)
         };
-        ShapeRenderer.prototype.renderSegment = function (t, context, segmentRenderer, startRatio, endRatio) {
-            if(segmentRenderer === _.first(this.SegmentRenderers) || segmentRenderer.IsIndependantShape || startRatio > 0) {
-                this.beginRender(t, context);
-                var point = segmentRenderer.getPoint1(t, startRatio, endRatio);
-                context.moveTo(point.X, point.Y);
-            }
-            segmentRenderer.render(t, context, startRatio, endRatio);
-            if(segmentRenderer === _.last(this.SegmentRenderers) || segmentRenderer.IsIndependantShape || endRatio < 1) {
-                this.endRender(context);
-            }
-        };
-        ShapeRenderer.prototype.beginRender = function (t, context) {
+        ShapeRenderer.prototype.beginRender = function (t, context, drawStroke, fill) {
             var strokeStyle = '#696969';
-            var lineWidth = 5;
+            var lineWidth = drawStroke ? 5 : 1;
             context.save();
             context.beginPath();
-            context.fillStyle = strokeStyle;
-            context.strokeStyle = strokeStyle;
+            context.fillStyle = fill ? this.Shape.Fill.Style.toString() : 'rgba(0,0,0,0)';
+            context.strokeStyle = drawStroke ? this.Shape.Stroke.Style.toString() : this.Shape.Fill.Style.toString();
             context.lineWidth = lineWidth;
             context.lineJoin = "miter";
         };
-        ShapeRenderer.prototype.endRender = function (context) {
-            if(this.Shape.Path.isClosedPath) {
+        ShapeRenderer.prototype.endRender = function (context, canClosePath, fill) {
+            if(canClosePath && this.Shape.Path.IsClosedPath) {
                 context.closePath();
+                if(fill) {
+                    context.fill();
+                }
             }
             context.stroke();
             context.restore();
@@ -173,4 +180,3 @@ define(["require", "exports", "libs/underscore/underscoreLib"], function(require
     })();
     exports.ShapeRenderer = ShapeRenderer;    
 })
-

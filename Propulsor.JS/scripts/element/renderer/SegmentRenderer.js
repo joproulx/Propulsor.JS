@@ -23,4 +23,3 @@ define(["require", "exports"], function(require, exports) {
     })();
     exports.SegmentRenderer = SegmentRenderer;    
 })
-

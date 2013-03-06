@@ -1,5 +1,5 @@
-import TimedValue = module("common/timedValue/TimedValue");
-import SceneNode = module("scene/SceneNode");
+export import TimedValue = module("common/timedValue/TimedValue");
+export import SceneNode = module("scene/SceneNode");
 
 export class SceneNodePointAdapter extends TimedValue.TimedValue {
     SceneNode: SceneNode.SceneNode;
@@ -12,6 +12,6 @@ export class SceneNodePointAdapter extends TimedValue.TimedValue {
         return this.SceneNode.getPosition(t);
     }
     set(t: number, value: any) {
-        return this.SceneNode.setPosition(t, value);
+        return this.SceneNode.setAbsolutePosition(t, value);
     }
 }

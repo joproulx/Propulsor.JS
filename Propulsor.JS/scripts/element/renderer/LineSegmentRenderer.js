@@ -2,7 +2,7 @@ var __extends = this.__extends || function (d, b) {
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
-}
+};
 define(["require", "exports", "element/renderer/SegmentRenderer"], function(require, exports, __SegmentRenderer__) {
     
     var SegmentRenderer = __SegmentRenderer__;
@@ -37,4 +37,3 @@ define(["require", "exports", "element/renderer/SegmentRenderer"], function(requ
     })(SegmentRenderer.SegmentRenderer);
     exports.LineSegmentRenderer = LineSegmentRenderer;    
 })
-

@@ -2,6 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{021CB218-235E-4EFB-9F0D-5FA842193192}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -44,6 +45,14 @@
       <DependentUpon>PolyFill.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\common\timedValue\CachedTimedValue.ts" />
+    <TypeScriptCompile Include="scripts\common\Style\GradientStyle.ts" />
+    <Content Include="scripts\common\Style\GradientStyle.js">
+      <DependentUpon>GradientStyle.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="scripts\common\Style\Style.ts" />
+    <Content Include="scripts\common\Style\Style.js">
+      <DependentUpon>Style.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\common\timedValue\CachedTimedValue.js">
       <DependentUpon>CachedTimedValue.ts</DependentUpon>
     </Content>
@@ -75,8 +84,16 @@
     <Content Include="scripts\element\joint\Joint.js">
       <DependentUpon>Joint.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\element\Path.ts" />
-    <Content Include="scripts\element\Path.js">
+    <TypeScriptCompile Include="scripts\element\path\Path.ts" />
+    <TypeScriptCompile Include="scripts\element\Movable.ts" />
+    <Content Include="scripts\element\Movable.js">
+      <DependentUpon>Movable.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="scripts\element\path\JsonPathBuilder.ts" />
+    <Content Include="scripts\element\path\JsonPathBuilder.js">
+      <DependentUpon>JsonPathBuilder.ts</DependentUpon>
+    </Content>
+    <Content Include="scripts\element\path\Path.js">
       <DependentUpon>Path.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\element\renderer\ArcSegmentRenderer.ts" />
@@ -123,13 +140,17 @@
     <Content Include="scripts\element\shape\ArrowShape.js">
       <DependentUpon>ArrowShape.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\element\shape\PolySegmentShape.ts" />
     <TypeScriptCompile Include="scripts\element\shape\IRenderable.ts" />
+    <Content Include="scripts\element\shape\Circle.js">
+      <DependentUpon>CircleShape.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="scripts\element\shape\CircleShape.ts" />
+    <TypeScriptCompile Include="scripts\element\shape\EllipseShape.ts" />
+    <Content Include="scripts\element\shape\Ellipse.js">
+      <DependentUpon>EllipseShape.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\element\shape\IRenderable.js">
       <DependentUpon>IRenderable.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\element\shape\PolySegmentShape.js">
-      <DependentUpon>PolySegmentShape.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\element\shape\RectangleShape.ts" />
     <Content Include="scripts\element\shape\RectangleShape.js">
@@ -144,6 +165,10 @@
       <DependentUpon>Shape.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\element\shape\TextShape.ts" />
+    <TypeScriptCompile Include="scripts\element\shape\ShapeDecorator.ts" />
+    <Content Include="scripts\element\shape\ShapeDecorator.js">
+      <DependentUpon>ShapeDecorator.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\element\shape\TextShape.js">
       <DependentUpon>TextShape.ts</DependentUpon>
     </Content>
@@ -199,11 +224,15 @@
     <Content Include="scripts\TimeLineController.js">
       <DependentUpon>TimeLineController.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\transition\ColorLinearTransition.ts" />
+    <TypeScriptCompile Include="scripts\transition\ColorTransition.ts" />
     <Content Include="scripts\transition\ColorLinearTransition.js">
-      <DependentUpon>ColorLinearTransition.ts</DependentUpon>
+      <DependentUpon>ColorTransition.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\transition\FollowDirectionTransition.ts" />
+    <TypeScriptCompile Include="scripts\transition\EaseInTween.ts" />
+    <Content Include="scripts\transition\EaseInTween.js">
+      <DependentUpon>EaseInTween.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\transition\FollowDirectionTransition.js">
       <DependentUpon>FollowDirectionTransition.ts</DependentUpon>
     </Content>
@@ -211,21 +240,21 @@
     <Content Include="scripts\transition\FollowPathTransition.js">
       <DependentUpon>FollowPathTransition.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\transition\LinearTransition.ts" />
+    <TypeScriptCompile Include="scripts\transition\NumberTransition.ts" />
     <TypeScriptCompile Include="scripts\transition\ITransition.ts" />
     <Content Include="scripts\transition\ITransition.js">
       <DependentUpon>ITransition.ts</DependentUpon>
     </Content>
     <Content Include="scripts\transition\LinearTransition.js">
-      <DependentUpon>LinearTransition.ts</DependentUpon>
+      <DependentUpon>NumberTransition.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\transition\PointLinearTransition.ts" />
+    <TypeScriptCompile Include="scripts\transition\PointTransition.ts" />
     <Content Include="scripts\transition\PointLinearTransition.js">
-      <DependentUpon>PointLinearTransition.ts</DependentUpon>
+      <DependentUpon>PointTransition.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\transition\TransformationMatrixLinearTransition.ts" />
+    <TypeScriptCompile Include="scripts\transition\TransformationMatrixTransition.ts" />
     <Content Include="scripts\transition\TransformationMatrixLinearTransition.js">
-      <DependentUpon>TransformationMatrixLinearTransition.ts</DependentUpon>
+      <DependentUpon>TransformationMatrixTransition.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\transition\Transition.ts" />
     <Content Include="scripts\transition\Transition.js">
@@ -237,6 +266,10 @@
     <Content Include="scripts\libs\sylvester\sylvester.js.gz" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="scripts\transition\Tween.ts" />
+    <Content Include="scripts\transition\Tween.js">
+      <DependentUpon>Tween.ts</DependentUpon>
+    </Content>
     <Content Include="web.config" />
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
@@ -270,7 +303,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptSourceMap> --sourcemap</TypeScriptSourceMap>
+  </PropertyGroup>
   <Target Name="BeforeBuild">
-    <Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; --module AMD @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+    <Message Text="Compiling TypeScript files" />
+    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+    <Exec Command="tsc$(TypeScriptSourceMap) --target ES5 --module AMD  @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
   </Target>
 </Project>

@@ -26,9 +26,7 @@ define(["require", "exports", "common/Point"], function(require, exports, __Poin
         };
         Line.prototype.getPoints = function (t, point, length) {
             var points = [];
-            var x;
-            var y;
-
+            var x, y;
             if(this.getSlope(t) != Infinity) {
                 var angle = Math.atan(this.getSlope(t));
                 y = point.Y + length * Math.sin(angle);
@@ -81,4 +79,3 @@ define(["require", "exports", "common/Point"], function(require, exports, __Poin
     })();
     exports.Line = Line;    
 })
-

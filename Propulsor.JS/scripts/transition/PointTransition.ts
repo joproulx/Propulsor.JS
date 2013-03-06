@@ -1,7 +1,7 @@
-import Transition = module("transition/Transition");
-import Point = module("common/Point");
+export import Transition = module("transition/Transition");
+export import Point = module("common/Point");
 
-export class PointLinearTransition extends Transition.Transition {
+export class PointTransition extends Transition.Transition {
     constructor () {
         super();
     }
@@ -10,7 +10,10 @@ export class PointLinearTransition extends Transition.Transition {
             throw "Invalid t";
         }
 
-        var ratio = (t - this.StartTimestamp) / (this.EndTimestamp - this.StartTimestamp);
+        var ratio = this.Tween.getRatio(t, this.StartTimestamp, this.EndTimestamp);
+
+
+        //var ratio = (t - this.StartTimestamp) / (this.EndTimestamp - this.StartTimestamp);
         return new Point.Point(((ratio * (this.EndValue.X - this.StartValue.X)) + this.StartValue.X),
             ((ratio * (this.EndValue.Y - this.StartValue.Y)) + this.StartValue.Y));
     }
