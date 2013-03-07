@@ -4,7 +4,7 @@ export import Scene = module("Scene");
 
 export class SceneManager {
     DefaultScene = "_DefaultScene_";
-    m_scenes = {}
+    m_scenes = {};
     TimeLineController = new TimeLineController.TimeLineController(startTimestamp, endTimestamp, context);
 
     constructor (startTimestamp, endTimestamp, context) {

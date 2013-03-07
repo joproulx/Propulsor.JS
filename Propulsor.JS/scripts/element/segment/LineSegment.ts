@@ -3,7 +3,7 @@ export import Segment = module("element/segment/Segment");
 export import Line = module("common/Line");
 export import Joint = module("element/joint/Joint");
 export import Point = module("common/Point");
-export import SceneNodePointAdapter = module("scene/SceneNodePointAdapter");
+export import SceneNodePointAdapter = module("sceneGraph/SceneNodePointAdapter");
 
 export class LineSegment extends Segment.Segment{
     Line: Line.Line;

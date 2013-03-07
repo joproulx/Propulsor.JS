@@ -14,7 +14,7 @@ export class Transition implements ITransition.ITransition {
         this.EndTimestamp = null;;
         this.StartValue = null;;
         this.EndValue = null;;
-        this.Tween = tween ? tween : new Tween.EaseInTween();
+        this.Tween = tween ? tween : new Tween.Tween();
     }
 
     getValue(t: number) { 

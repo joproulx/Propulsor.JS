@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-define(["require", "exports", "common/GuidGenerator", "element/shape/IRenderable", "common/timedValue/LinearTimedValue", "common/timedValue/TimedValue", "element/renderer/ShapeRenderer", "scene/SceneNode", "element/Movable"], function(require, exports, __GuidGenerator__, __IRenderable__, __LinearTimedValue__, __TimedValue__, __ShapeRenderer__, __SceneNode__, __Movable__) {
+define(["require", "exports", "common/GuidGenerator", "element/shape/IRenderable", "common/timedValue/LinearTimedValue", "common/timedValue/TimedValue", "element/renderer/ShapeRenderer", "sceneGraph/SceneNode", "element/Movable"], function(require, exports, __GuidGenerator__, __IRenderable__, __LinearTimedValue__, __TimedValue__, __ShapeRenderer__, __SceneNode__, __Movable__) {
     var GuidGenerator = __GuidGenerator__;
 
     var IRenderable = __IRenderable__;

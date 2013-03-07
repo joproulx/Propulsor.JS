@@ -61,10 +61,12 @@
                              { X: 200, Y: 0 }]
                      });
 
-                     path2.setAbsolutePosition(10000, new Point.Point(300, 0));
+                     path2.setAbsolutePosition(10000, new Point.Point(300, 100));
                      path2.rotate(10000, Math.PI * 2);
 
                      circle.followPathPosition(10000, path2, 0, 1);
+
+                     var polyLine2 = new Shape.Shape(path2);
 
                      //var arrow = new ArrowShape.ArrowShape(0);
                      //arrow.SceneNode.setPosition(0, new Point(100, 100));
@@ -86,7 +88,7 @@
                     //polyLine.Fill.Color
                      polyLine.setAbsolutePosition(1000, new Point.Point(200, 200));
 
-                     sampleCanvas.addToScene([polyLine, circle]);
+                     sampleCanvas.addToScene([polyLine2, polyLine, circle]);
                     
                     //var sampleCanvas2 = new SampleCanvasModule.SampleCanvas("test2", document.getElementById('canvas'));
 

@@ -13,7 +13,7 @@ define(["require", "exports", "transition/ITransition", "transition/Tween"], fun
             ; ;
             this.EndValue = null;
             ; ;
-            this.Tween = tween ? tween : new Tween.EaseInTween();
+            this.Tween = tween ? tween : new Tween.Tween();
         }
         Transition.prototype.getValue = function (t) {
             return null;

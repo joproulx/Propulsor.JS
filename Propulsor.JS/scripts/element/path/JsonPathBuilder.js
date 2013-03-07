@@ -1,4 +1,4 @@
-define(["require", "exports", "scene/SceneNode", "element/joint/Joint", "element/joint/EndPoint", "element/segment/LineSegment", "element/path/Path", "element/segment/BezierSegment", "libs/underscore/underscoreLib"], function(require, exports, __SceneNode__, __Joint__, __EndPoint__, __LineSegment__, __Path__, __BezierSegment__, __underscore__) {
+define(["require", "exports", "sceneGraph/SceneNode", "element/joint/Joint", "element/joint/EndPoint", "element/segment/LineSegment", "element/path/Path", "element/segment/BezierSegment", "libs/underscore/underscoreLib"], function(require, exports, __SceneNode__, __Joint__, __EndPoint__, __LineSegment__, __Path__, __BezierSegment__, __underscore__) {
     
     
     var SceneNode = __SceneNode__;

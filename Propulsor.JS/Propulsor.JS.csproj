@@ -204,16 +204,16 @@
     <Content Include="scripts\SceneManager.js">
       <DependentUpon>SceneManager.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\scene\SceneNode.ts" />
-    <Content Include="scripts\scene\SceneNode.js">
+    <TypeScriptCompile Include="scripts\sceneGraph\SceneNode.ts" />
+    <Content Include="scripts\sceneGraph\SceneNode.js">
       <DependentUpon>SceneNode.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\scene\SceneNodeManager.ts" />
-    <Content Include="scripts\scene\SceneNodeManager.js">
-      <DependentUpon>SceneNodeManager.ts</DependentUpon>
+    <TypeScriptCompile Include="scripts\sceneGraph\SceneGraph.ts" />
+    <Content Include="scripts\sceneGraph\SceneNodeManager.js">
+      <DependentUpon>SceneGraph.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="scripts\scene\SceneNodePointAdapter.ts" />
-    <Content Include="scripts\scene\SceneNodePointAdapter.js">
+    <TypeScriptCompile Include="scripts\sceneGraph\SceneNodePointAdapter.ts" />
+    <Content Include="scripts\sceneGraph\SceneNodePointAdapter.js">
       <DependentUpon>SceneNodePointAdapter.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\TimeLineControl.ts" />

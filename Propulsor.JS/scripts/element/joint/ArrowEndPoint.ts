@@ -1,5 +1,5 @@
 //export import EndPoint = module("EndPoint");
-//export import SceneNode = module("scene/SceneNode");
+//export import SceneNode = module("sceneGraph/SceneNode");
 //export import ArrowSegmentRenderer = module("element/renderer/ArrowSegmentRenderer");
 
 //export class ArrowEndPoint extends EndPoint.EndPoint {

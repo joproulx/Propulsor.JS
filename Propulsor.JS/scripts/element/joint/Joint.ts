@@ -1,4 +1,4 @@
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 export import Segment = module("element/segment/Segment");
 export import Movable = module("element/Movable");
 

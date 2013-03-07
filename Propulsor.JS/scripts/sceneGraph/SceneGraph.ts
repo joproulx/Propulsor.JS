@@ -1,6 +1,6 @@
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 
-export class SceneNodeManager {
+export class SceneGraph {
     SceneNodes: SceneNode.SceneNode[];
     constructor () {
         this.SceneNodes = new SceneNode.SceneNode[];

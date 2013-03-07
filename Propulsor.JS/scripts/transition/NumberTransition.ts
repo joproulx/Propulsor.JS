@@ -12,6 +12,6 @@ export class NumberTransition extends Transition.Transition {
 
         var ratio = this.Tween.getRatio(t, this.StartTimestamp, this.EndTimestamp);
 
-        return (ratio * (this.EndTimestamp - this.StartTimestamp)) + this.StartTimestamp;
+        return (ratio * (this.EndValue - this.StartValue)) + this.StartValue;
     }
 }

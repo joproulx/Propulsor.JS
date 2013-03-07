@@ -1,4 +1,4 @@
-define(["require", "exports", "scene/SceneNode"], function(require, exports, __SceneNode__) {
+define(["require", "exports", "sceneGraph/SceneNode"], function(require, exports, __SceneNode__) {
     var SceneNode = __SceneNode__;
 
     

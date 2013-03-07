@@ -3,7 +3,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-define(["require", "exports", "element/Movable", "scene/SceneNode"], function(require, exports, __Movable__, __SceneNode__) {
+define(["require", "exports", "element/Movable", "sceneGraph/SceneNode"], function(require, exports, __Movable__, __SceneNode__) {
     
     
     var Movable = __Movable__;

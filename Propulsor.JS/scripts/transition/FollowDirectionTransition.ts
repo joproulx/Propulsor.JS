@@ -1,5 +1,5 @@
 export import Transition = module("transition/Transition");
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 export import Path = module("element/path/Path");
 export import Tween = module("transition/Tween");
 export import EaseInTween = module("transition/EaseInTween");

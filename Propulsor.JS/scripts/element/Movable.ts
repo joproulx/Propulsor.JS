@@ -1,4 +1,4 @@
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 export import Point = module("common/Point");
 export import Path = module("element/path/Path");
 

@@ -1,7 +1,7 @@
 export import Segment = module("element/segment/Segment");
 export import Joint = module("element/joint/Joint");
 export import Movable = module("element/Movable");
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 export import Point = module("common/Point");
 
 export interface IPath extends SceneNode.IMovable {

@@ -4,7 +4,7 @@ export import LinearTimedValue = module("common/timedValue/LinearTimedValue");
 export import TimedValue = module("common/timedValue/TimedValue");
 export import ShapeRenderer = module("element/renderer/ShapeRenderer");
 export import Path = module("element/path/Path");
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 export import Movable = module("element/Movable");
 
 export class StrokeConfiguration {

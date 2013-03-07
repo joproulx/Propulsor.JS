@@ -1,7 +1,7 @@
 
 export import Shape = module("element/shape/Shape");
 export import Point = module("common/Point");
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 export import Joint = module("element/joint/Joint");
 export import EndPoint = module("element/joint/EndPoint");
 export import Segment = module("element/segment/Segment");

@@ -1,5 +1,5 @@
 export import Point = module("common/Point");
-export import SceneNode = module("scene/SceneNode");
+export import SceneNode = module("sceneGraph/SceneNode");
 export import BezierSegmentRenderer = module("element/renderer/BezierSegmentRenderer");
 export import Segment = module("element/segment/Segment");
 export import Joint = module("element/joint/Joint");
