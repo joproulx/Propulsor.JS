@@ -109,6 +109,14 @@
       <DependentUpon>BezierSegmentRenderer.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\element\renderer\LineSegmentRenderer.ts" />
+    <TypeScriptCompile Include="scripts\element\renderer\drawingContext\CanvasContext.ts" />
+    <Content Include="scripts\element\renderer\drawingContext\canvasContext.js">
+      <DependentUpon>CanvasContext.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="scripts\element\renderer\drawingContext\DrawingStyle.ts" />
+    <Content Include="scripts\element\renderer\drawingContext\drawingStyle.js">
+      <DependentUpon>DrawingStyle.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\element\renderer\LineSegmentRenderer.js">
       <DependentUpon>LineSegmentRenderer.ts</DependentUpon>
     </Content>

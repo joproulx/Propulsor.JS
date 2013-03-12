@@ -21,13 +21,16 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/Transforma
         function SceneNode(parentNode) {
             this._relativePosition = undefined;
             this._relativeOrientation = undefined;
-            this.ParentNode = parentNode === null ? null : parentNode === undefined ? null : parentNode;
             this.ChildNodes = [];
             this._relativePosition = new TimedValue.TimedValue(function () {
                 return new PointTransition.PointTransition();
             });
             this._relativePosition.set(0, new Point.Point(0, 0));
             this._relativeOrientation = new LinearTimedValue.LinearTimedValue(0);
+            parentNode = parentNode === undefined ? null : parentNode;
+            if(parentNode !== null) {
+                parentNode.addChildSceneNode(this);
+            }
         }
         SceneNode.prototype.addChildSceneNode = function (sceneNode) {
             this.ChildNodes.push(sceneNode);

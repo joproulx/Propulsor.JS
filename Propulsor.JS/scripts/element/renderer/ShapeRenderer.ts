@@ -221,8 +221,6 @@ export class ShapeRenderer {
     //    }
     //}
     beginRender(t: number, context: any, drawStroke: bool, fill: bool) {
-        var strokeStyle = '#696969';
-        var lineWidth = drawStroke ? 5 : 1;
         context.save();
         context.beginPath();
         context.fillStyle = fill ? this.Shape.Fill.Style.toString() : 'rgba(0,0,0,0)';
@@ -230,8 +228,7 @@ export class ShapeRenderer {
         // var rgb = this.Shape.StrokeColor.get(t);
         // TODO: optimize how the rgb are passed to canvas
         context.strokeStyle = drawStroke ? this.Shape.Stroke.Style.toString() : this.Shape.Fill.Style.toString();
-
-        context.lineWidth = lineWidth;
+        context.lineWidth = this.Shape.Stroke.LineWidth.get(t);
         context.lineJoin = "miter";
     }
     endRender(context: any, canClosePath: bool, fill: bool) {

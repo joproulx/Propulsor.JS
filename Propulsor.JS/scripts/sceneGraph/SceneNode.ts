@@ -9,15 +9,6 @@ export import Path = module("element/path/Path");
 export import sylvester = module("libs/sylvester/sylvesterLib");
 var $M: any = sylvester;
 
-//export interface ITimedGetter {
-//    at(t: number): any;
-//}
-
-//export interface ITimedSetter {
-//    at(t: number): ITimedSetter;
-//}
-
-
 export interface IMovable {
     getPosition(t:number): Point.Point;
     setAbsolutePosition(t:number, point: Point.Point);
@@ -26,14 +17,6 @@ export interface IMovable {
     followPathPosition(t: number, path: Path.Path, startRatio: number, endRatio: number);
 }
 
-//export class TimedValueSetter { 
-//    at(t: number): ITimedSetter { 
-        
-        
-//    }
-//}
-
-
 export class SceneNode implements IMovable{
     _relativePosition: TimedValue.TimedValue = undefined;
     _relativeOrientation: TimedValue.TimedValue = undefined;
@@ -41,12 +24,16 @@ export class SceneNode implements IMovable{
     ChildNodes: SceneNode[];
 
     constructor (parentNode?: SceneNode) {
-        this.ParentNode = parentNode === null ? null : parentNode === undefined ? null : parentNode;
         this.ChildNodes = [];
 
         this._relativePosition = new TimedValue.TimedValue(function () { return new PointTransition.PointTransition(); });
         this._relativePosition.set(0, new Point.Point(0, 0));
         this._relativeOrientation = new LinearTimedValue.LinearTimedValue(0);
+
+        parentNode = parentNode === undefined ? null : parentNode;
+        if (parentNode !== null) { 
+            parentNode.addChildSceneNode(this);
+        }
     };
     addChildSceneNode(sceneNode: SceneNode) {
         this.ChildNodes.push(sceneNode);

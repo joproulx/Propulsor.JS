@@ -154,13 +154,11 @@ define(["require", "exports", "libs/underscore/underscoreLib"], function(require
             }while(needTwoPasses && !firstPass)
         };
         ShapeRenderer.prototype.beginRender = function (t, context, drawStroke, fill) {
-            var strokeStyle = '#696969';
-            var lineWidth = drawStroke ? 5 : 1;
             context.save();
             context.beginPath();
             context.fillStyle = fill ? this.Shape.Fill.Style.toString() : 'rgba(0,0,0,0)';
             context.strokeStyle = drawStroke ? this.Shape.Stroke.Style.toString() : this.Shape.Fill.Style.toString();
-            context.lineWidth = lineWidth;
+            context.lineWidth = this.Shape.Stroke.LineWidth.get(t);
             context.lineJoin = "miter";
         };
         ShapeRenderer.prototype.endRender = function (context, canClosePath, fill) {

@@ -16,7 +16,7 @@
                  'element/Shape/EllipseShape',
                  'element/Shape/CircleShape',
                  'element/path/JsonPathBuilder',
-                 'scene/SceneNode'],
+                 'sceneGraph/SceneNode'],
                  function (SampleCanvasModule, Point, ArrowShape, Shape, EllipseShape, CircleShape, JsonPathBuilder, SceneNode) {
 
                      var sampleCanvas = new SampleCanvasModule.SampleCanvas("test1", document.getElementById('canvas'));
@@ -42,7 +42,7 @@
                      var circle = new CircleShape.CircleShape(0, 25);
                      circle.setAbsolutePosition(0, new Point.Point(100, 100));
                      circle.setRadius(3000, 100);
-
+                     circle.Stroke.LineWidth.set(5000, 5);
 
 
 
