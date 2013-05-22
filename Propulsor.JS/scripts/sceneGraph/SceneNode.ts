@@ -34,7 +34,7 @@ export class SceneNode implements IMovable{
         if (parentNode !== null) { 
             parentNode.addChildSceneNode(this);
         }
-    };
+    }
     addChildSceneNode(sceneNode: SceneNode) {
         this.ChildNodes.push(sceneNode);
         sceneNode.ParentNode = this;
@@ -91,4 +91,14 @@ export class SceneNode implements IMovable{
     translate(t: number, dx: number, dy: number) {
         this._relativePosition.set(t, new Point.Point(dx, dy));
     }
+    transform(t: number, matrix: any) { 
+        var tx = matrix.e(1, 3);
+        var ty = matrix.e(2, 3);
+        var cosTheta = matrix.e(1, 1);
+        
+        this._relativeOrientation.set(t, Math.acos(cosTheta));
+        this._relativePosition.set(0, new Point.Point(tx, ty));
+    }
+
+
 }

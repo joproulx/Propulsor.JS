@@ -8,6 +8,7 @@ define(["require", "exports", "common/Event", "common/Timer"], function(require,
             this.Context = context;
             this.BeforeRenderEvent = new Event.Event();
             this.RenderEvent = new Event.Event();
+            this.AfterRenderEvent = new Event.Event();
             this.StartTimestamp = startTimestamp;
             this.EndTimestamp = endTimestamp;
             this.CurrentTime = 0;
@@ -36,6 +37,7 @@ define(["require", "exports", "common/Event", "common/Timer"], function(require,
         TimeLineController.prototype.renderFrame = function (t, context) {
             this.BeforeRenderEvent.trigger(t, context);
             this.RenderEvent.trigger(t, context);
+            this.AfterRenderEvent.trigger(t, context);
         };
         return TimeLineController;
     })();

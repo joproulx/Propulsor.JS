@@ -225,6 +225,10 @@
       <DependentUpon>SceneNodePointAdapter.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\TimeLineControl.ts" />
+    <TypeScriptCompile Include="scripts\svg\SvgReader.ts" />
+    <Content Include="scripts\svg\SvgReader.js">
+      <DependentUpon>SvgReader.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\TimeLineControl.js">
       <DependentUpon>TimeLineControl.ts</DependentUpon>
     </Content>

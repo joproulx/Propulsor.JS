@@ -96,6 +96,13 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/Transforma
         SceneNode.prototype.translate = function (t, dx, dy) {
             this._relativePosition.set(t, new Point.Point(dx, dy));
         };
+        SceneNode.prototype.transform = function (t, matrix) {
+            var tx = matrix.e(1, 3);
+            var ty = matrix.e(2, 3);
+            var cosTheta = matrix.e(1, 1);
+            this._relativeOrientation.set(t, Math.acos(cosTheta));
+            this._relativePosition.set(0, new Point.Point(tx, ty));
+        };
         return SceneNode;
     })();
     exports.SceneNode = SceneNode;    

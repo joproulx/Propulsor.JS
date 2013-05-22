@@ -19,6 +19,7 @@ export class StrokeConfiguration {
         this.Dash = new Dash();
         this.Style = ColorStyle.Black;
         this.LineWidth = new LinearTimedValue.LinearTimedValue(1);
+        this.LineJoinType = LineJoinTypes.Miter;
     }
 }
 

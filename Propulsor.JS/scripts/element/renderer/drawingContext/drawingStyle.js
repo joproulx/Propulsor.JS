@@ -19,6 +19,7 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/timedValue
             this.Dash = new Dash();
             this.Style = ColorStyle.Black;
             this.LineWidth = new LinearTimedValue.LinearTimedValue(1);
+            this.LineJoinType = LineJoinTypes.Miter;
         }
         return StrokeConfiguration;
     })();

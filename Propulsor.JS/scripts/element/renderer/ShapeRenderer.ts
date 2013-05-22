@@ -4,6 +4,7 @@ export import SegmentRenderer = module("element/renderer/SegmentRenderer");
 export import Segment = module("element/segment/Segment");
 export import Shape = module("element/shape/Shape");
 export import underscore = module("libs/underscore/underscoreLib");
+export import DrawingStyle = module("element/renderer/drawingContext/DrawingStyle");
 var _: any = underscore;
 
 
@@ -229,7 +230,13 @@ export class ShapeRenderer {
         // TODO: optimize how the rgb are passed to canvas
         context.strokeStyle = drawStroke ? this.Shape.Stroke.Style.toString() : this.Shape.Fill.Style.toString();
         context.lineWidth = this.Shape.Stroke.LineWidth.get(t);
-        context.lineJoin = "miter";
+        
+        switch (this.Shape.Stroke.LineJoinType)
+        { 
+            case DrawingStyle.LineJoinTypes.Bevel: context.lineJoin = "bevel"; break;
+            case DrawingStyle.LineJoinTypes.Miter: context.lineJoin = "miter"; break;
+            case DrawingStyle.LineJoinTypes.Round: context.lineJoin = "round"; break;
+        }
     }
     endRender(context: any, canClosePath: bool, fill: bool) {
         if (canClosePath && this.Shape.Path.IsClosedPath) {

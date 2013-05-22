@@ -5,6 +5,7 @@ export class TimeLineController {
 
     Context;
     BeforeRenderEvent;
+    AfterRenderEvent;
     RenderEvent;
     StartTimestamp;
     EndTimestamp;
@@ -16,6 +17,7 @@ export class TimeLineController {
         this.Context = context;
         this.BeforeRenderEvent = new Event.Event();
         this.RenderEvent = new Event.Event();
+        this.AfterRenderEvent = new Event.Event();
         this.StartTimestamp = startTimestamp;
         this.EndTimestamp = endTimestamp;
         this.CurrentTime = 0;
@@ -48,5 +50,6 @@ export class TimeLineController {
     renderFrame(t: number, context) {
         this.BeforeRenderEvent.trigger(t, context);
         this.RenderEvent.trigger(t, context);
+        this.AfterRenderEvent.trigger(t, context);
     }
 }

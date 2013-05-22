@@ -48,6 +48,7 @@ define(["require", "exports", "SceneManager", "TimeLineControl", "libs/jquery/jq
             this.m_sceneManager = new SceneManager.SceneManager(0, 20000, this.Context);
             this.m_timeLineControl = new TimeLineControl.TimeLineControl(this.m_sceneManager.TimeLineController, this.Canvas, document.getElementById(getId('timeLine')));
             this.m_sceneManager.TimeLineController.BeforeRenderEvent.subscribe(this.onBeforeRendered, this);
+            this.m_sceneManager.TimeLineController.AfterRenderEvent.subscribe(this.onAfterRendered, this);
             this.drawGrid();
         }
         SampleCanvas.prototype.addToScene = function (elements) {
@@ -113,6 +114,17 @@ define(["require", "exports", "SceneManager", "TimeLineControl", "libs/jquery/jq
                 from.m_startTimestamps = 0;
                 from.m_timestampsIndex = 0;
             }
+        };
+        SampleCanvas.prototype.onAfterRendered = function (from, t, context) {
+            context.save();
+            context.beginPath();
+            context.fillStyle = 'rgba(100,100,100,1)';
+            context.strokeStyle = 'rgba(100,100,100,1)';
+            context.lineWidth = 1;
+            context.closePath();
+            context.fill();
+            context.stroke();
+            context.restore();
         };
         return SampleCanvas;
     })();

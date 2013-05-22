@@ -44,6 +44,86 @@ define(["require", "exports", "libs/sylvester/sylvesterLib"], function(require, 
         ]);
     }
     exports.getTranslationMatrix = getTranslationMatrix;
+    function getScaleMatrix(scaleX, scaleY) {
+        return $M([
+            [
+                scaleX, 
+                0, 
+                0
+            ], 
+            [
+                0, 
+                scaleY, 
+                0
+            ], 
+            [
+                0, 
+                0, 
+                1
+            ]
+        ]);
+    }
+    exports.getScaleMatrix = getScaleMatrix;
+    function getSkewXMatrix(skewX) {
+        return $M([
+            [
+                1, 
+                Math.tan(skewX), 
+                0
+            ], 
+            [
+                0, 
+                1, 
+                0
+            ], 
+            [
+                0, 
+                0, 
+                1
+            ]
+        ]);
+    }
+    exports.getSkewXMatrix = getSkewXMatrix;
+    function getSkewYMatrix(skewY) {
+        return $M([
+            [
+                1, 
+                0, 
+                0
+            ], 
+            [
+                Math.tan(skewY), 
+                1, 
+                0
+            ], 
+            [
+                0, 
+                0, 
+                1
+            ]
+        ]);
+    }
+    exports.getSkewYMatrix = getSkewYMatrix;
+    function getIdentityMatrix() {
+        return $M([
+            [
+                1, 
+                0, 
+                0
+            ], 
+            [
+                0, 
+                1, 
+                0
+            ], 
+            [
+                0, 
+                0, 
+                1
+            ]
+        ]);
+    }
+    exports.getIdentityMatrix = getIdentityMatrix;
     function getTransformationMatrix(rad, tx, ty) {
         var costheta = Math.cos(rad);
         var sintheta = Math.sin(rad);

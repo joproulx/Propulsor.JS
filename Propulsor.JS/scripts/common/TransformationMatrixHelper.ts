@@ -18,6 +18,34 @@ export function getTranslationMatrix(x: number, y: number) {
         [0, 0, 1]
     ]);
 }
+export function getScaleMatrix(scaleX: number, scaleY: number) {
+    return $M([
+        [scaleX, 0, 0],
+        [0, scaleY, 0],
+        [0, 0, 1]
+    ]);
+}
+export function getSkewXMatrix(skewX: number) {
+    return $M([
+        [1, Math.tan(skewX), 0],
+        [0, 1, 0],
+        [0, 0, 1]
+    ]);
+}
+export function getSkewYMatrix(skewY: number) {
+    return $M([
+        [1, 0, 0],
+        [Math.tan(skewY), 1, 0],
+        [0, 0, 1]
+    ]);
+}
+export function getIdentityMatrix() {
+    return $M([
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1]
+    ]);
+}
 export function getTransformationMatrix(rad: number, tx: number, ty: number) {
     var costheta = Math.cos(rad);
     var sintheta = Math.sin(rad);

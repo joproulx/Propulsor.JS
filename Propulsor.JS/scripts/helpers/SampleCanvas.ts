@@ -57,6 +57,7 @@ export class SampleCanvas {
         this.m_timeLineControl = new TimeLineControl.TimeLineControl(this.m_sceneManager.TimeLineController, this.Canvas, document.getElementById(getId('timeLine')));
 
         this.m_sceneManager.TimeLineController.BeforeRenderEvent.subscribe(this.onBeforeRendered, this);
+        this.m_sceneManager.TimeLineController.AfterRenderEvent.subscribe(this.onAfterRendered, this);
 
         this.drawGrid();
     }
@@ -136,5 +137,25 @@ export class SampleCanvas {
             from.m_startTimestamps = 0;
             from.m_timestampsIndex = 0;
         }
+    }
+    onAfterRendered(from: SampleCanvas, t: number, context: any) {
+        
+        
+        
+        context.save();
+        context.beginPath();
+        context.fillStyle = 'rgba(100,100,100,1)';
+
+        // var rgb = this.Shape.StrokeColor.get(t);
+        // TODO: optimize how the rgb are passed to canvas
+        context.strokeStyle = 'rgba(100,100,100,1)';
+        context.lineWidth = 1;
+        
+//context.arc(x, y, radius, 0 , 2 * Math.PI, false);
+
+        context.closePath();
+        context.fill();
+        context.stroke();
+        context.restore();
     }
 }

@@ -1,8 +1,10 @@
-define(["require", "exports", "libs/underscore/underscoreLib"], function(require, exports, __underscore__) {
+define(["require", "exports", "libs/underscore/underscoreLib", "element/renderer/drawingContext/DrawingStyle"], function(require, exports, __underscore__, __DrawingStyle__) {
     
     
     
     var underscore = __underscore__;
+
+    var DrawingStyle = __DrawingStyle__;
 
     var _ = underscore;
     var ShapeRenderer = (function () {
@@ -159,7 +161,23 @@ define(["require", "exports", "libs/underscore/underscoreLib"], function(require
             context.fillStyle = fill ? this.Shape.Fill.Style.toString() : 'rgba(0,0,0,0)';
             context.strokeStyle = drawStroke ? this.Shape.Stroke.Style.toString() : this.Shape.Fill.Style.toString();
             context.lineWidth = this.Shape.Stroke.LineWidth.get(t);
-            context.lineJoin = "miter";
+            switch(this.Shape.Stroke.LineJoinType) {
+                case DrawingStyle.LineJoinTypes.Bevel: {
+                    context.lineJoin = "bevel";
+                    break;
+
+                }
+                case DrawingStyle.LineJoinTypes.Miter: {
+                    context.lineJoin = "miter";
+                    break;
+
+                }
+                case DrawingStyle.LineJoinTypes.Round: {
+                    context.lineJoin = "round";
+                    break;
+
+                }
+            }
         };
         ShapeRenderer.prototype.endRender = function (context, canClosePath, fill) {
             if(canClosePath && this.Shape.Path.IsClosedPath) {
