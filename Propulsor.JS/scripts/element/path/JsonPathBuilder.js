@@ -64,10 +64,8 @@ define(["require", "exports", "sceneGraph/SceneNode", "element/joint/Joint", "el
                 sceneNode2.translate(t, item.ControlPoint2.X, item.ControlPoint2.Y);
                 segment.setControlPoints(sceneNode, sceneNode2);
                 this._segments.push(segment);
-            } else {
-                if(item.SegmentType === "line") {
-                    this._segments.push(new LineSegment.LineSegment());
-                }
+            } else if(item.SegmentType === "line") {
+                this._segments.push(new LineSegment.LineSegment());
             }
         };
         JsonPathBuilder.prototype.linkJointsAndSegments = function (segments) {
@@ -78,16 +76,14 @@ define(["require", "exports", "sceneGraph/SceneNode", "element/joint/Joint", "el
                     } else {
                         this._joints[i].setSegments(segments[segments.length - 1], segments[0]);
                     }
-                } else {
-                    if(i == (this._joints.length - 1)) {
-                        if(!this._isClosedPath) {
-                            this._joints[i].setSegments(segments[i - 1], segments[i - 1]);
-                        } else {
-                            this._joints[i].setSegments(segments[i - 1], segments[i]);
-                        }
+                } else if(i == (this._joints.length - 1)) {
+                    if(!this._isClosedPath) {
+                        this._joints[i].setSegments(segments[i - 1], segments[i - 1]);
                     } else {
                         this._joints[i].setSegments(segments[i - 1], segments[i]);
                     }
+                } else {
+                    this._joints[i].setSegments(segments[i - 1], segments[i]);
                 }
             }
             var upperBound = this._joints.length;

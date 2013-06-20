@@ -64,14 +64,12 @@ define(["require", "exports", "common/Point"], function(require, exports, __Poin
             if(this.getSlope(t) == Infinity) {
                 x = this.getOffset(t);
                 y = otherLine.getSlope(t) * x + otherLine.getOffset(t);
+            } else if(otherLine.getSlope(t) == Infinity) {
+                x = otherLine.getOffset(t);
+                y = this.getSlope(t) * x + this.getOffset(t);
             } else {
-                if(otherLine.getSlope(t) == Infinity) {
-                    x = otherLine.getOffset(t);
-                    y = this.getSlope(t) * x + this.getOffset(t);
-                } else {
-                    x = (otherLine.getOffset(t) - this.getOffset(t)) / (this.getSlope(t) - otherLine.getSlope(t));
-                    y = this.getSlope(t) * x + this.getOffset(t);
-                }
+                x = (otherLine.getOffset(t) - this.getOffset(t)) / (this.getSlope(t) - otherLine.getSlope(t));
+                y = this.getSlope(t) * x + this.getOffset(t);
             }
             return new Point.Point(x, y);
         };

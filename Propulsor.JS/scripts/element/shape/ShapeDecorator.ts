@@ -1,9 +1,9 @@
-export import Shape = module("element/shape/Shape");
-export import Movable = module("element/Movable");
-export import Point = module("common/Point");
-export import Path = module("element/path/Path");
-export import ShapeRenderer = module("element/renderer/ShapeRenderer");
-export import DrawingStyle = module("element/renderer/drawingContext/DrawingStyle");
+import Shape = module("element/shape/Shape");
+import Movable = module("element/Movable");
+import Point = module("common/Point");
+import Path = module("element/path/Path");
+import ShapeRenderer = module("element/renderer/ShapeRenderer");
+import DrawingStyle = module("element/renderer/drawingContext/DrawingStyle");
 
 export class ShapeDecorator extends Movable.MovableWrapper  implements Shape.IShape {
     private _shape: Shape.IShape;

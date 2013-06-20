@@ -1,6 +1,6 @@
-export import Transition = module("transition/Transition");
-export import CachedTimedValue = module("common/timedValue/CachedTimedValue");
-export import underscore = module("libs/underscore/underscoreLib");
+import Transition = module("transition/Transition");
+import CachedTimedValue = module("common/timedValue/CachedTimedValue");
+import underscore = module("libs/underscore/underscoreLib");
 var _:any = underscore;
 
 

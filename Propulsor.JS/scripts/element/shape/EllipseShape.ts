@@ -1,9 +1,9 @@
-export import Shape = module("element/shape/Shape");
-export import ShapeDecorator = module("element/shape/ShapeDecorator");
-export import JsonPathBuilder = module("element/path/JsonPathBuilder");
-export import Path = module("element/path/Path");
-export import Point = module("common/Point");
-export import BezierSegment = module("element/segment/BezierSegment");
+import Shape = module("element/shape/Shape");
+import ShapeDecorator = module("element/shape/ShapeDecorator");
+import JsonPathBuilder = module("element/path/JsonPathBuilder");
+import Path = module("element/path/Path");
+import Point = module("common/Point");
+import BezierSegment = module("element/segment/BezierSegment");
 
 export class EllipseShape extends ShapeDecorator.ShapeDecorator{
     static Const = 0.5522847498;

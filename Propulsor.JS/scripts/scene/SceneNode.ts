@@ -1,13 +1,22 @@
-import Path = module("element/path/Path");
-import TimedValue = module("common/timedValue/TimedValue");
-import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
-import LinearTimedValue = module("common/timedValue/LinearTimedValue");
-import Point = module("common/Point");
-import PointTransition = module("transition/PointTransition");
-import FollowPathTransition = module("transition/FollowPathTransition");
-import FollowDirectionTransition = module("transition/FollowDirectionTransition");
-import sylvester = module("libs/sylvester/sylvesterLib");
+export import TimedValue = module("common/timedValue/TimedValue");
+export import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
+export import LinearTimedValue = module("common/timedValue/LinearTimedValue");
+export import Point = module("common/Point");
+export import PointTransition = module("transition/PointTransition");
+export import FollowPathTransition = module("transition/FollowPathTransition");
+export import FollowDirectionTransition = module("transition/FollowDirectionTransition");
+export import Path = module("element/path/Path");
+export import sylvester = module("libs/sylvester/sylvesterLib");
 var $M: any = sylvester;
+
+//export interface ITimedGetter {
+//    at(t: number): any;
+//}
+
+//export interface ITimedSetter {
+//    at(t: number): ITimedSetter;
+//}
+
 
 export interface IMovable {
     getPosition(t:number): Point.Point;
@@ -17,6 +26,14 @@ export interface IMovable {
     followPathPosition(t: number, path: Path.Path, startRatio: number, endRatio: number);
 }
 
+//export class TimedValueSetter { 
+//    at(t: number): ITimedSetter { 
+        
+        
+//    }
+//}
+
+
 export class SceneNode implements IMovable{
     _relativePosition: TimedValue.TimedValue = undefined;
     _relativeOrientation: TimedValue.TimedValue = undefined;
@@ -24,17 +41,13 @@ export class SceneNode implements IMovable{
     ChildNodes: SceneNode[];
 
     constructor (parentNode?: SceneNode) {
+        this.ParentNode = parentNode === null ? null : parentNode === undefined ? null : parentNode;
         this.ChildNodes = [];
 
         this._relativePosition = new TimedValue.TimedValue(function () { return new PointTransition.PointTransition(); });
         this._relativePosition.set(0, new Point.Point(0, 0));
         this._relativeOrientation = new LinearTimedValue.LinearTimedValue(0);
-
-        parentNode = parentNode === undefined ? null : parentNode;
-        if (parentNode !== null) { 
-            parentNode.addChildSceneNode(this);
-        }
-    }
+    };
     addChildSceneNode(sceneNode: SceneNode) {
         this.ChildNodes.push(sceneNode);
         sceneNode.ParentNode = this;
@@ -75,7 +88,7 @@ export class SceneNode implements IMovable{
     public setRelativePosition(t: number, point: Point.Point) {
         this._relativePosition.set(t, point);
     }
-    followPathPosition(t: number, path, startRatio: number, endRatio: number) {
+    followPathPosition(t: number, path: Path.Path, startRatio: number, endRatio: number) {
         this._relativePosition.set(t, undefined, new FollowPathTransition.FollowPathTransition(path, startRatio, endRatio, this));
     }
     followPathOrientation(t, path, startRatio, endRatio) {
@@ -91,14 +104,4 @@ export class SceneNode implements IMovable{
     translate(t: number, dx: number, dy: number) {
         this._relativePosition.set(t, new Point.Point(dx, dy));
     }
-    transform(t: number, matrix: any) { 
-        var tx = matrix.e(1, 3);
-        var ty = matrix.e(2, 3);
-        var cosTheta = matrix.e(1, 1);
-        
-        this._relativeOrientation.set(t, Math.acos(cosTheta));
-        this._relativePosition.set(0, new Point.Point(tx, ty));
-    }
-
-
 }

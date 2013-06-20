@@ -43,7 +43,7 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/timedValue
         }
         ColorStyle.fromRgb = function fromRgb(r, g, b) {
             return new ColorStyle(new Color(r, g, b), 1);
-        }
+        };
         ColorStyle.White = new ColorStyle(Color.White, 1);
         ColorStyle.Black = new ColorStyle(Color.Black, 1);
         ColorStyle.Blue = new ColorStyle(Color.Blue, 1);

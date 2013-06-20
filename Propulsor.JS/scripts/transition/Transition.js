@@ -6,13 +6,13 @@ define(["require", "exports", "transition/ITransition", "transition/Tween"], fun
     var Transition = (function () {
         function Transition(tween) {
             this.StartTimestamp = null;
-            ; ;
+            ;
             this.EndTimestamp = null;
-            ; ;
+            ;
             this.StartValue = null;
-            ; ;
+            ;
             this.EndValue = null;
-            ; ;
+            ;
             this.Tween = tween ? tween : new Tween.Tween();
         }
         Transition.prototype.getValue = function (t) {

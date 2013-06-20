@@ -1,6 +1,6 @@
-export import SceneNode = module("sceneGraph/SceneNode");
-export import Segment = module("element/segment/Segment");
-export import Movable = module("element/Movable");
+import SceneNode = module("sceneGraph/SceneNode");
+import Segment = module("element/segment/Segment");
+import Movable = module("element/Movable");
 
 
 export class Joint extends Movable.Movable {

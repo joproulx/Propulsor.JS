@@ -1,6 +1,5 @@
-import TimedValue = module("common/timedValue/TimedValue");
-import SceneNode = module("sceneGraph/SceneNode");
-import Point = module("common/Point");
+export import TimedValue = module("common/timedValue/TimedValue");
+export import SceneNode = module("scene/SceneNode");
 
 export class SceneNodePointAdapter extends TimedValue.TimedValue {
     SceneNode: SceneNode.SceneNode;

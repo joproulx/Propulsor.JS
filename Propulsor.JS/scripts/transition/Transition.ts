@@ -1,6 +1,6 @@
 
-export import ITransition = module("transition/ITransition");
-export import Tween = module("transition/Tween");
+import ITransition = module("transition/ITransition");
+import Tween = module("transition/Tween");
 
 export class Transition implements ITransition.ITransition {
     StartTimestamp;

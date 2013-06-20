@@ -1,8 +1,8 @@
-export import Shape = module("element/shape/Shape");
-export import ShapeDecorator = module("element/shape/ShapeDecorator");
-export import JsonPathBuilder = module("element/path/JsonPathBuilder");
-export import Path = module("element/path/Path");
-export import Point = module("common/Point");
+import Shape = module("element/shape/Shape");
+import ShapeDecorator = module("element/shape/ShapeDecorator");
+import JsonPathBuilder = module("element/path/JsonPathBuilder");
+import Path = module("element/path/Path");
+import Point = module("common/Point");
 
 export class ArrowShape extends ShapeDecorator.ShapeDecorator{
     constructor (t: number) {

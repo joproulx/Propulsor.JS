@@ -1,5 +1,5 @@
-export import TimedValue = module("common/timedValue/TimedValue");
-export import NumberTransition = module("transition/NumberTransition");
+import TimedValue = module("common/timedValue/TimedValue");
+import NumberTransition = module("transition/NumberTransition");
 
 export class LinearTimedValue extends TimedValue.TimedValue {
     constructor (defaultValue) {

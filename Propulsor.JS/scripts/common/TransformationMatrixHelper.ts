@@ -1,4 +1,4 @@
-export import sylvester = module("libs/sylvester/sylvesterLib");
+import sylvester = module("libs/sylvester/sylvesterLib");
 var $M: any = sylvester;
 
 export function getRotationMatrix(rad: number) {

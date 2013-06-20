@@ -1,12 +1,12 @@
-export import GuidGenerator = module("common/GuidGenerator");
-export import IRenderable = module("element/shape/IRenderable");
-export import LinearTimedValue = module("common/timedValue/LinearTimedValue");
-export import TimedValue = module("common/timedValue/TimedValue");
-export import ShapeRenderer = module("element/renderer/ShapeRenderer");
-export import Path = module("element/path/Path");
-export import SceneNode = module("sceneGraph/SceneNode");
-export import Movable = module("element/Movable");
-export import DrawingStyle = module("element/renderer/drawingContext/DrawingStyle");
+import GuidGenerator = module("common/GuidGenerator");
+import IRenderable = module("element/shape/IRenderable");
+import LinearTimedValue = module("common/timedValue/LinearTimedValue");
+import TimedValue = module("common/timedValue/TimedValue");
+import ShapeRenderer = module("element/renderer/ShapeRenderer");
+import Path = module("element/path/Path");
+import SceneNode = module("sceneGraph/SceneNode");
+import Movable = module("element/Movable");
+import DrawingStyle = module("element/renderer/drawingContext/DrawingStyle");
 
 
 export interface IShape extends IRenderable.IRenderable extends SceneNode.IMovable {

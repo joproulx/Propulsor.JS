@@ -69,6 +69,10 @@
       <DependentUpon>Timer.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="scripts\common\TransformationMatrixHelper.ts" />
+    <TypeScriptCompile Include="scripts\common\TransformationMatrix.ts" />
+    <Content Include="scripts\common\TransformationMatrix.js">
+      <DependentUpon>TransformationMatrix.ts</DependentUpon>
+    </Content>
     <Content Include="scripts\common\TransformationMatrixHelper.js">
       <DependentUpon>TransformationMatrixHelper.ts</DependentUpon>
     </Content>

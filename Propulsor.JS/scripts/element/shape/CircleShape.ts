@@ -1,4 +1,4 @@
-export import EllipseShape = module("element/shape/EllipseShape");
+import EllipseShape = module("element/shape/EllipseShape");
 
 export class CircleShape extends EllipseShape.EllipseShape{
     

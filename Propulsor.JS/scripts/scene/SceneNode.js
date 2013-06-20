@@ -1,5 +1,4 @@
 define(["require", "exports", "common/timedValue/TimedValue", "common/TransformationMatrixHelper", "common/timedValue/LinearTimedValue", "common/Point", "transition/PointTransition", "transition/FollowPathTransition", "transition/FollowDirectionTransition", "libs/sylvester/sylvesterLib"], function(require, exports, __TimedValue__, __TransformationMatrixHelper__, __LinearTimedValue__, __Point__, __PointTransition__, __FollowPathTransition__, __FollowDirectionTransition__, __sylvester__) {
-    
     var TimedValue = __TimedValue__;
 
     var TransformationMatrixHelper = __TransformationMatrixHelper__;
@@ -14,6 +13,7 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/Transforma
 
     var FollowDirectionTransition = __FollowDirectionTransition__;
 
+    
     var sylvester = __sylvester__;
 
     var $M = sylvester;
@@ -21,16 +21,13 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/Transforma
         function SceneNode(parentNode) {
             this._relativePosition = undefined;
             this._relativeOrientation = undefined;
+            this.ParentNode = parentNode === null ? null : parentNode === undefined ? null : parentNode;
             this.ChildNodes = [];
             this._relativePosition = new TimedValue.TimedValue(function () {
                 return new PointTransition.PointTransition();
             });
             this._relativePosition.set(0, new Point.Point(0, 0));
             this._relativeOrientation = new LinearTimedValue.LinearTimedValue(0);
-            parentNode = parentNode === undefined ? null : parentNode;
-            if(parentNode !== null) {
-                parentNode.addChildSceneNode(this);
-            }
         }
         SceneNode.prototype.addChildSceneNode = function (sceneNode) {
             this.ChildNodes.push(sceneNode);
@@ -95,13 +92,6 @@ define(["require", "exports", "common/timedValue/TimedValue", "common/Transforma
         };
         SceneNode.prototype.translate = function (t, dx, dy) {
             this._relativePosition.set(t, new Point.Point(dx, dy));
-        };
-        SceneNode.prototype.transform = function (t, matrix) {
-            var tx = matrix.e(1, 3);
-            var ty = matrix.e(2, 3);
-            var cosTheta = matrix.e(1, 1);
-            this._relativeOrientation.set(t, Math.acos(cosTheta));
-            this._relativePosition.set(0, new Point.Point(tx, ty));
         };
         return SceneNode;
     })();

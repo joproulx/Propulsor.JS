@@ -1,10 +1,10 @@
-export import Transition = module("transition/Transition");
-export import Tween = module("transition/Tween");
-export import EaseInTween = module("transition/EaseInTween");
-export import SceneNode = module("sceneGraph/SceneNode");
-export import Path = module("element/path/Path");
-export import Point = module("common/Point");
-export import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
+import Transition = module("transition/Transition");
+import Tween = module("transition/Tween");
+import EaseInTween = module("transition/EaseInTween");
+import SceneNode = module("sceneGraph/SceneNode");
+import Path = module("element/path/Path");
+import Point = module("common/Point");
+import TransformationMatrixHelper = module("common/TransformationMatrixHelper");
 
 export class FollowPathTransition extends Transition.Transition {
     SceneNode: SceneNode.SceneNode;

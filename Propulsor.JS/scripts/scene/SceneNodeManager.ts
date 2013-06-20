@@ -1,10 +1,9 @@
-import SceneNode = module("sceneGraph/SceneNode");
-import Path = module("element/path/Path");
+export import SceneNode = module("scene/SceneNode");
 
-export class SceneGraph {
+export class SceneNodeManager {
     SceneNodes: SceneNode.SceneNode[];
     constructor () {
-        this.SceneNodes = [];
+        this.SceneNodes = new SceneNode.SceneNode[];
     }
     addSceneNode(sceneNode: SceneNode.SceneNode) {
         this.SceneNodes.push(sceneNode);

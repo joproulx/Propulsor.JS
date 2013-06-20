@@ -1,7 +1,7 @@
-export import SceneManager = module("SceneManager");
-export import IRenderable = module("element/shape/IRenderable");
-export import TimeLineControl = module("TimeLineControl");
-export import jQuery = module("libs/jquery/jqueryLib");
+import SceneManager = module("SceneManager");
+import IRenderable = module("element/shape/IRenderable");
+import TimeLineControl = module("TimeLineControl");
+import jQuery = module("libs/jquery/jqueryLib");
 var $: any = jQuery;
 
 export class SampleCanvas {

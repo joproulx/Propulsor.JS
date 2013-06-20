@@ -7,7 +7,6 @@ define(["require", "exports", "common/timedValue/TimedValue"], function(require,
     var TimedValue = __TimedValue__;
 
     
-    
     var SceneNodePointAdapter = (function (_super) {
         __extends(SceneNodePointAdapter, _super);
         function SceneNodePointAdapter(sceneNode) {

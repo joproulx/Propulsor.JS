@@ -7,6 +7,7 @@ define(["require", "exports", "element/renderer/SegmentRenderer"], function(requ
     
     var SegmentRenderer = __SegmentRenderer__;
 
+    
     var BezierSegmentRenderer = (function (_super) {
         __extends(BezierSegmentRenderer, _super);
         function BezierSegmentRenderer(bezierSegment) {

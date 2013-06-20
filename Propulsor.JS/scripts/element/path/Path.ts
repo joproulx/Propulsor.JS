@@ -1,8 +1,8 @@
-export import Segment = module("element/segment/Segment");
-export import Joint = module("element/joint/Joint");
-export import Movable = module("element/Movable");
-export import SceneNode = module("sceneGraph/SceneNode");
-export import Point = module("common/Point");
+import Segment = module("element/segment/Segment");
+import Joint = module("element/joint/Joint");
+import Movable = module("element/Movable");
+import SceneNode = module("sceneGraph/SceneNode");
+import Point = module("common/Point");
 
 export interface IPath extends SceneNode.IMovable {
     Segments: Segment.Segment[]; // todo: Use only getter if typescript supports it

@@ -1,5 +1,5 @@
-export import Transition = module("transition/Transition");
-export import Point = module("common/Point");
+import Transition = module("transition/Transition");
+import Point = module("common/Point");
 
 export class PointTransition extends Transition.Transition {
     constructor () {

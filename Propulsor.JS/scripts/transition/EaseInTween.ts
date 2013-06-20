@@ -1,1 +1,1 @@
-export import Tween = module("transition/Tween");
+import Tween = module("transition/Tween");

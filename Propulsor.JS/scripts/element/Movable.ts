@@ -1,6 +1,6 @@
-export import SceneNode = module("sceneGraph/SceneNode");
-export import Point = module("common/Point");
-export import Path = module("element/path/Path");
+import SceneNode = module("sceneGraph/SceneNode");
+import Point = module("common/Point");
+import Path = module("element/path/Path");
 
 export class Movable implements SceneNode.IMovable {
     SceneNode: SceneNode.SceneNode;

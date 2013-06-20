@@ -1,6 +1,6 @@
-export import TimeLineController = module("TimeLineController");
-export import GuidGenerator = module("common/GuidGenerator");
-export import jQuery = module("libs/jquery/jqueryLib");
+import TimeLineController = module("TimeLineController");
+import GuidGenerator = module("common/GuidGenerator");
+import jQuery = module("libs/jquery/jqueryLib");
 var $: any = jQuery;
 
 export class TimeLineControl {

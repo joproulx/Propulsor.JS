@@ -1,10 +1,10 @@
 
 
-export import SegmentRenderer = module("element/renderer/SegmentRenderer");
-export import Segment = module("element/segment/Segment");
-export import Shape = module("element/shape/Shape");
-export import underscore = module("libs/underscore/underscoreLib");
-export import DrawingStyle = module("element/renderer/drawingContext/DrawingStyle");
+import SegmentRenderer = module("element/renderer/SegmentRenderer");
+import Segment = module("element/segment/Segment");
+import Shape = module("element/shape/Shape");
+import underscore = module("libs/underscore/underscoreLib");
+import DrawingStyle = module("element/renderer/drawingContext/DrawingStyle");
 var _: any = underscore;
 
 

@@ -1,8 +1,8 @@
-export import Transition = module("transition/Transition");
-export import SceneNode = module("sceneGraph/SceneNode");
-export import Path = module("element/path/Path");
-export import Tween = module("transition/Tween");
-export import EaseInTween = module("transition/EaseInTween");
+import Transition = module("transition/Transition");
+import SceneNode = module("sceneGraph/SceneNode");
+import Path = module("element/path/Path");
+import Tween = module("transition/Tween");
+import EaseInTween = module("transition/EaseInTween");
 
 export class FollowDirectionTransition extends Transition.Transition {
     SceneNode: SceneNode.SceneNode;

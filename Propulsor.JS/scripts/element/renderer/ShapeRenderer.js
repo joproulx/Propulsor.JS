@@ -149,11 +149,11 @@ define(["require", "exports", "libs/underscore/underscoreLib", "element/renderer
                         }
                         beginPath = endPath;
                         currentTotalLength += endLength;
-                    }while(!reachedEnd)
+                    }while(!reachedEnd);
                     totalSegmentLength += segmentLength;
                 }
                 firstPass = !firstPass;
-            }while(needTwoPasses && !firstPass)
+            }while(needTwoPasses && !firstPass);
         };
         ShapeRenderer.prototype.beginRender = function (t, context, drawStroke, fill) {
             context.save();
@@ -162,21 +162,15 @@ define(["require", "exports", "libs/underscore/underscoreLib", "element/renderer
             context.strokeStyle = drawStroke ? this.Shape.Stroke.Style.toString() : this.Shape.Fill.Style.toString();
             context.lineWidth = this.Shape.Stroke.LineWidth.get(t);
             switch(this.Shape.Stroke.LineJoinType) {
-                case DrawingStyle.LineJoinTypes.Bevel: {
+                case DrawingStyle.LineJoinTypes.Bevel:
                     context.lineJoin = "bevel";
                     break;
-
-                }
-                case DrawingStyle.LineJoinTypes.Miter: {
+                case DrawingStyle.LineJoinTypes.Miter:
                     context.lineJoin = "miter";
                     break;
-
-                }
-                case DrawingStyle.LineJoinTypes.Round: {
+                case DrawingStyle.LineJoinTypes.Round:
                     context.lineJoin = "round";
                     break;
-
-                }
             }
         };
         ShapeRenderer.prototype.endRender = function (context, canClosePath, fill) {

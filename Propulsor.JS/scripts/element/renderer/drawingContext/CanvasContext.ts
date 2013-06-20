@@ -1,5 +1,5 @@
-//export import LineSegment = module("element/segment/LineSegment");
-//export import SegmentRenderer = module("element/renderer/SegmentRenderer");
+//importLineSegment = module("element/segment/LineSegment");
+//importSegmentRenderer = module("element/renderer/SegmentRenderer");
 
 export interface IDrawingContext {
     save();

@@ -1,14 +1,14 @@
 
-export import Shape = module("element/shape/Shape");
-export import Point = module("common/Point");
-export import SceneNode = module("sceneGraph/SceneNode");
-export import Joint = module("element/joint/Joint");
-export import EndPoint = module("element/joint/EndPoint");
-export import Segment = module("element/segment/Segment");
-export import LineSegment = module("element/segment/LineSegment");
-export import Path = module("element/path/Path");
-export import BezierSegment = module("element/segment/BezierSegment");
-export import underscore = module("libs/underscore/underscoreLib");
+import Shape = module("element/shape/Shape");
+import Point = module("common/Point");
+import SceneNode = module("sceneGraph/SceneNode");
+import Joint = module("element/joint/Joint");
+import EndPoint = module("element/joint/EndPoint");
+import Segment = module("element/segment/Segment");
+import LineSegment = module("element/segment/LineSegment");
+import Path = module("element/path/Path");
+import BezierSegment = module("element/segment/BezierSegment");
+import underscore = module("libs/underscore/underscoreLib");
 var _:any = underscore;
 
 
