@@ -1,0 +1,1 @@
+{"version":3,"file":"ArrayTimedValue.js","sourceRoot":"","sources":["ArrayTimedValue.ts"],"names":["ArrayTimedValue","ArrayTimedValue.constructor"],"mappings":";;;;;;AAAA;;;IAQA;QAAiCA,kCAAeA;QAC5CA,yBAAYA,YAAiBA,EAAEA,qBAAuCA;YAClEC,WAAMA,OAAAA,YAAYA,EAAEA,IAAIA,iBAAiBA,CAAIA,qBAAqBA,CAACA,CAACA;QAExEA,CAACA;QACLD,uBAACA;IAADA,CAACA,EALgC,UAAU,EAK1C;IAPD,sBAAyB;GASxB"}

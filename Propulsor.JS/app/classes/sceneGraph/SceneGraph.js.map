@@ -1,0 +1,1 @@
+{"version":3,"file":"SceneGraph.js","sourceRoot":"","sources":["SceneGraph.ts"],"names":["SceneGraph","SceneGraph.constructor","SceneGraph.addSceneNode"],"mappings":"AAAA;;IAIA;QAEIA;YACIC,IAAIA,CAACA,UAAUA,GAAGA,EAAEA;QACxBA,CAACA;QACDD,oCAAAA,UAAaA,SAAoBA;YAC7BE,IAAIA,CAACA,UAAUA,CAACA,IAAIA,CAACA,SAASA,CAACA;QACnCA,CAACA;QACLF,kBAACA;IAADA,CAACA,IAAA;IATD,iBAAoB;GASnB"}

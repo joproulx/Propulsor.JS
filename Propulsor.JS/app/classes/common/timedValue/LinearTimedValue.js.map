@@ -1,0 +1,1 @@
+{"version":3,"file":"LinearTimedValue.js","sourceRoot":"","sources":["LinearTimedValue.ts"],"names":["NumericTimedValue","NumericTimedValue.constructor"],"mappings":";;;;;;AAAA;;;IAOA;QAAgCA,oCAAkBA;QAC9CA,2BAAYA,YAAoBA;YAC5BC,WAAMA,OAAAA,YAAYA,EAAEA,kBAAkBA,CAACA,OAAOA,CAACA;QAEnDA,CAACA;QACLD,yBAACA;IAADA,CAACA,EAL+B,UAAU,EAKzC;IAPD,wBAA2B;GAS3B"}

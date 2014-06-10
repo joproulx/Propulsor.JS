@@ -1,0 +1,1 @@
+{"version":3,"file":"Tween.js","sourceRoot":"","sources":["Tween.ts"],"names":["Tween","Tween.constructor","Tween.getYRatio"],"mappings":"AAAA;;IAGA;QAGIA,eAAYA,QAAoCA;YAC5CC,IAAIA,CAACA,SAASA,GAAGA,QAAQA;QAC7BA,CAACA;QAEDD,4BAAAA,UAAiBA,MAAcA;YAC3BE,OAAOA,IAAIA,CAACA,SAASA,CAACA,MAAMA,CAACA;QACjCA,CAACA;QACLF,aAACA;IAADA,CAACA,IAAA;IAXD,YAAe;GAWd"}

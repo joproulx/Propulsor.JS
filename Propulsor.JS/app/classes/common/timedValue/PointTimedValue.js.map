@@ -1,0 +1,1 @@
+{"version":3,"file":"PointTimedValue.js","sourceRoot":"","sources":["PointTimedValue.ts"],"names":["PointTimedValue","PointTimedValue.constructor"],"mappings":";;;;;;AAAA;;;IAOA;QAA8BA,kCAAiBA;QAC3CA,yBAAYA,YAAmBA;YAC3BC,WAAMA,OAAAA,YAAYA,EAAEA,kBAAkBA,CAACA,KAAKA,CAACA;QAEjDA,CAACA;QACLD,uBAACA;IAADA,CAACA,EAL6B,UAAU,EAKvC;IAPD,sBAAyB;GAOvB"}

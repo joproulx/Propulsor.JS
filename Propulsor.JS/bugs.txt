@@ -1,5 +1,0 @@
-this.SegmentRenderers = new SegmentRenderer.SegmentRenderer[];
-
-should be replaced with 
-
-this.SegmentRenderers = [];

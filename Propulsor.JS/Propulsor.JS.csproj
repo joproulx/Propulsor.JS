@@ -1,296 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{021CB218-235E-4EFB-9F0D-5FA842193192}</ProjectGuid>
+    <ProjectGuid>{AD663167-B86A-4E2A-B346-2F059FEA06A3}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <OutputPath>bin</OutputPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>4.0</OldToolsVersion>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="default.htm" />
-    <TypeScriptCompile Include="scripts\common\Event.ts" />
-    <Content Include="Samples.html" />
-    <Content Include="scripts\app.js" />
-    <Content Include="scripts\common\Event.js">
-      <DependentUpon>Event.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\GuidGenerator.ts" />
-    <Content Include="scripts\common\GuidGenerator.js">
-      <DependentUpon>GuidGenerator.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\Line.ts" />
-    <Content Include="scripts\common\Line.js">
-      <DependentUpon>Line.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\Point.ts" />
-    <Content Include="scripts\common\Point.js">
-      <DependentUpon>Point.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\PolyFill.ts" />
-    <Content Include="scripts\common\PolyFill.js">
-      <DependentUpon>PolyFill.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\timedValue\CachedTimedValue.ts" />
-    <TypeScriptCompile Include="scripts\common\Style\GradientStyle.ts" />
-    <Content Include="scripts\common\Style\GradientStyle.js">
-      <DependentUpon>GradientStyle.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\Style\Style.ts" />
-    <Content Include="scripts\common\Style\Style.js">
-      <DependentUpon>Style.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\common\timedValue\CachedTimedValue.js">
-      <DependentUpon>CachedTimedValue.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\timedValue\LinearTimedValue.ts" />
-    <Content Include="scripts\common\timedValue\LinearTimedValue.js">
-      <DependentUpon>LinearTimedValue.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\timedValue\TimedValue.ts" />
-    <Content Include="scripts\common\timedValue\TimedValue.js">
-      <DependentUpon>TimedValue.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\Timer.ts" />
-    <Content Include="scripts\common\Timer.js">
-      <DependentUpon>Timer.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\common\TransformationMatrixHelper.ts" />
-    <TypeScriptCompile Include="scripts\common\TransformationMatrix.ts" />
-    <Content Include="scripts\common\TransformationMatrix.js">
-      <DependentUpon>TransformationMatrix.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\common\TransformationMatrixHelper.js">
-      <DependentUpon>TransformationMatrixHelper.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\joint\ArrowEndPoint.ts" />
-    <Content Include="scripts\element\joint\ArrowEndPoint.js">
-      <DependentUpon>ArrowEndPoint.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\joint\EndPoint.ts" />
-    <Content Include="scripts\element\joint\EndPoint.js">
-      <DependentUpon>EndPoint.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\joint\Joint.ts" />
-    <Content Include="scripts\element\joint\Joint.js">
-      <DependentUpon>Joint.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\path\Path.ts" />
-    <TypeScriptCompile Include="scripts\element\Movable.ts" />
-    <Content Include="scripts\element\Movable.js">
-      <DependentUpon>Movable.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\path\JsonPathBuilder.ts" />
-    <Content Include="scripts\element\path\JsonPathBuilder.js">
-      <DependentUpon>JsonPathBuilder.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\element\path\Path.js">
-      <DependentUpon>Path.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\renderer\ArcSegmentRenderer.ts" />
-    <Content Include="scripts\element\renderer\ArcSegmentRenderer.js">
-      <DependentUpon>ArcSegmentRenderer.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\renderer\ArrowSegmentRenderer.ts" />
-    <Content Include="scripts\element\renderer\ArrowSegmentRenderer.js">
-      <DependentUpon>ArrowSegmentRenderer.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\renderer\BezierSegmentRenderer.ts" />
-    <Content Include="scripts\element\renderer\BezierSegmentRenderer.js">
-      <DependentUpon>BezierSegmentRenderer.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\renderer\LineSegmentRenderer.ts" />
-    <TypeScriptCompile Include="scripts\element\renderer\drawingContext\CanvasContext.ts" />
-    <Content Include="scripts\element\renderer\drawingContext\canvasContext.js">
-      <DependentUpon>CanvasContext.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\renderer\drawingContext\DrawingStyle.ts" />
-    <Content Include="scripts\element\renderer\drawingContext\drawingStyle.js">
-      <DependentUpon>DrawingStyle.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\element\renderer\LineSegmentRenderer.js">
-      <DependentUpon>LineSegmentRenderer.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\renderer\SegmentRenderer.ts" />
-    <Content Include="scripts\element\renderer\SegmentRenderer.js">
-      <DependentUpon>SegmentRenderer.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\renderer\ShapeRenderer.ts" />
-    <Content Include="scripts\element\renderer\ShapeRenderer.js">
-      <DependentUpon>ShapeRenderer.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\segment\ArcSegment.ts" />
-    <Content Include="scripts\element\segment\ArcSegment.js">
-      <DependentUpon>ArcSegment.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\segment\BezierSegment.ts" />
-    <Content Include="scripts\element\segment\BezierSegment.js">
-      <DependentUpon>BezierSegment.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\segment\LineSegment.ts" />
-    <Content Include="scripts\element\segment\LineSegment.js">
-      <DependentUpon>LineSegment.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\segment\Segment.ts" />
-    <Content Include="scripts\element\segment\Segment.js">
-      <DependentUpon>Segment.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\shape\ArrowShape.ts" />
-    <Content Include="scripts\element\shape\ArrowShape.js">
-      <DependentUpon>ArrowShape.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\shape\IRenderable.ts" />
-    <Content Include="scripts\element\shape\Circle.js">
-      <DependentUpon>CircleShape.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\shape\CircleShape.ts" />
-    <TypeScriptCompile Include="scripts\element\shape\EllipseShape.ts" />
-    <Content Include="scripts\element\shape\Ellipse.js">
-      <DependentUpon>EllipseShape.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\element\shape\IRenderable.js">
-      <DependentUpon>IRenderable.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\shape\RectangleShape.ts" />
-    <Content Include="scripts\element\shape\RectangleShape.js">
-      <DependentUpon>RectangleShape.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\shape\RoundedRectangleShape.ts" />
-    <Content Include="scripts\element\shape\RoundedRectangleShape.js">
-      <DependentUpon>RoundedRectangleShape.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\shape\Shape.ts" />
-    <Content Include="scripts\element\shape\Shape.js">
-      <DependentUpon>Shape.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\element\shape\TextShape.ts" />
-    <TypeScriptCompile Include="scripts\element\shape\ShapeDecorator.ts" />
-    <Content Include="scripts\element\shape\ShapeDecorator.js">
-      <DependentUpon>ShapeDecorator.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\element\shape\TextShape.js">
-      <DependentUpon>TextShape.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\helpers\SampleCanvas.ts" />
-    <Content Include="scripts\helpers\SampleCanvas.js">
-      <DependentUpon>SampleCanvas.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\libs\jquery\jquery.js" />
-    <TypeScriptCompile Include="scripts\libs\jquery\jqueryLib.ts" />
-    <Content Include="scripts\libs\jquery\jqueryLib.js">
-      <DependentUpon>jqueryLib.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\libs\log4javascript\license.txt" />
-    <Content Include="scripts\libs\log4javascript\log4javascript.js" />
-    <Content Include="scripts\libs\require\require.js" />
-    <Content Include="scripts\libs\sylvester\CHANGELOG.txt" />
-    <TypeScriptCompile Include="scripts\Scene.ts" />
-    <Content Include="scripts\libs\sylvester\sylvester.js" />
-    <Content Include="scripts\libs\sylvester\sylvester.src.js" />
-    <TypeScriptCompile Include="scripts\libs\sylvester\sylvesterLib.ts" />
-    <Content Include="scripts\libs\sylvester\sylvesterLib.js">
-      <DependentUpon>sylvesterLib.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\libs\underscore\underscore.js" />
-    <TypeScriptCompile Include="scripts\libs\underscore\underscoreLib.ts" />
-    <Content Include="scripts\libs\underscore\underscoreLib.js">
-      <DependentUpon>underscoreLib.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\Scene.js">
-      <DependentUpon>Scene.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\SceneManager.ts" />
-    <Content Include="scripts\SceneManager.js">
-      <DependentUpon>SceneManager.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\sceneGraph\SceneNode.ts" />
-    <Content Include="scripts\sceneGraph\SceneNode.js">
-      <DependentUpon>SceneNode.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\sceneGraph\SceneGraph.ts" />
-    <Content Include="scripts\sceneGraph\SceneNodeManager.js">
-      <DependentUpon>SceneGraph.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\sceneGraph\SceneNodePointAdapter.ts" />
-    <Content Include="scripts\sceneGraph\SceneNodePointAdapter.js">
-      <DependentUpon>SceneNodePointAdapter.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\TimeLineControl.ts" />
-    <TypeScriptCompile Include="scripts\svg\SvgReader.ts" />
-    <Content Include="scripts\svg\SvgReader.js">
-      <DependentUpon>SvgReader.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\TimeLineControl.js">
-      <DependentUpon>TimeLineControl.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\TimeLineController.ts" />
-    <Content Include="scripts\TimeLineController.js">
-      <DependentUpon>TimeLineController.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\transition\ColorTransition.ts" />
-    <Content Include="scripts\transition\ColorLinearTransition.js">
-      <DependentUpon>ColorTransition.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\transition\FollowDirectionTransition.ts" />
-    <TypeScriptCompile Include="scripts\transition\EaseInTween.ts" />
-    <Content Include="scripts\transition\EaseInTween.js">
-      <DependentUpon>EaseInTween.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\transition\FollowDirectionTransition.js">
-      <DependentUpon>FollowDirectionTransition.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\transition\FollowPathTransition.ts" />
-    <Content Include="scripts\transition\FollowPathTransition.js">
-      <DependentUpon>FollowPathTransition.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\transition\NumberTransition.ts" />
-    <TypeScriptCompile Include="scripts\transition\ITransition.ts" />
-    <Content Include="scripts\transition\ITransition.js">
-      <DependentUpon>ITransition.ts</DependentUpon>
-    </Content>
-    <Content Include="scripts\transition\LinearTransition.js">
-      <DependentUpon>NumberTransition.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\transition\PointTransition.ts" />
-    <Content Include="scripts\transition\PointLinearTransition.js">
-      <DependentUpon>PointTransition.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\transition\TransformationMatrixTransition.ts" />
-    <Content Include="scripts\transition\TransformationMatrixLinearTransition.js">
-      <DependentUpon>TransformationMatrixTransition.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="scripts\transition\Transition.ts" />
-    <Content Include="scripts\transition\Transition.js">
-      <DependentUpon>Transition.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="scripts\libs\sylvester\sylvester.js.gz" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="scripts\transition\Tween.ts" />
-    <Content Include="scripts\transition\Tween.js">
-      <DependentUpon>Tween.ts</DependentUpon>
-    </Content>
+    <Content Include="app.css" />
+    <Content Include="index.html" />
+    <Content Include="lib\jquery-2.1.1.min.js" />
+    <Content Include="lib\rbtree.js" />
+    <Content Include="lib\require.js" />
+    <Content Include="lib\underscore-min.js" />
     <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\AppConfig.ts" />
+    <TypeScriptCompile Include="app\AppMain.ts" />
+    <TypeScriptCompile Include="app\classes\common\error\AbstractMethodError.ts" />
+    <TypeScriptCompile Include="app\classes\common\Event.ts" />
+    <TypeScriptCompile Include="app\classes\common\EventHandler.ts" />
+    <TypeScriptCompile Include="app\classes\common\GuidGenerator.ts" />
+    <TypeScriptCompile Include="app\classes\common\Line.ts" />
+    <TypeScriptCompile Include="app\classes\common\Point.ts" />
+    <TypeScriptCompile Include="app\classes\common\PolyFill.ts" />
+    <TypeScriptCompile Include="app\classes\common\Ratio.ts" />
+    <TypeScriptCompile Include="app\classes\common\style\Color.ts" />
+    <TypeScriptCompile Include="app\classes\common\style\ColorStyle.ts" />
+    <TypeScriptCompile Include="app\classes\common\style\Dash.ts" />
+    <TypeScriptCompile Include="app\classes\common\style\FillConfiguration.ts" />
+    <TypeScriptCompile Include="app\classes\common\style\IDrawStyle.ts" />
+    <TypeScriptCompile Include="app\classes\common\style\LineJoinTypes.ts" />
+    <TypeScriptCompile Include="app\classes\common\style\StrokeConfiguration.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\ArrayTimedValue.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\BasicComparators.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\Cut.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\BoundType.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\CutComparator.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\IComparable.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\IComparator.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\tween\BasicTweenControllers.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\tween\ChainableTweenController.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\tween\ITweenController.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\NumericTimedValue.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\Number.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\PointTimedValue.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\Range.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\TreeRangeMap.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\TimedValue.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\RangeMapEntry.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\TreeMap.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\TreeMapEntry.ts" />
+    <TypeScriptCompile Include="app\classes\common\RenderingLoop.ts" />
+    <TypeScriptCompile Include="app\classes\common\TransformationMatrix.ts" />
+    <TypeScriptCompile Include="app\classes\common\TransformationMatrixHelper.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\interpolation\ArrayInterpolator.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\interpolation\BasicInterpolators.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\interpolation\IInterpolator.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\interpolation\Interpolator.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\Transition.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\tween\BasicTweens.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\tween\ITween.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\tween\RepeatTweenController.ts" />
+    <TypeScriptCompile Include="app\classes\common\transition\tween\Tween.ts" />
+    <TypeScriptCompile Include="app\classes\element\IMovable.ts" />
+    <TypeScriptCompile Include="app\classes\element\joint\ArrowEndPoint.ts" />
+    <TypeScriptCompile Include="app\classes\element\joint\EndPoint.ts" />
+    <TypeScriptCompile Include="app\classes\element\joint\Joint.ts" />
+    <TypeScriptCompile Include="app\classes\element\Movable.ts" />
+    <TypeScriptCompile Include="app\classes\element\MovableWrapper.ts" />
+    <TypeScriptCompile Include="app\classes\element\path\IPath.ts" />
+    <TypeScriptCompile Include="app\classes\element\path\Path.ts" />
+    <TypeScriptCompile Include="app\classes\element\renderer\drawingContext\CanvasContext.ts" />
+    <TypeScriptCompile Include="app\classes\element\renderer\drawingContext\IDrawingContext.ts" />
+    <TypeScriptCompile Include="app\classes\element\renderer\LineSegmentRenderer.ts" />
+    <TypeScriptCompile Include="app\classes\element\renderer\SegmentRenderer.ts" />
+    <TypeScriptCompile Include="app\classes\element\renderer\ShapeRenderer.ts" />
+    <TypeScriptCompile Include="app\classes\element\segment\LineSegment.ts" />
+    <TypeScriptCompile Include="app\classes\element\segment\Segment.ts" />
+    <TypeScriptCompile Include="app\classes\element\shape\IRenderable.ts" />
+    <TypeScriptCompile Include="app\classes\element\shape\IShape.ts" />
+    <TypeScriptCompile Include="app\classes\element\shape\LineShape.ts" />
+    <TypeScriptCompile Include="app\classes\element\shape\Shape.ts" />
+    <TypeScriptCompile Include="app\classes\element\shape\ShapeDecorator.ts" />
+    <TypeScriptCompile Include="app\classes\scene\Scene.ts" />
+    <TypeScriptCompile Include="app\classes\scene\SceneManager.ts" />
+    <TypeScriptCompile Include="app\classes\scene\TimeLineController.ts" />
+    <TypeScriptCompile Include="app\classes\ui\SampleCanvas.ts" />
+    <TypeScriptCompile Include="app\classes\sceneGraph\ISceneNode.ts" />
+    <TypeScriptCompile Include="app\classes\sceneGraph\SceneGraph.ts" />
+    <TypeScriptCompile Include="app\classes\sceneGraph\SceneNode.ts" />
+    <TypeScriptCompile Include="app\classes\ui\TimeLineControl.ts" />
+    <TypeScriptCompile Include="modules\jquery.d.ts" />
+    <TypeScriptCompile Include="modules\rbtree.d.ts" />
+    <TypeScriptCompile Include="modules\require.d.ts" />
+    <TypeScriptCompile Include="modules\sylvester.d.ts" />
+    <TypeScriptCompile Include="modules\underscore.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -300,14 +126,13 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56523</DevelopmentServerPort>
+          <DevelopmentServerPort>7659</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:58487/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
@@ -320,11 +145,16 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptSourceMap> --sourcemap</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
-  <Target Name="BeforeBuild">
-    <Message Text="Compiling TypeScript files" />
-    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
-    <Exec Command="tsc$(TypeScriptSourceMap) --target ES5 --module AMD  @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
-  </Target>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

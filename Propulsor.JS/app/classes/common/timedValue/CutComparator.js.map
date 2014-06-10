@@ -1,0 +1,1 @@
+{"version":3,"file":"CutComparator.js","sourceRoot":"","sources":["CutComparator.ts"],"names":["CutComparator","CutComparator.constructor","CutComparator.compare"],"mappings":"AAAA;;;IAKA;QAAAA;QAIAC,CAACA;AAAAD,QAHGA,kCAAAA,UAAeA,MAAcA,EAAEA,MAAcA;YACzCE,OAAOA,MAAMA,CAACA,SAASA,CAACA,MAAMA,CAACA;QACnCA,CAACA;QACLF,qBAACA;IAADA,CAACA,IAAA;IAND,oBAAuB;GAMtB"}
