@@ -10,13 +10,9 @@ class TimeLineControl {
     BackgroundContext: any;
     m_timeLineController: TimeLineController;
 
-    constructor (timeLineController: TimeLineController, canvas: any, div) {
-        var name = "jo";//GuidGenerator.generateGuid();
+    constructor (timeLineController: TimeLineController, canvas: any, div: JQuery) {
         
-        var getId = function (id) {
-            return name + "_" + id;
-        }
-        div.innerHTML = '<div id="' + getId('') + '" style="position:relative; width:800px; height:50px">\
+        div.append('<div id="timelineController" style="position:relative; width:800px; height:50px">\
                                 <canvas id="layer1" style="z-index:1;position:absolute;left:0;top:0;" height="50px" width="800">\
                                     HTML5 not supported in your browser.\
                                 </canvas>\
@@ -26,12 +22,11 @@ class TimeLineControl {
                                 <canvas id="layer3" style="z-index: 3;position:absolute;left:0;top:0;" height="50px" width="800">\
                                     HTML5 not supported in your browser.\
                                 </canvas>\
-                            </div>';
-
+                            </div>');
        
-        this.BackgroundCanvas = $('div#' + getId('') + ' canvas#layer1').get(0);
+        this.BackgroundCanvas = div.find('canvas#layer1').get(0);
         this.BackgroundContext = this.BackgroundCanvas.getContext('2d');
-        this.Canvas = $('div#' + getId('') + ' canvas#layer2').get(0);
+        this.Canvas = div.find('canvas#layer2').get(0);
         this.m_context = this.Canvas.getContext('2d');
                 
         var thisObj = this;

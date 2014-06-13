@@ -7,7 +7,6 @@ import AbstractMethodError = require("classes/common/error/AbstractMethodError")
 
 export = Transition;
 
-// Immutable type
 class Transition<T>{
     private _tween: ITween;
     private _tweenController: ITweenController;
@@ -15,14 +14,22 @@ class Transition<T>{
     private _startValue: T;
     private _startTime: number;
 
-    constructor(startTime: number, startValue: T, interpolator: IInterpolator<T>, tween?: ITween, tweenController?: ITweenController) { 
+    constructor(startTime: number, startValue: T, interpolator: IInterpolator<T>, tween?: ITween, tweenController?: ITweenController) {
         this._startValue = startValue;
         this._startTime = startTime;
         this._interpolator = interpolator;
         this._tween = (tween !== undefined) ? tween : BasicTweens.Default;
         this._tweenController = (tweenController !== undefined) ? tweenController : BasicTweenControllers.Default;
+
     }
 
+    public setTween(tween: ITween) {
+        this._tween = tween;
+    }
+    public setTweenController(tweenController: ITweenController) {
+        this._tweenController = tweenController;
+    }
+    
     public getStartTime(): number {
         return this._startTime;
     }

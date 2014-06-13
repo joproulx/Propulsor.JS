@@ -1,1 +1,0 @@
-{"version":3,"file":"BasicTween.js","sourceRoot":"","sources":["BasicTween.ts"],"names":["BasicTween","BasicTween.constructor","BasicTween.getRatio"],"mappings":"AAAA;;IAIA;QACIA;QACAC,CAACA;QAEDD,gCAAAA,UAAgBA,CAASA,EAAEA,KAAaA,EAAEA,GAAWA;YACjDE,OAAOA,CAACA,CAACA,GAAGA,KAAKA,CAACA,GAAGA,CAACA,GAAGA,GAAGA,KAAKA,CAACA;QACtCA,CAACA;QACLF,kBAACA;IAADA,CAACA,IAAA;IARD,iBAAoB;GAWpB"}

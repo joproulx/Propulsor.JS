@@ -2,6 +2,12 @@
 import Tween = require('classes/common/transition/tween/Tween');
 
 
+// See https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
+// Where c=Diff between EndValue and StartValue which is = 1 in our case
+//       
+//       t/d = xRatio in our case
+//         
+
 export = BasicTweens;
 class BasicTweens  {
     public static Linear: ITween = new Tween(function (xRatio: number): number {
@@ -12,8 +18,12 @@ class BasicTweens  {
 
     
      
-    public static EaseIn: ITween = new Tween(function (xRatio: number): number {
-        var ratio = BasicTweens.Default.getYRatio(xRatio);
-        return -(xRatio) * (xRatio - 2);
+    public static EaseInQuad: ITween = new Tween(function (xRatio: number): number {
+        return xRatio*xRatio;
     });
+
+    public static EaseOutCubic: ITween = new Tween(function (xRatio: number): number {
+        return ((xRatio - 1) * xRatio * xRatio + 1);
+    });
+    
 } 

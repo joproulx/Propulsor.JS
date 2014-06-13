@@ -136,7 +136,7 @@ class ShapeRenderer {
 
                 var reachedEnd = false;
                 do {
-                    var dashPattern = (needTwoPasses && firstPass) ? [-1] : this.Shape.Stroke.Dash.Pattern.get(t);
+                    var dashPattern = (needTwoPasses && firstPass) ? [] : this.Shape.Stroke.Dash.Pattern.get(t);
 
                     var dashedSegment = this.getDashedSegment(t, this.Shape.Stroke.Dash.Offset.get(t), currentTotalLength, dashPattern);
                     var endLength = dashedSegment.Length;

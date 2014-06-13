@@ -15,7 +15,7 @@ class RenderingLoop {
         this._timerId = 0;
         this._isStarted = false;
     }
-    start() {
+    public start() {
         if (this._timerId) {
             this.stop();
         }
@@ -25,22 +25,29 @@ class RenderingLoop {
         var thisObj = this;
 
         function render() {
-            var tickCount = thisObj.getTickCount();
+            if (thisObj._isStarted) {
+                var tickCount = thisObj.getTickCount();
+                thisObj.renderFrame(tickCount);
 
-            var elapsedTime = tickCount - thisObj._offset;
-            thisObj._offset = tickCount;
-
-            thisObj._callback(thisObj._from, elapsedTime);
-            thisObj._timerId = window.requestAnimationFrame(render);
+                thisObj._timerId = window.requestAnimationFrame(render);
+            }
         }
         this._timerId = window.requestAnimationFrame(render);
         this._isStarted = true;
     }
-    stop() {
+    public renderFrame(tickCount: number) {
+        
+        var elapsedTime = tickCount - this._offset;
+        this._offset = tickCount;
+
+        this._callback(this._from, elapsedTime);
+    }
+    public stop() {
         this._isStarted = false;
         window.cancelAnimationFrame(this._timerId);
     }
     getTickCount() {
         return new Date().getTime();
     }
+   
 }

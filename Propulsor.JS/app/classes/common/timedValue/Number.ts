@@ -1,4 +1,4 @@
-﻿import IComparable = require("classes/common/timedValue/IComparable");
+﻿import IComparable = require("classes/common/IComparable");
 export = Number;
 
 class Number implements IComparable{

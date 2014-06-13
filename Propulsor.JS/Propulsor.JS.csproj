@@ -23,6 +23,7 @@
     <Content Include="lib\rbtree.js" />
     <Content Include="lib\require.js" />
     <Content Include="lib\underscore-min.js" />
+    <Content Include="samples\samples.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -44,24 +45,25 @@
     <TypeScriptCompile Include="app\classes\common\style\LineJoinTypes.ts" />
     <TypeScriptCompile Include="app\classes\common\style\StrokeConfiguration.ts" />
     <TypeScriptCompile Include="app\classes\common\timedValue\ArrayTimedValue.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\BasicComparators.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\Cut.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\BoundType.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\CutComparator.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\IComparable.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\IComparator.ts" />
+    <TypeScriptCompile Include="app\classes\common\BasicComparators.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\Cut.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\BoundType.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\CutComparator.ts" />
+    <TypeScriptCompile Include="app\classes\common\IComparable.ts" />
+    <TypeScriptCompile Include="app\classes\common\IComparator.ts" />
+    <TypeScriptCompile Include="app\classes\common\timedValue\ITimedValueConfig.ts" />
     <TypeScriptCompile Include="app\classes\common\transition\tween\BasicTweenControllers.ts" />
     <TypeScriptCompile Include="app\classes\common\transition\tween\ChainableTweenController.ts" />
     <TypeScriptCompile Include="app\classes\common\transition\tween\ITweenController.ts" />
     <TypeScriptCompile Include="app\classes\common\timedValue\NumericTimedValue.ts" />
     <TypeScriptCompile Include="app\classes\common\timedValue\Number.ts" />
     <TypeScriptCompile Include="app\classes\common\timedValue\PointTimedValue.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\Range.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\TreeRangeMap.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\Range.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\TreeRangeMap.ts" />
     <TypeScriptCompile Include="app\classes\common\timedValue\TimedValue.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\RangeMapEntry.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\TreeMap.ts" />
-    <TypeScriptCompile Include="app\classes\common\timedValue\TreeMapEntry.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\RangeMapEntry.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\TreeMap.ts" />
+    <TypeScriptCompile Include="app\classes\common\collections\TreeMapEntry.ts" />
     <TypeScriptCompile Include="app\classes\common\RenderingLoop.ts" />
     <TypeScriptCompile Include="app\classes\common\TransformationMatrix.ts" />
     <TypeScriptCompile Include="app\classes\common\TransformationMatrixHelper.ts" />
@@ -97,6 +99,7 @@
     <TypeScriptCompile Include="app\classes\scene\Scene.ts" />
     <TypeScriptCompile Include="app\classes\scene\SceneManager.ts" />
     <TypeScriptCompile Include="app\classes\scene\TimeLineController.ts" />
+    <TypeScriptCompile Include="app\classes\ui\AccordionControl.ts" />
     <TypeScriptCompile Include="app\classes\ui\SampleCanvas.ts" />
     <TypeScriptCompile Include="app\classes\sceneGraph\ISceneNode.ts" />
     <TypeScriptCompile Include="app\classes\sceneGraph\SceneGraph.ts" />
@@ -134,7 +137,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7659</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58487/</IISUrl>
+          <IISUrl>http://localhost:7659/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

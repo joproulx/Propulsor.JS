@@ -30,22 +30,29 @@ class TimeLineController {
         this.CurrentTime = startTime;
         this.m_timer.start();
     }
-    stop() {
+    public stop() {
         this.IsStarted = false;
         this.m_timer.stop();
     }
-    seek(t: number) {
+    public seek(t: number) {
         this.CurrentTime = t;
 
         if (!this.IsStarted) {
             this.renderFrame(this.CurrentTime, this.Context);
         }
     }
-    onRender(from, elapsedTime) {
+    private onRender(from, elapsedTime) {
         from.CurrentTime += elapsedTime;
+
+        if (from.CurrentTime >= this.EndTimestamp) {
+            this.stop();
+            this.seek(this.EndTimestamp);
+            return;
+        }
+
         from.renderFrame(from.CurrentTime, from.Context);
     }
-    renderFrame(t: number, context) {
+    private renderFrame(t: number, context) {
         this.BeforeRenderEvent.trigger(t, context, null);
         this.RenderEvent.trigger(t, context, null);
         this.AfterRenderEvent.trigger(t, context, null);

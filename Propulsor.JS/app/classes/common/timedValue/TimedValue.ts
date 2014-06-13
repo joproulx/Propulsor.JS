@@ -1,10 +1,13 @@
 import ITween = require("classes/common/transition/tween/ITween");
+import BasicTweens = require("classes/common/transition/tween/BasicTweens");
+import BasicTweenControllers = require("classes/common/transition/tween/BasicTweenControllers");
 import Transition = require("classes/common/transition/Transition");
-import TreeMap = require("classes/common/timedValue/TreeMap");
-import TreeMapEntry = require("classes/common/timedValue/TreeMapEntry");
+import TreeMap = require("classes/common/collections/TreeMap");
+import TreeMapEntry = require("classes/common/collections/TreeMapEntry");
 import IInterpolator = require("classes/common/transition/interpolation/IInterpolator");
 import Number = require("classes/common/timedValue/Number");
-import BasicComparators = require("classes/common/timedValue/BasicComparators");
+import BasicComparators = require("classes/common/BasicComparators");
+import ITimedValueConfig = require("classes/common/timedValue/ITimedValueConfig");
 
 export = TimedValue;
 
@@ -17,17 +20,27 @@ class TimedValue<T> {
         this._transitions = new TreeMap<number, Transition<T>>(BasicComparators.Numbers);
         this._interpolator = interpolator;
         this._tween = tween;
-        this.set(0, defaultValue);
+        this.set(defaultValue);
     }
 
     public reset() {
         this._transitions.clear();
     }
 
-    public set(t: number, value: T, tween?: ITween) {
-        tween = tween === undefined ? this._tween : tween;
-
-        this._transitions.put(t, new Transition<T>(t, value, this._interpolator, tween));
+    public set(value: T, config?: ITimedValueConfig) {
+        var time = (config === undefined || config.For === undefined) ? 0 : config.For;
+        var tween = (config === undefined || config.Tween === undefined) ? BasicTweens.Default : config.Tween;
+        var tweenController = (config === undefined || config.TweenController === undefined) ? BasicTweenControllers.Default : config.TweenController;
+        
+        var lowerEntry = this._transitions.getLowerEntry(time);
+        if (lowerEntry != null) {
+            time += lowerEntry.getValue().getStartTime();
+            lowerEntry.getValue().setTween(tween);
+            lowerEntry.getValue().setTweenController(tweenController);
+        }
+        
+        // TODO: Tween and Tween controller should be applied to previous entry
+        this._transitions.put(time, new Transition<T>(time, value, this._interpolator));
     }
 
     public get(t: number): T {

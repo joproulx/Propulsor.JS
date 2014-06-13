@@ -1,3 +1,5 @@
+import ITween = require("classes/common/transition/tween/ITween");
+import ITimedValueConfig = require("classes/common/timedValue/ITimedValueConfig");
 import Segment = require("classes/element/segment/Segment");
 import LineSegment = require("classes/element/segment/LineSegment");
 import Joint = require("classes/element/joint/Joint");
@@ -24,9 +26,15 @@ class Path extends Movable {
         return _.last(this.Joints);
     }
 
-    private addJoint(t: number, point: Point): Joint {
-        var sceneNode = new SceneNode(this.SceneNode);
-        sceneNode.translate(t, point.X, point.Y);
+    private addJoint(point: Point, config?: ITimedValueConfig): Joint {
+        var sceneNode = <SceneNode>this.SceneNode;
+        if (this.Joints.length > 0) {
+            // First node is used as a the root scene node
+            // TODO: find a better way to set the "root" scene node. Should we have one? Or should we use the first created scene node instead
+            sceneNode = new SceneNode(this.Joints[this.Joints.length-1].SceneNode);
+        }
+
+        sceneNode.setAbsolutePosition(point, config);
         var joint = new Joint(sceneNode);
         this.Joints.push(joint);
         return joint;
@@ -40,9 +48,9 @@ class Path extends Movable {
         return segment;
     }
 
-    public static startAt(t: number, point: Point): Path {
+    public static startAt(point: Point, config?: ITimedValueConfig): Path {
         var path = new Path(new SceneNode(), [], [], false);
-        path.addJoint(t, point);
+        path.addJoint(point, config);
         return path;
     }
 
@@ -54,25 +62,25 @@ class Path extends Movable {
             var point = sceneNode.getPosition(t);
 
             if (path === null) {
-                path = Path.startAt(0, point);
+                path = Path.startAt(point);
                 continue;
             }
 
-            path.addSegmentTo(0, point);
+            path.addSegmentTo(point);
         }
 
         return path;
     }
 
-    public addSegmentTo(t: number, point: Point): Path {
+    public addSegmentTo(point: Point, config?: ITimedValueConfig): Path {
         var path = this;
 
         if (path.Joints.length === 0) {
-            path = Path.startAt(t, new Point(0, 0));
+            path = Path.startAt(new Point(0, 0), config);
         }
 
         var jointStart = path.getLastJoint();
-        var jointEnd = path.addJoint(t, point);
+        var jointEnd = path.addJoint(point, config);
         path.addSegment(new LineSegment(), jointStart, jointEnd);
         return path;
     }
