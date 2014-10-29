@@ -33,6 +33,7 @@
     <TypeScriptCompile Include="app\classes\common\Event.ts" />
     <TypeScriptCompile Include="app\classes\common\EventHandler.ts" />
     <TypeScriptCompile Include="app\classes\common\GuidGenerator.ts" />
+    <TypeScriptCompile Include="app\classes\common\IRefreshable.ts" />
     <TypeScriptCompile Include="app\classes\common\Line.ts" />
     <TypeScriptCompile Include="app\classes\common\Point.ts" />
     <TypeScriptCompile Include="app\classes\common\PolyFill.ts" />

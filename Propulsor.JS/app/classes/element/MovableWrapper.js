@@ -7,14 +7,14 @@ define(["require", "exports"], function(require, exports) {
         MovableWrapper.prototype.getPosition = function (t) {
             return this._movable.getPosition(t);
         };
-        MovableWrapper.prototype.setAbsolutePosition = function (t, point) {
-            return this._movable.setAbsolutePosition(t, point);
+        MovableWrapper.prototype.setAbsolutePosition = function (point, config) {
+            return this._movable.setAbsolutePosition(point, config);
         };
-        MovableWrapper.prototype.setRelativePosition = function (t, point) {
-            return this._movable.setRelativePosition(t, point);
+        MovableWrapper.prototype.setRelativePosition = function (point, config) {
+            return this._movable.setRelativePosition(point, config);
         };
-        MovableWrapper.prototype.rotate = function (t, radian) {
-            this._movable.rotate(t, radian);
+        MovableWrapper.prototype.rotate = function (radian, config) {
+            this._movable.rotate(radian, config);
         };
         return MovableWrapper;
     })();

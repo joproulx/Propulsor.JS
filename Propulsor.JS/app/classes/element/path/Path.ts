@@ -31,7 +31,8 @@ class Path extends Movable {
         if (this.Joints.length > 0) {
             // First node is used as a the root scene node
             // TODO: find a better way to set the "root" scene node. Should we have one? Or should we use the first created scene node instead
-            sceneNode = new SceneNode(this.Joints[this.Joints.length-1].SceneNode);
+            //sceneNode = new SceneNode(this.Joints[this.Joints.length-1].SceneNode);
+            sceneNode = new SceneNode(this.Joints[0].SceneNode);
         }
 
         sceneNode.setAbsolutePosition(point, config);

@@ -15,6 +15,7 @@ class TimedValue<T> {
     private _transitions: TreeMap<number, Transition<T>>;
     private _interpolator: IInterpolator<T>;
     private _tween: ITween;
+    private _cachedValue: { Time: number; Value: T; } = null;
 
     constructor(defaultValue: T, interpolator: IInterpolator<T>, tween?: ITween) {
         this._transitions = new TreeMap<number, Transition<T>>(BasicComparators.Numbers);
@@ -44,6 +45,11 @@ class TimedValue<T> {
     }
 
     public get(t: number): T {
+        if (this._cachedValue != null && this._cachedValue.Time == t) {
+            return this._cachedValue.Value;
+        }
+
+        this._cachedValue = null;
         var lowerEntry = this._transitions.getLowerEntry(t);
 
         if (lowerEntry == null) {
@@ -56,7 +62,9 @@ class TimedValue<T> {
         var endTime = upperEntry != null ? upperEntry.getValue().getStartTime() : Infinity;
         var endValue = upperEntry != null ? upperEntry.getValue().getStartValue() : currentTransition.getStartValue();
 
-        return currentTransition.getValueAt(t, endTime, endValue);
+        var value = currentTransition.getValueAt(t, endTime, endValue);
+        this._cachedValue = { Time: t, Value: value };
+        return value;
     }
 
     public toString(): string {

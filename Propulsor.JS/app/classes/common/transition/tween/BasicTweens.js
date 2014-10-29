@@ -9,9 +9,12 @@
 
         BasicTweens.Default = BasicTweens.Linear;
 
-        BasicTweens.EaseIn = new Tween(function (xRatio) {
-            var ratio = BasicTweens.Default.getYRatio(xRatio);
-            return -(xRatio) * (xRatio - 2);
+        BasicTweens.EaseInQuad = new Tween(function (xRatio) {
+            return xRatio * xRatio;
+        });
+
+        BasicTweens.EaseOutCubic = new Tween(function (xRatio) {
+            return ((xRatio - 1) * xRatio * xRatio + 1);
         });
         return BasicTweens;
     })();

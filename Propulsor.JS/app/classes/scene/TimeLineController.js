@@ -30,6 +30,13 @@ define(["require", "exports", "classes/common/Event", "classes/common/RenderingL
         };
         TimeLineController.prototype.onRender = function (from, elapsedTime) {
             from.CurrentTime += elapsedTime;
+
+            if (from.CurrentTime >= this.EndTimestamp) {
+                this.stop();
+                this.seek(this.EndTimestamp);
+                return;
+            }
+
             from.renderFrame(from.CurrentTime, from.Context);
         };
         TimeLineController.prototype.renderFrame = function (t, context) {

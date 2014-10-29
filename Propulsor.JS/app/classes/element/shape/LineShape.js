@@ -18,7 +18,7 @@ define(["require", "exports", "classes/element/shape/Shape", "classes/element/sh
             //                        { SegmentType: "line" },
             //                        { X: halfX, Y: halfY }];
             //var builder = new JsonPathBuilder.JsonPathBuilder();
-            this._path = Path.startAt(t, new Point(x1, y1)).addSegmentTo(t, new Point(x2, y2));
+            this._path = Path.startAt(new Point(x1, y1), t).addSegmentTo(new Point(x2, y2), t);
 
             var shape = new Shape(this._path);
 

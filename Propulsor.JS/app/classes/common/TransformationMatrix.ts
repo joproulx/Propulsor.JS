@@ -78,6 +78,14 @@ class TransformationMatrix {
         return this.getElement(1, 3);
     }
 
+    public equals(other: TransformationMatrix): boolean {
+        if (other === null || other === undefined) {
+            return false;
+        }
+
+        return this._matrix.eql(other._matrix);
+    }
+
     public getTranslationY(): number {
         return this.getElement(2, 3);
     }

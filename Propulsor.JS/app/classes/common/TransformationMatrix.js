@@ -86,6 +86,14 @@ define(["require", "exports"], function(require, exports) {
             return this.getElement(1, 3);
         };
 
+        TransformationMatrix.prototype.equals = function (other) {
+            if (other === null || other === undefined) {
+                return false;
+            }
+
+            return this._matrix.eql(other._matrix);
+        };
+
         TransformationMatrix.prototype.getTranslationY = function () {
             return this.getElement(2, 3);
         };

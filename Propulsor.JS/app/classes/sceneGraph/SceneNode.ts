@@ -10,14 +10,70 @@ import ITimedValueConfig = require("classes/common/timedValue/ITimedValueConfig"
 //import FollowPathTransition = require("transition/FollowPathTransition");
 //import FollowDirectionTransition = require("transition/FollowDirectionTransition");
 
+class CacheMatrix {
+    private _relativeX: number;
+    private _relativeY: number;
+    private _relativeRotation: number;
+    private _matrix: TransformationMatrix = null;
+
+    public getFromCache(point: Point, rotation: number): TransformationMatrix {
+        if (this._matrix === null) {
+            return null;
+        }
+
+        if (point.X !== this._relativeX ||
+            point.Y !== this._relativeY ||
+            rotation !== this._relativeRotation) { return null; }
+
+        return this._matrix;
+    }
+
+    public cache(point: Point, rotation: number, matrix: TransformationMatrix ){
+        this._relativeX = point.X;
+        this._relativeY = point.Y;
+        this._relativeRotation = rotation;
+        this._matrix = matrix;
+
+    }
+}
+
+class TransformedCacheMatrix {
+    private _parentMatrix: TransformationMatrix = null;
+    private _matrix: TransformationMatrix = null;
+
+    public getFromCache(matrix: TransformationMatrix): TransformationMatrix {
+        if (this._matrix === null || this._parentMatrix === null) {
+            return null;
+        }
+
+        if (!this._parentMatrix.equals(matrix)) {
+            return null;
+        }
+
+        return this._matrix;
+    }
+
+    public cache(parentMatrix: TransformationMatrix, matrix: TransformationMatrix) {
+        this._parentMatrix = parentMatrix;
+        this._matrix = matrix;
+
+    }
+}
+
+
+
 export = SceneNode;
 class SceneNode implements ISceneNode{
     private _relativePosition: PointTimedValue = undefined;
     private _relativeOrientation: TimedValue<number> = undefined;
     public ParentNode: SceneNode;
     public ChildNodes: SceneNode[];
+    private _cache: CacheMatrix;
+    private _transformedCache: TransformedCacheMatrix;
 
-    constructor (parentNode?: ISceneNode) {
+    constructor(parentNode?: ISceneNode) {
+        this._cache = new CacheMatrix();
+        this._transformedCache = new TransformedCacheMatrix();
         this.ChildNodes = [];
 
         this._relativePosition = new PointTimedValue(new Point(0, 0));
@@ -48,14 +104,27 @@ class SceneNode implements ISceneNode{
         var relativePosition = this._relativePosition.get(t);
         var relativeOrientation = this._relativeOrientation.get(t);
 
+        var transformed = false;
+        var transformationMatrix = this._cache.getFromCache(relativePosition, relativeOrientation);
+        if (transformationMatrix == null) {
+            transformationMatrix = TransformationMatrix.fromTransformation(relativePosition.X, relativePosition.Y, relativeOrientation);
+            this._cache.cache(relativePosition, relativeOrientation, transformationMatrix);
+            transformed = true;
+        }
+
+        var parentMatrix = this.getParentTransformationMatrix(t);
+        var transformedMatrix = null;
+
+        if (!transformed){
+            transformedMatrix = this._transformedCache.getFromCache(parentMatrix);
+        }
+
+        if (transformedMatrix == null) {
+            transformedMatrix = parentMatrix.transforms(transformationMatrix);
+            this._transformedCache.cache(parentMatrix, transformedMatrix);
+        }
         
-        var transformationMatrix = TransformationMatrix.fromTransformation(relativePosition.X,
-            relativePosition.Y,
-            relativeOrientation);
-
-        // TODO: Cache transformation to avoid calculate on each draw
-
-        return this.getParentTransformationMatrix(t).transforms(transformationMatrix);
+        return transformedMatrix;
     }
     public getPosition(t: number) : Point {
         var matrix = this.getTransformationMatrix(t);

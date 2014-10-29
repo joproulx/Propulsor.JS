@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Propulsor.JS samples</title>
+    <script data-main="out" type="text/javascript" src="require.js"></script>
+</head>
+<body>
+    <div id="canvas"></div>
+    <script>
+        require(['jquery', 'SampleCanvas'],
+                 function ($, SampleCanvas) {
+                     var sample = new SampleCanvas("test", "test", document.getElementById("canvas"));
+
+                 });
+    </script>
+</body>
+</html>

@@ -19,16 +19,21 @@ define(["require", "exports"], function(require, exports) {
             var thisObj = this;
 
             function render() {
-                var tickCount = thisObj.getTickCount();
+                if (thisObj._isStarted) {
+                    var tickCount = thisObj.getTickCount();
+                    thisObj.renderFrame(tickCount);
 
-                var elapsedTime = tickCount - thisObj._offset;
-                thisObj._offset = tickCount;
-
-                thisObj._callback(thisObj._from, elapsedTime);
-                thisObj._timerId = window.requestAnimationFrame(render);
+                    thisObj._timerId = window.requestAnimationFrame(render);
+                }
             }
             this._timerId = window.requestAnimationFrame(render);
             this._isStarted = true;
+        };
+        RenderingLoop.prototype.renderFrame = function (tickCount) {
+            var elapsedTime = tickCount - this._offset;
+            this._offset = tickCount;
+
+            this._callback(this._from, elapsedTime);
         };
         RenderingLoop.prototype.stop = function () {
             this._isStarted = false;

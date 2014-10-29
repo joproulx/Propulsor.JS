@@ -7,14 +7,14 @@ define(["require", "exports"], function(require, exports) {
         Movable.prototype.getPosition = function (t) {
             return this.SceneNode.getPosition(t);
         };
-        Movable.prototype.setAbsolutePosition = function (t, point) {
-            return this.SceneNode.setAbsolutePosition(t, point);
+        Movable.prototype.setAbsolutePosition = function (point, config) {
+            return this.SceneNode.setAbsolutePosition(point, config);
         };
-        Movable.prototype.setRelativePosition = function (t, point) {
-            return this.SceneNode.setRelativePosition(t, point);
+        Movable.prototype.setRelativePosition = function (point, config) {
+            return this.SceneNode.setRelativePosition(point, config);
         };
-        Movable.prototype.rotate = function (t, radian) {
-            this.SceneNode.rotate(t, radian);
+        Movable.prototype.rotate = function (radian, config) {
+            this.SceneNode.rotate(radian, config);
         };
         return Movable;
     })();

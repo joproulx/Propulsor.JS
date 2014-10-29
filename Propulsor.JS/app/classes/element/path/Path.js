@@ -18,9 +18,16 @@ define(["require", "exports", "classes/element/segment/LineSegment", "classes/el
             return _.last(this.Joints);
         };
 
-        Path.prototype.addJoint = function (t, point) {
-            var sceneNode = new SceneNode(this.SceneNode);
-            sceneNode.translate(t, point.X, point.Y);
+        Path.prototype.addJoint = function (point, config) {
+            var sceneNode = this.SceneNode;
+            if (this.Joints.length > 0) {
+                // First node is used as a the root scene node
+                // TODO: find a better way to set the "root" scene node. Should we have one? Or should we use the first created scene node instead
+                //sceneNode = new SceneNode(this.Joints[this.Joints.length-1].SceneNode);
+                sceneNode = new SceneNode(this.Joints[0].SceneNode);
+            }
+
+            sceneNode.setAbsolutePosition(point, config);
             var joint = new Joint(sceneNode);
             this.Joints.push(joint);
             return joint;
@@ -34,9 +41,9 @@ define(["require", "exports", "classes/element/segment/LineSegment", "classes/el
             return segment;
         };
 
-        Path.startAt = function (t, point) {
+        Path.startAt = function (point, config) {
             var path = new Path(new SceneNode(), [], [], false);
-            path.addJoint(t, point);
+            path.addJoint(point, config);
             return path;
         };
 
@@ -48,25 +55,25 @@ define(["require", "exports", "classes/element/segment/LineSegment", "classes/el
                 var point = sceneNode.getPosition(t);
 
                 if (path === null) {
-                    path = Path.startAt(0, point);
+                    path = Path.startAt(point);
                     continue;
                 }
 
-                path.addSegmentTo(0, point);
+                path.addSegmentTo(point);
             }
 
             return path;
         };
 
-        Path.prototype.addSegmentTo = function (t, point) {
+        Path.prototype.addSegmentTo = function (point, config) {
             var path = this;
 
             if (path.Joints.length === 0) {
-                path = Path.startAt(t, new Point(0, 0));
+                path = Path.startAt(new Point(0, 0), config);
             }
 
             var jointStart = path.getLastJoint();
-            var jointEnd = path.addJoint(t, point);
+            var jointEnd = path.addJoint(point, config);
             path.addSegment(new LineSegment(), jointStart, jointEnd);
             return path;
         };

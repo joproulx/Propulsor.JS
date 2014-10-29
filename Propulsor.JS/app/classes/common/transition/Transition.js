@@ -1,7 +1,6 @@
 define(["require", "exports", "classes/common/transition/tween/BasicTweens", "classes/common/transition/tween/BasicTweenControllers"], function(require, exports, BasicTweens, BasicTweenControllers) {
     
 
-    // Immutable type
     var Transition = (function () {
         function Transition(startTime, startValue, interpolator, tween, tweenController) {
             this._startValue = startValue;
@@ -10,6 +9,13 @@ define(["require", "exports", "classes/common/transition/tween/BasicTweens", "cl
             this._tween = (tween !== undefined) ? tween : BasicTweens.Default;
             this._tweenController = (tweenController !== undefined) ? tweenController : BasicTweenControllers.Default;
         }
+        Transition.prototype.setTween = function (tween) {
+            this._tween = tween;
+        };
+        Transition.prototype.setTweenController = function (tweenController) {
+            this._tweenController = tweenController;
+        };
+
         Transition.prototype.getStartTime = function () {
             return this._startTime;
         };

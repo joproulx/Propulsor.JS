@@ -121,52 +121,70 @@ define(["require", "exports", "classes/common/style/LineJoinTypes"], function(re
                 var beginPath = true;
                 var endPath = true;
 
+                var dashPattern = (needTwoPasses && firstPass) ? [] : this.Shape.Stroke.Dash.Pattern.get(t);
+                var dashOffset = this.Shape.Stroke.Dash.Offset.get(t);
+
                 for (var i = 0; i < this.SegmentRenderers.length; i++) {
                     var segmentLength = this.SegmentRenderers[i].Segment.length(t);
 
                     var reachedEnd = false;
                     do {
-                        var dashPattern = (needTwoPasses && firstPass) ? [-1] : this.Shape.Stroke.Dash.Pattern.get(t);
+                        if (_.isEmpty(dashPattern) && dashOffset === 0 && startRatio === 0 && endRatio === 1) {
+                            if (i === 0) {
+                                var point = this.SegmentRenderers[0].getPoint1(t, 0, 1);
 
-                        var dashedSegment = this.getDashedSegment(t, this.Shape.Stroke.Dash.Offset.get(t), currentTotalLength, dashPattern);
-                        var endLength = dashedSegment.Length;
-                        var newCurrentTotalLength = (currentTotalLength + endLength);
-                        var newTotalSegmentLength = (totalSegmentLength + segmentLength);
-
-                        if (newCurrentTotalLength >= newTotalSegmentLength) {
-                            // Only do a endRender() if we are not at a joint and there is still a segment to draw OR
-                            // if we are at the complete end of the path
-                            endPath = newCurrentTotalLength <= newTotalSegmentLength;
-
-                            endLength = newTotalSegmentLength - currentTotalLength;
-
-                            reachedEnd = true;
-                        } else {
-                            endPath = true;
-                        }
-
-                        endPath = endPath && !(needTwoPasses && firstPass && !reachedEnd);
-
-                        if (dashedSegment.Drawn) {
-                            var startRatio = this.getRatio((currentTotalLength - totalSegmentLength), segmentLength);
-                            var endRatio = this.getRatio((currentTotalLength - totalSegmentLength) + endLength, segmentLength);
-
-                            var point = this.SegmentRenderers[i].getPoint1(t, startRatio, endRatio);
-
-                            if (beginPath) {
-                                this.beginRender(t, context, !(needTwoPasses && firstPass), firstPass);
+                                this.beginRender(t, context, true, true);
                                 context.moveTo(point.X, point.Y);
                             }
 
-                            this.SegmentRenderers[i].render(t, context, startRatio, endRatio);
+                            this.SegmentRenderers[i].render(t, context, 0, 1);
 
-                            if (endPath && !(needTwoPasses && firstPass && !reachedEnd)) {
-                                this.endRender(context, reachedEnd, firstPass);
+                            if (i === (this.SegmentRenderers.length - 1)) {
+                                this.endRender(context, true, true);
                             }
-                        }
 
-                        beginPath = endPath;
-                        currentTotalLength += endLength;
+                            reachedEnd = true;
+                        } else {
+                            var dashedSegment = this.getDashedSegment(t, this.Shape.Stroke.Dash.Offset.get(t), currentTotalLength, dashPattern);
+                            var endLength = dashedSegment.Length;
+                            var newCurrentTotalLength = (currentTotalLength + endLength);
+                            var newTotalSegmentLength = (totalSegmentLength + segmentLength);
+
+                            if (newCurrentTotalLength >= newTotalSegmentLength) {
+                                // Only do a endRender() if we are not at a joint and there is still a segment to draw OR
+                                // if we are at the complete end of the path
+                                endPath = newCurrentTotalLength <= newTotalSegmentLength;
+
+                                endLength = newTotalSegmentLength - currentTotalLength;
+
+                                reachedEnd = true;
+                            } else {
+                                endPath = true;
+                            }
+
+                            endPath = endPath && !(needTwoPasses && firstPass && !reachedEnd);
+
+                            if (dashedSegment.Drawn) {
+                                var startRatio = this.getRatio((currentTotalLength - totalSegmentLength), segmentLength);
+                                var endRatio = this.getRatio((currentTotalLength - totalSegmentLength) + endLength, segmentLength);
+
+                                var point = this.SegmentRenderers[i].getPoint1(t, startRatio, endRatio);
+
+                                if (beginPath) {
+                                    this.beginRender(t, context, !(needTwoPasses && firstPass), firstPass);
+                                    context.moveTo(point.X, point.Y);
+                                }
+
+                                this.SegmentRenderers[i].render(t, context, startRatio, endRatio);
+
+                                if (endPath && !(needTwoPasses && firstPass && !reachedEnd)) {
+                                    this.endRender(context, reachedEnd, firstPass);
+                                }
+                            }
+
+                            beginPath = endPath;
+                            currentTotalLength += endLength;
+                        }
                     } while(!reachedEnd);
                     totalSegmentLength += segmentLength;
                 }

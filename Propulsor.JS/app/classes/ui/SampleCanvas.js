@@ -1,7 +1,7 @@
 define(["require", "exports", "classes/scene/SceneManager", "classes/ui/TimeLineControl"], function(require, exports, SceneManager, TimeLineControl) {
     
     var SampleCanvas = (function () {
-        function SampleCanvas(name, div) {
+        function SampleCanvas(name, id, timelineLengthInMS) {
             this.Context = null;
             this.Canvas = null;
             this.BackgroundContext = null;
@@ -11,48 +11,108 @@ define(["require", "exports", "classes/scene/SceneManager", "classes/ui/TimeLine
             this.m_drawGrid = true;
             this.m_sceneManager = null;
             this.m_timeLineControl = null;
+            this.m_containerSearchString = '';
+            this.m_sampleId = id;
             this.m_startTimestamps = 0;
             this.m_timestampsIndex = 0;
             this.m_sum = 0;
 
-            var getId = function (id) {
-                return name + "_" + id;
-            };
-            var html = '<div id="' + getId('') + '" style="position:relative; width:800px; height:450px">\
-                                <canvas id="layer1" style="z-index:1;position:absolute;left:0;top:0;" height="450px" width="800">\
-                                    HTML5 not supported in your browser.\
-                                </canvas>\
-                                <canvas id="layer2" style="z-index: 2;position:absolute;left:0;top:0;" height="450px" width="800">\
-                                    HTML5 not supported in your browser.\
-                                </canvas>\
-                                <canvas id="layer3" style="z-index: 3;position:absolute;left:0;top:0;" height="450px" width="800">\
-                                    HTML5 not supported in your browser.\
-                                </canvas>\
-                            </div>\
-                            <button type="button" id="' + getId("buttonName") + '">Play</button>\
-                            <button type="button" id="' + getId("buttonGrid") + '">Grid</button>\
-                            FPS: <span id="fps" style="#C0C0C0">0</span>\
-        <div id="' + getId('timeLine') + '"/>';
+            var divContainer = $('<div/>', {
+                id: 'container_' + id
+            });
 
-            div.html(html);
+            this.m_containerSearchString = 'div#container_' + id + ' ';
+            this.m_rootElement = divContainer;
 
-            $("button#" + getId("buttonName")).click($.proxy(this.onClickPlay, this));
-            $("button#" + getId("buttonGrid")).click($.proxy(this.onClickDisplayGrid, this));
+            var divCanvas = $('<div/>', {
+                id: 'canvas',
+                style: 'position: relative; width:800px; height:450px'
+            }).appendTo(divContainer);
 
-            this.BackgroundCanvas = $('div#' + getId('') + ' canvas#layer1').get(0);
+            var divInfo = $('<div/>', {
+                id: 'info',
+                style: 'z-index:99999;line-height:12px;margin:5px;padding:5px;position:absolute;background-color:rgba(100, 100, 100, 0.5)',
+                height: '80px',
+                width: '130px'
+            }).appendTo(divCanvas);
+
+            this.m_spanFPS = $('<span/>', {
+                id: 'fps',
+                text: 'FPS:',
+                style: 'font-size:10px'
+            }).appendTo(divInfo);
+            $('<br/>').appendTo(divInfo);
+            var spanPosition = $('<span/>', {
+                id: 'position',
+                text: 'Position:',
+                style: 'font-size:10px'
+            }).appendTo(divInfo);
+
+            divCanvas.mousemove(function (eventObject) {
+                spanPosition.html('Position: X=' + eventObject.offsetX + ', Y=' + eventObject.offsetY);
+            });
+
+            divCanvas.mouseleave(function (eventObject) {
+                spanPosition.html('Position:');
+            });
+
+            var canvas1 = this.generateCanvas('layer1', 800, 450, 1).appendTo(divCanvas);
+            var canvas2 = this.generateCanvas('layer2', 800, 450, 2).appendTo(divCanvas);
+            var canvas3 = this.generateCanvas('layer3', 800, 450, 3).appendTo(divCanvas);
+            divCanvas.appendTo(divContainer);
+
+            var buttonBack = this.generateButton('buttonBack', '|<').appendTo(divContainer);
+            this.m_buttonPlay = this.generateButton('buttonPlay', '>').appendTo(divContainer);
+            var buttonGrid = this.generateButton('buttonGrid', '#').appendTo(divContainer);
+
+            var divTimeline = $('<div/>', {
+                id: 'timeline'
+            }).appendTo(divContainer);
+
+            buttonBack.click($.proxy(this.onClickBack, this));
+
+            this.m_buttonPlay.click($.proxy(this.onClickPlay, this));
+
+            buttonGrid.click($.proxy(this.onClickDisplayGrid, this));
+
+            this.BackgroundCanvas = canvas1.get(0);
             this.BackgroundContext = this.BackgroundCanvas.getContext('2d');
-            this.Canvas = $('div#' + getId('') + ' canvas#layer2').get(0);
+            this.Canvas = canvas2.get(0);
             this.Context = this.Canvas.getContext('2d');
 
-            this.m_sceneManager = new SceneManager(0, 20000, this.Context);
+            this.m_sceneManager = new SceneManager(0, timelineLengthInMS, this.Context);
 
-            this.m_timeLineControl = new TimeLineControl(this.m_sceneManager.TimeLineController, this.Canvas, document.getElementById(getId('timeLine')));
+            this.m_timeLineControl = new TimeLineControl(this.m_sceneManager.TimeLineController, this.Canvas, divTimeline);
 
             this.m_sceneManager.TimeLineController.BeforeRenderEvent.subscribe(this.onBeforeRendered, this);
             this.m_sceneManager.TimeLineController.AfterRenderEvent.subscribe(this.onAfterRendered, this);
 
             this.drawGrid();
         }
+        SampleCanvas.prototype.toJQuery = function () {
+            return this.m_rootElement;
+        };
+
+        SampleCanvas.prototype.generateCanvas = function (name, width, height, zIndex) {
+            // Because of what seems a bug, the canvas html tag is not closed when generated, I generate canvas html like this.
+            return $('<canvas id="' + name + '" style="z-index:' + zIndex + ';position:absolute; left: 0; top: 0;" height="' + height + 'px"' + ' width="' + width + 'px">HTML5 not supported in your browser.</canvas>');
+        };
+
+        SampleCanvas.prototype.generateButton = function (name, text) {
+            return $('<button/>', {
+                id: name,
+                type: 'button',
+                text: text
+            });
+        };
+
+        //private getElement(id: string): JQuery {
+        //    var query = this.m_containerSearchString + id;
+        //    return $(query);
+        //}
+        //private getId(id: string): string {
+        //    return this.m_canvasName + "_" + id;
+        //}
         SampleCanvas.prototype.addToScene = function (elements) {
             for (var i = 0; i < elements.length; i++) {
                 this.m_sceneManager.addToScene(elements[i], "test");
@@ -98,11 +158,21 @@ define(["require", "exports", "classes/scene/SceneManager", "classes/ui/TimeLine
         };
         SampleCanvas.prototype.onClickPlay = function () {
             if (this.m_sceneManager.TimeLineController.IsStarted) {
+                this.m_buttonPlay.html(">");
                 this.m_sceneManager.TimeLineController.stop();
             } else {
+                var test = this.m_buttonPlay;
+                var test1 = test.html();
+                this.m_buttonPlay.html("||");
+                test1 = test.html();
                 this.m_sceneManager.TimeLineController.start(this.m_sceneManager.TimeLineController.CurrentTime);
             }
         };
+
+        SampleCanvas.prototype.onClickBack = function () {
+            this.m_sceneManager.TimeLineController.seek(0);
+        };
+
         SampleCanvas.prototype.onBeforeRendered = function (from, t, context) {
             from.Context.clearRect(0, 0, from.Canvas.width, from.Canvas.height);
 
@@ -119,7 +189,7 @@ define(["require", "exports", "classes/scene/SceneManager", "classes/ui/TimeLine
             from.m_lastTimestamp = t;
 
             if (from.m_timestampsIndex > 0 && (t - from.m_startTimestamps > 1000)) {
-                $('span#fps').html((Math.round(1000 * from.m_timestampsIndex / from.m_sum)).toString());
+                from.m_spanFPS.html('FPS: ' + (Math.round(1000 * from.m_timestampsIndex / from.m_sum)).toString());
 
                 from.m_sum = 0;
                 from.m_startTimestamps = 0;
